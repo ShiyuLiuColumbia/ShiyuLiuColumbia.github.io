@@ -79,7 +79,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                Shiyu-Blog
+                Shiyu - Blog
             
             </a>
         </div>
@@ -153,7 +153,7 @@
 </li>
 <li><p>可以把二维矩阵减少为两行的矩阵，这样空间复杂度可以减少为O(2*n)。</p>
 </li>
-<li><p>可以只用一行的矩阵，但需要一个prev来记录将要更新的点之前的值,这样空间复杂度减少为O(n)。<br><img src="/2019/04/25/221. Maximal Square/./221. Maximal Square/221_Maximal_Square.png" alt="221. Maximal Square"></p>
+<li><p>可以只用一行的矩阵，但需要一个prev来记录将要更新的点之前的值,这样空间复杂度减少为O(n)。<br><img src="/2019/04/25/221. Maximal Square/221_Maximal_Square.png" alt="221. Maximal Square"></p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int maximalSquare(char[][] matrix) &#123;</span><br><span class="line">        int m = matrix.length;</span><br><span class="line">        if(m==0)</span><br><span class="line">            return 0;</span><br><span class="line">        int n = matrix[0].length;</span><br><span class="line">        int[] dp = new int[n+1];</span><br><span class="line">        int largest_length = 0;</span><br><span class="line">        int prev = 0;</span><br><span class="line">        for(int i = 0;i&lt;=m-1;i++)&#123;</span><br><span class="line">            for(int j =0;j&lt;=n-1;j++)&#123;</span><br><span class="line">                int tmp = dp[j+1];</span><br><span class="line">                dp[j+1] = matrix[i][j]==&apos;0&apos;?0:(Math.min(Math.min(dp[j+1], dp[j]), prev)+1);</span><br><span class="line">                prev = tmp;</span><br><span class="line">                largest_length = Math.max(largest_length, dp[j+1]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return largest_length*largest_length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 
@@ -270,6 +270,18 @@
                 
             </a>
             
+            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/shiyu-liu-6623a3158/">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Email" href="mailto:sl4401@columbia.edu">
+                
+                <i class="fas fa-envelope-open"></i>
+                
+            </a>
+            
         </div>
         
     </div>
@@ -326,16 +338,16 @@
         
         <article class="media">
             
-            <a href="/2019/04/25/12/" class="media-left">
+            <a href="/2019/04/25/230. Kth Smallest Element in a BST/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="12">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="230. Kth Smallest Element in a BST">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-26T03:54:25.000Z">2019-04-25</time></div>
-                    <a href="/2019/04/25/12/" class="has-link-black-ter is-size-6">12</a>
+                    <a href="/2019/04/25/230. Kth Smallest Element in a BST/" class="has-link-black-ter is-size-6">230. Kth Smallest Element in a BST</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -564,16 +576,16 @@
         
         <article class="media">
             
-            <a href="/2019/04/25/12/" class="media-left">
+            <a href="/2019/04/25/230. Kth Smallest Element in a BST/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="12">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="230. Kth Smallest Element in a BST">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-26T03:54:25.000Z">2019-04-25</time></div>
-                    <a href="/2019/04/25/12/" class="has-link-black-ter is-size-6">12</a>
+                    <a href="/2019/04/25/230. Kth Smallest Element in a BST/" class="has-link-black-ter is-size-6">230. Kth Smallest Element in a BST</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -794,7 +806,9 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    Shiyu-Blog
+                    <strong>
+                        Shiyu - Blog
+                    </strong>
                 
                 </a>
                 <p class="is-size-7">

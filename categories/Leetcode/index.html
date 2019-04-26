@@ -79,7 +79,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                Shiyu-Blog
+                Shiyu - Blog
             
             </a>
         </div>
@@ -516,13 +516,7 @@
         </h1>
         <div class="content">
             <p>最直观的做法肯定是直接进行递归，时间复杂度O(n)。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int countNodes(TreeNode root) &#123;</span><br><span class="line">        return root == null ? 0 : 1 + countNodes(root.left) + countNodes(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>但是我们发现这道题一个关键点是：<strong>树是一个完美树(perfect tree)</strong><br>所以正确的做法是运用树的高度与node个数的关系：<strong>如果一个树是完全的完美树(在完美树的基础上最后一层也铺满)，那么n=2^h-1</strong></p>
-<p>解决这道题分为以下步骤：</p>
-<ul>
-<li>写一个计算树高度的函数：遍历左孩子，直到为空。</li>
-<li>比较root node左孩子与右孩子高度<ul>
-<li>如果高度相同，说明左子树一定是一个完全的完美树，那么我们返回(2^左子树高度-1+1+对右子树进行递归结果</li>
-<li>如果高度不同，说明右子树一定是一个完全的完美树(左子树是不是不一定)，返回(1+递归左子树结果+2^右子树高度-1)</li></ul></li></ul>
+<p>但是我们发现这道题一个关键点是：<strong>树是一个完美树(perfect tree)</strong><br>所以正确的做法是运用树的高度与node个数的关系：<strong>如果一个树是完全的完美树(在完美树的基础上最后一层也铺满)，那么n=2^h-1</strong><br></p>
         </div>
         
         
@@ -747,6 +741,18 @@
                 
             </a>
             
+            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/shiyu-liu-6623a3158/">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Email" href="mailto:sl4401@columbia.edu">
+                
+                <i class="fas fa-envelope-open"></i>
+                
+            </a>
+            
         </div>
         
     </div>
@@ -803,16 +809,16 @@
         
         <article class="media">
             
-            <a href="/2019/04/25/12/" class="media-left">
+            <a href="/2019/04/25/230. Kth Smallest Element in a BST/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="12">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="230. Kth Smallest Element in a BST">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-26T03:54:25.000Z">2019-04-25</time></div>
-                    <a href="/2019/04/25/12/" class="has-link-black-ter is-size-6">12</a>
+                    <a href="/2019/04/25/230. Kth Smallest Element in a BST/" class="has-link-black-ter is-size-6">230. Kth Smallest Element in a BST</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1041,16 +1047,16 @@
         
         <article class="media">
             
-            <a href="/2019/04/25/12/" class="media-left">
+            <a href="/2019/04/25/230. Kth Smallest Element in a BST/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="12">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="230. Kth Smallest Element in a BST">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-26T03:54:25.000Z">2019-04-25</time></div>
-                    <a href="/2019/04/25/12/" class="has-link-black-ter is-size-6">12</a>
+                    <a href="/2019/04/25/230. Kth Smallest Element in a BST/" class="has-link-black-ter is-size-6">230. Kth Smallest Element in a BST</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1271,7 +1277,9 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    Shiyu-Blog
+                    <strong>
+                        Shiyu - Blog
+                    </strong>
                 
                 </a>
                 <p class="is-size-7">
