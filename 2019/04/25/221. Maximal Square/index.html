@@ -2,7 +2,7 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>221. Maximal Square - Hexo</title>
+<title>221. Maximal Square - Shiyu - Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -153,7 +153,7 @@
 </li>
 <li><p>可以把二维矩阵减少为两行的矩阵，这样空间复杂度可以减少为O(2*n)。</p>
 </li>
-<li><p>可以只用一行的矩阵，但需要一个prev来记录将要更新的点之前的值,这样空间复杂度减少为O(n)。<br><img src="/2019/04/25/221. Maximal Square/&quot;./221. Maximal Square/221_Maximal_Square.png&quot;" alt="221. Maximal Square"></p>
+<li><p>可以只用一行的矩阵，但需要一个prev来记录将要更新的点之前的值,这样空间复杂度减少为O(n)。<br><img src="/2019/04/25/221. Maximal Square/./221. Maximal Square/221_Maximal_Square.png" alt="221. Maximal Square"></p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int maximalSquare(char[][] matrix) &#123;</span><br><span class="line">        int m = matrix.length;</span><br><span class="line">        if(m==0)</span><br><span class="line">            return 0;</span><br><span class="line">        int n = matrix[0].length;</span><br><span class="line">        int[] dp = new int[n+1];</span><br><span class="line">        int largest_length = 0;</span><br><span class="line">        int prev = 0;</span><br><span class="line">        for(int i = 0;i&lt;=m-1;i++)&#123;</span><br><span class="line">            for(int j =0;j&lt;=n-1;j++)&#123;</span><br><span class="line">                int tmp = dp[j+1];</span><br><span class="line">                dp[j+1] = matrix[i][j]==&apos;0&apos;?0:(Math.min(Math.min(dp[j+1], dp[j]), prev)+1);</span><br><span class="line">                prev = tmp;</span><br><span class="line">                largest_length = Math.max(largest_length, dp[j+1]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return largest_length*largest_length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 
