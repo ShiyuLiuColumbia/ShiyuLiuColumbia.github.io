@@ -144,7 +144,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 209 words)
+                    a minute read (About 210 words)
                 </span>
                 
                 
@@ -158,17 +158,17 @@
         </h1>
         <div class="content">
             <ol>
-<li><p>只用一个queue。<br>push：O(n)， pop：O(1)</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class MyStack &#123;</span><br><span class="line">    Queue&lt;Integer&gt; q = new LinkedList&lt;&gt;();</span><br><span class="line">    /** Initialize your data structure here. */</span><br><span class="line">    public MyStack() &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /** Push element x onto stack. */</span><br><span class="line">    public void push(int x) &#123;</span><br><span class="line">        q.offer(x);</span><br><span class="line">        for(int i =0;i&lt;=q.size()-2;i++)&#123;</span><br><span class="line">            q.offer(q.poll());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /** Removes the element on top of the stack and returns that element. */</span><br><span class="line">    public int pop() &#123;</span><br><span class="line">        return q.poll();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /** Get the top element. */</span><br><span class="line">    public int top() &#123;</span><br><span class="line">        return q.peek();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /** Returns whether the stack is empty. */</span><br><span class="line">    public boolean empty() &#123;</span><br><span class="line">        return q.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Your MyStack object will be instantiated and called as such:</span><br><span class="line"> * MyStack obj = new MyStack();</span><br><span class="line"> * obj.push(x);</span><br><span class="line"> * int param_2 = obj.pop();</span><br><span class="line"> * int param_3 = obj.top();</span><br><span class="line"> * boolean param_4 = obj.empty();</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>两个queue，push的时候把x push到q2，然后把q1中所有元素push到q2，然后qi与q2交换。pop直接pop q1。</p>
-</li>
-<li><p>两个queue，push直接push到q1，pop的时候把除了最后一个元素(前size-1个)全放到q2，然后pop最后一个元素后交换q1，q2。</p>
-</li>
-</ol>
-
+<li><p>只用一个queue。</p></li></ol>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/04/25/225. Implement Stack using Queues/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
