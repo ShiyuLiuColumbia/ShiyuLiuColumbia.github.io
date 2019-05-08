@@ -133,7 +133,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 minutes read (About 1661 words)
+                    11 minutes read (About 1662 words)
                 </span>
                 
                 
@@ -146,8 +146,7 @@
             
         </h1>
         <div class="content">
-            <h1 id="1-ASCII码"><a href="#1-ASCII码" class="headerlink" title="1. ASCII码"></a>1. ASCII码</h1><p>我们知道，计算机内部，所有信息最终都是一个二进制值。每一个二进制位（bit）有0和1两种状态，因此八个二进制位就可以组合出256种状态，这被称为一个字节（byte）。也就是说，一个字节一共可以用来表示256种不同的状态，每一个状态对应一个符号，就是256个符号，从00000000到11111111。</p>
-<p>上个世纪60年代，美国制定了一套字符编码，对英语字符与二进制位之间的关系，做了统一规定。这被称为 ASCII 码，一直沿用至今。</p>
+            <h1 id="1-ASCII码"><a href="#1-ASCII码" class="headerlink" title="1. ASCII码"></a>1. ASCII码</h1><p>我们知道，计算机内部，所有信息最终都是一个二进制值。每一个二进制位（bit）有0和1两种状态，因此八个二进制位就可以组合出256种状态，这被称为一个字节（byte）。也就是说，一个字节一共可以用来表示256种不同的状态，每一个状态对应一个符号，就是256个符号，从00000000到11111111。<br><a id="more"></a><br>上个世纪60年代，美国制定了一套字符编码，对英语字符与二进制位之间的关系，做了统一规定。这被称为 ASCII 码，一直沿用至今。</p>
 <p>ASCII 码一共规定了128个字符的编码，比如空格SPACE是32（二进制00100000），大写的字母A是65（二进制01000001）。这128个符号（包括32个不能打印出来的控制符号），只占用了一个字节的后面7位，最前面的一位统一规定为0。</p>
 <h1 id="2-Unicode字符集"><a href="#2-Unicode字符集" class="headerlink" title="2. Unicode字符集"></a>2. Unicode字符集</h1><p>ASCII码只能表示英文字符，然而无法表示世界上其他语言的字符，世界各国针对本国文字制定了各种不同的编码方式，但这样一个最大的问题就是使用不同的编解码方式会出现乱码，所以出现了unicode字符集。</p>
 <p>Unicode标准也在不断发展，但最常用的是用两个字节表示一个字符（如果要用到非常偏僻的字符，就需要4个字节）。现代操作系统和大多数编程语言都直接支持Unicode。<br>现在，捋一捋ASCII编码和Unicode编码的区别：ASCII编码是1个字节，而Unicode编码通常是2个字节。<br>字母A用ASCII编码是十进制的65，二进制的<code>01000001</code>；<br>字符0用ASCII编码是十进制的48，二进制的<code>00110000</code>，注意字符<code>&#39;0&#39;</code>和整数0是不同的；<br>汉字<code>中</code>已经超出了ASCII编码的范围，用Unicode编码是十进制的20013，二进制的<code>01001110 00101101</code>。<br>你可以猜测，如果把ASCII编码的A用Unicode编码，只需要在前面补0就可以，因此，A的Unicode编码是<code>00000000 01000001</code>。</p>
@@ -163,7 +162,7 @@
 <p>下表总结了编码规则，字母x表示可用编码的位。</p>
 <p>Unicode符号范围     |        UTF-8编码方式<br>(十六进制)        |              （二进制）<br>———————-+———————————————<br>0000 0000-0000 007F | 0xxxxxxx<br>0000 0080-0000 07FF | 110xxxxx 10xxxxxx<br>0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx<br>0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</p>
 <p>下面，还是以汉字严为例，演示如何实现 UTF-8 编码。</p>
-<p>严的 Unicode 是<code>4E25（100111000100101）</code>，根据上表，可以发现4E25处在第三行的范围内<code>（0000 0800 - 0000 FFFF）</code>，因此严的 UTF-8 编码需要三个字节，即格式是<code>1110xxxx 10xxxxxx 10xxxxxx</code>。然后，从严的最后一个二进制位开始，依次从后向前填入格式中的x，多出的位补0。这样就得到了，严的 UTF-8 编码是<code>11100100 10111000 10100101</code>，转换成十六进制就是<code>E4B8A5</code>。<br>        100 + 111000 + 100101  </p>
+<p>严的 Unicode 是<code>4E25（100111000100101）</code>，根据上表，可以发现4E25处在第三行的范围内<code>（0000 0800 - 0000 FFFF）</code>，因此严的 UTF-8 编码需要三个字节，即格式是<code>1110xxxx 10xxxxxx 10xxxxxx</code>。然后，从严的最后一个二进制位开始，依次从后向前填入格式中的x，多出的位补0。这样就得到了，严的 UTF-8 编码是<br><code>11100100 10111000 10100101</code>，转换成十六进制就是<code>E4B8A5</code>。<br>======100 + 111000 + 100101======</p>
 <h1 id="5-Python2与Python3的字符编解码"><a href="#5-Python2与Python3的字符编解码" class="headerlink" title="5. Python2与Python3的字符编解码"></a>5. Python2与Python3的字符编解码</h1><p>Python诞生的时候还没有Unicode字符集，所以开始的时候Python的str类型都是其实本质上都是bytes类型，也就是从文件中读入bytes字节流然后经过ACII编码生成字符串。但由于Unicode的出现，Python2中后加入了Unicode类型，Unicode类型的含义是Unicode编码的字符串。Python2中如果想要文件按照’UTF-8’编码保存，需要在开头加入<code># -*- coding: utf-8 -*-</code>。<br>Python3中将Python2中的Unicode类型改为str类型，也就是新的str类型代表原来老的Unicode类型，并新加入了bytes类型用来表示字节。</p>
 <p>encode()是将字符串转换为字节流。<br>decode()是将字节流转换为字符串。</p>
 
@@ -248,7 +247,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        24
                     </p>
                 </div>
             </div>
@@ -268,7 +267,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        19
                     </p>
                 </div>
             </div>
@@ -324,7 +323,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">22</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Technique/">
@@ -346,7 +345,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Array/" style="font-size: 20px;">Array</a> <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/Bit-Manipulation/" style="font-size: 10px;">Bit Manipulation</a> <a href="/tags/Boyer–Moore-Majority-Vote-Algorithm/" style="font-size: 13.33px;">Boyer–Moore Majority Vote Algorithm</a> <a href="/tags/DFS/" style="font-size: 20px;">DFS</a> <a href="/tags/Design/" style="font-size: 13.33px;">Design</a> <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a> <a href="/tags/Encode/" style="font-size: 10px;">Encode</a> <a href="/tags/Hash-Table/" style="font-size: 10px;">Hash Table</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Stack/" style="font-size: 16.67px;">Stack</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tree/" style="font-size: 20px;">Tree</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/需要复习/" style="font-size: 13.33px;">需要复习</a>
+        <a href="/tags/Array/" style="font-size: 17.5px;">Array</a> <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/Bit-Manipulation/" style="font-size: 10px;">Bit Manipulation</a> <a href="/tags/Boyer–Moore-Majority-Vote-Algorithm/" style="font-size: 12.5px;">Boyer–Moore Majority Vote Algorithm</a> <a href="/tags/DFS/" style="font-size: 20px;">DFS</a> <a href="/tags/Design/" style="font-size: 15px;">Design</a> <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a> <a href="/tags/Encode/" style="font-size: 10px;">Encode</a> <a href="/tags/Hash-Table/" style="font-size: 15px;">Hash Table</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Recursion/" style="font-size: 10px;">Recursion</a> <a href="/tags/Stack/" style="font-size: 15px;">Stack</a> <a href="/tags/String/" style="font-size: 15px;">String</a> <a href="/tags/Tree/" style="font-size: 20px;">Tree</a> <a href="/tags/Two-Pointers/" style="font-size: 15px;">Two Pointers</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/需要复习/" style="font-size: 17.5px;">需要复习</a>
     </div>
 </div>
 
@@ -363,16 +362,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/03/242. Valid Anagram/" class="media-left">
+            <a href="/2019/05/08/250. Count Univalue Subtrees/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="242. Valid Anagram">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="250. Count Univalue Subtrees">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-03T05:13:41.000Z">2019-05-03</time></div>
-                    <a href="/2019/05/03/242. Valid Anagram/" class="has-link-black-ter is-size-6">242. Valid Anagram</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-08T22:53:17.000Z">2019-05-08</time></div>
+                    <a href="/2019/05/08/250. Count Univalue Subtrees/" class="has-link-black-ter is-size-6">250. Count Univalue Subtrees</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -382,35 +381,16 @@
         
         <article class="media">
             
-            <a href="/2019/04/29/python字符编解码/" class="media-left">
+            <a href="/2019/05/08/249. Group Shifted Strings/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python字符编解码">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="249. Group Shifted Strings">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T19:43:23.000Z">2019-04-29</time></div>
-                    <a href="/2019/04/29/python字符编解码/" class="has-link-black-ter is-size-6">Python字符编解码</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Technique/">Technique</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/04/27/238. Product of Array Except Self/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="238. Product of Array Except Self">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-27T05:38:07.000Z">2019-04-27</time></div>
-                    <a href="/2019/04/27/238. Product of Array Except Self/" class="has-link-black-ter is-size-6">238. Product of Array Except Self</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-08T21:54:53.000Z">2019-05-08</time></div>
+                    <a href="/2019/05/08/249. Group Shifted Strings/" class="has-link-black-ter is-size-6">249. Group Shifted Strings</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -420,16 +400,16 @@
         
         <article class="media">
             
-            <a href="/2019/04/27/236. Lowest Common Ancestor of a Binary Tree/" class="media-left">
+            <a href="/2019/05/08/247. Strobogrammatic Number II/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Tree">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="247. Strobogrammatic Number II">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-27T05:30:32.000Z">2019-04-27</time></div>
-                    <a href="/2019/04/27/236. Lowest Common Ancestor of a Binary Tree/" class="has-link-black-ter is-size-6">Tree</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-08T20:04:07.000Z">2019-05-08</time></div>
+                    <a href="/2019/05/08/247. Strobogrammatic Number II/" class="has-link-black-ter is-size-6">247. Strobogrammatic Number II</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -439,16 +419,35 @@
         
         <article class="media">
             
-            <a href="/2019/04/27/235. Lowest Common Ancestor of a Binary Search Tree/" class="media-left">
+            <a href="/2019/05/07/246. Strobogrammatic Number/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="235. Lowest Common Ancestor of a Binary Search Tree">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Number">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-27T04:51:46.000Z">2019-04-27</time></div>
-                    <a href="/2019/04/27/235. Lowest Common Ancestor of a Binary Search Tree/" class="has-link-black-ter is-size-6">235. Lowest Common Ancestor of a Binary Search Tree</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-08T00:31:37.000Z">2019-05-07</time></div>
+                    <a href="/2019/05/07/246. Strobogrammatic Number/" class="has-link-black-ter is-size-6">Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/07/245. Shortest Word Distance III/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="245. Shortest Word Distance III">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-08T00:17:53.000Z">2019-05-07</time></div>
+                    <a href="/2019/05/07/245. Shortest Word Distance III/" class="has-link-black-ter is-size-6">245. Shortest Word Distance III</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -474,7 +473,7 @@
                     <span class="level-item">May 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -541,14 +540,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DFS/">
                         <span class="tag">DFS</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Design/">
                         <span class="tag">Design</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -569,7 +568,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Hash-Table/">
                         <span class="tag">Hash Table</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -588,6 +587,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Recursion/">
+                        <span class="tag">Recursion</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Stack/">
                         <span class="tag">Stack</span>
                         <span class="tag is-grey">3</span>
@@ -597,14 +603,21 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/String/">
                         <span class="tag">String</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Tree/">
                         <span class="tag">Tree</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Two-Pointers/">
+                        <span class="tag">Two Pointers</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -618,7 +631,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/需要复习/">
                         <span class="tag">需要复习</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -647,16 +660,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/03/242. Valid Anagram/" class="media-left">
+            <a href="/2019/05/08/250. Count Univalue Subtrees/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="242. Valid Anagram">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="250. Count Univalue Subtrees">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-03T05:13:41.000Z">2019-05-03</time></div>
-                    <a href="/2019/05/03/242. Valid Anagram/" class="has-link-black-ter is-size-6">242. Valid Anagram</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-08T22:53:17.000Z">2019-05-08</time></div>
+                    <a href="/2019/05/08/250. Count Univalue Subtrees/" class="has-link-black-ter is-size-6">250. Count Univalue Subtrees</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -666,35 +679,16 @@
         
         <article class="media">
             
-            <a href="/2019/04/29/python字符编解码/" class="media-left">
+            <a href="/2019/05/08/249. Group Shifted Strings/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Python字符编解码">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="249. Group Shifted Strings">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T19:43:23.000Z">2019-04-29</time></div>
-                    <a href="/2019/04/29/python字符编解码/" class="has-link-black-ter is-size-6">Python字符编解码</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Technique/">Technique</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/04/27/238. Product of Array Except Self/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="238. Product of Array Except Self">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-27T05:38:07.000Z">2019-04-27</time></div>
-                    <a href="/2019/04/27/238. Product of Array Except Self/" class="has-link-black-ter is-size-6">238. Product of Array Except Self</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-08T21:54:53.000Z">2019-05-08</time></div>
+                    <a href="/2019/05/08/249. Group Shifted Strings/" class="has-link-black-ter is-size-6">249. Group Shifted Strings</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -704,16 +698,16 @@
         
         <article class="media">
             
-            <a href="/2019/04/27/236. Lowest Common Ancestor of a Binary Tree/" class="media-left">
+            <a href="/2019/05/08/247. Strobogrammatic Number II/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Tree">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="247. Strobogrammatic Number II">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-27T05:30:32.000Z">2019-04-27</time></div>
-                    <a href="/2019/04/27/236. Lowest Common Ancestor of a Binary Tree/" class="has-link-black-ter is-size-6">Tree</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-08T20:04:07.000Z">2019-05-08</time></div>
+                    <a href="/2019/05/08/247. Strobogrammatic Number II/" class="has-link-black-ter is-size-6">247. Strobogrammatic Number II</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -723,16 +717,35 @@
         
         <article class="media">
             
-            <a href="/2019/04/27/235. Lowest Common Ancestor of a Binary Search Tree/" class="media-left">
+            <a href="/2019/05/07/246. Strobogrammatic Number/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="235. Lowest Common Ancestor of a Binary Search Tree">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Number">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-27T04:51:46.000Z">2019-04-27</time></div>
-                    <a href="/2019/04/27/235. Lowest Common Ancestor of a Binary Search Tree/" class="has-link-black-ter is-size-6">235. Lowest Common Ancestor of a Binary Search Tree</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-08T00:31:37.000Z">2019-05-07</time></div>
+                    <a href="/2019/05/07/246. Strobogrammatic Number/" class="has-link-black-ter is-size-6">Number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/07/245. Shortest Word Distance III/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="245. Shortest Word Distance III">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-08T00:17:53.000Z">2019-05-07</time></div>
+                    <a href="/2019/05/07/245. Shortest Word Distance III/" class="has-link-black-ter is-size-6">245. Shortest Word Distance III</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -758,7 +771,7 @@
                     <span class="level-item">May 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -825,14 +838,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DFS/">
                         <span class="tag">DFS</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Design/">
                         <span class="tag">Design</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -853,7 +866,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Hash-Table/">
                         <span class="tag">Hash Table</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -872,6 +885,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Recursion/">
+                        <span class="tag">Recursion</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Stack/">
                         <span class="tag">Stack</span>
                         <span class="tag is-grey">3</span>
@@ -881,14 +901,21 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/String/">
                         <span class="tag">String</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Tree/">
                         <span class="tag">Tree</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Two-Pointers/">
+                        <span class="tag">Two Pointers</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -902,7 +929,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/需要复习/">
                         <span class="tag">需要复习</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
