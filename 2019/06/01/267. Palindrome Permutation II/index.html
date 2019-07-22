@@ -133,7 +133,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 158 words)
+                    2 minutes read (About 275 words)
                 </span>
                 
                 
@@ -146,8 +146,8 @@
             
         </h1>
         <div class="content">
-            <p>这道题相当于是结合了266和47题，47题是属于backtrcaking中比较复杂的一个类型，所以一定要多练习一下。第47题还是非常重要的。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; permuteUnique(int[] nums) &#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; ans = new ArrayList&lt;&gt;();</span><br><span class="line">        boolean[] used = new boolean[nums.length];</span><br><span class="line">        dfs(ans, new ArrayList&lt;Integer&gt;(), used, nums);</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void dfs(List&lt;List&lt;Integer&gt;&gt; ans, List&lt;Integer&gt; tempList, boolean[] used, int[] nums)&#123;</span><br><span class="line">        if(tempList.size()==nums.length)&#123;</span><br><span class="line">            ans.add(new ArrayList&lt;Integer&gt;(tempList));</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i =0;i&lt;=nums.length-1;i++)&#123;</span><br><span class="line">            if(i&gt;0&amp;&amp;used[i-1]==false&amp;&amp;nums[i]==nums[i-1]) continue;//多个重复的值我们只取第一个进行dfs。</span><br><span class="line">            if(used[i]==true) continue;</span><br><span class="line">            tempList.add(nums[i]);</span><br><span class="line">            used[i]=true;</span><br><span class="line">            dfs(ans, tempList, used, nums);</span><br><span class="line">            tempList.remove(tempList.size()-1);</span><br><span class="line">            used[i]=false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>这道题相当于是结合了266和47题，47题是属于backtrcaking中比较复杂的一个类型，所以一定要多练习一下。第47题还是非常重要的.</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public List&lt;String&gt; generatePalindromes(String s) &#123;</span><br><span class="line">        //首先这道题很明显的backtracking(dfs)的思路，然后结合上一道题，我们可以先用一个hashmap储存所有character出现的次数，然后进行backtracking</span><br><span class="line">        </span><br><span class="line">        List&lt;String&gt; ans = new ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Character&gt; chs = new ArrayList&lt;&gt;();</span><br><span class="line">        String str = &quot;&quot;;</span><br><span class="line">        HashMap&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">        for(int i =0;i&lt;=s.length()-1;i++)&#123;</span><br><span class="line">            char tmp = s.charAt(i);</span><br><span class="line">            if(map.containsKey(tmp))&#123;</span><br><span class="line">                map.put(tmp, map.get(tmp)+1);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                map.put(tmp, 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //判断是否存在palindrome</span><br><span class="line">        int count = 0;</span><br><span class="line">        for(Map.Entry&lt;Character, Integer&gt; entry: map.entrySet())&#123;</span><br><span class="line">            char key = entry.getKey();</span><br><span class="line">            int value = entry.getValue();</span><br><span class="line">            count = count + value%2;</span><br><span class="line">            </span><br><span class="line">            if(value%2!=0)</span><br><span class="line">                str = str + key;</span><br><span class="line"></span><br><span class="line">            for(int j=1;j&lt;=value/2;j++)&#123;</span><br><span class="line">                chs.add(key);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(count&gt;1)</span><br><span class="line">            return ans;</span><br><span class="line">        </span><br><span class="line">        helper(chs, ans, str, new boolean[chs.size()], new StringBuilder());</span><br><span class="line">        return ans;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void helper(List&lt;Character&gt; chs, List&lt;String&gt; ans, String str, boolean[] used, StringBuilder sb)&#123;</span><br><span class="line">        if(chs.size()==sb.length())&#123;</span><br><span class="line">            String tmp = sb.toString() + str + sb.reverse().toString();</span><br><span class="line">            ans.add(tmp);</span><br><span class="line">            sb.reverse();</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i =0;i&lt;=chs.size()-1;i++)&#123;</span><br><span class="line">            if(i!=0&amp;&amp;chs.get(i)==chs.get(i-1)&amp;&amp;!used[i-1])</span><br><span class="line">                continue;</span><br><span class="line">            </span><br><span class="line">            if(!used[i])&#123;</span><br><span class="line">                sb.append(chs.get(i));</span><br><span class="line">                used[i] = true;</span><br><span class="line">                helper(chs, ans, str, used, sb);</span><br><span class="line">                sb.deleteCharAt(sb.length()-1);</span><br><span class="line">                used[i] = false;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -172,10 +172,17 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/06/04/278. First Bad Version/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">278. First Bad Version</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/31/266. Palindrome Permutation/">
-                <span class="level-item">Permutation</span>
+                <span class="level-item">266. Palindrome Permutation</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -223,7 +230,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        43
                     </p>
                 </div>
             </div>
@@ -233,7 +240,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        3
                     </p>
                 </div>
             </div>
@@ -294,12 +301,20 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Leetcide/">
+            <span class="level-start">
+                <span class="level-item">Leetcide</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Leetcode/">
             <span class="level-start">
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">31</span>
+                <span class="level-item tag">40</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Technique/">
@@ -321,7 +336,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Array/" style="font-size: 16px;">Array</a> <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/BackTracking/" style="font-size: 10px;">BackTracking</a> <a href="/tags/Backtracking/" style="font-size: 12px;">Backtracking</a> <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/Bit-Manipulation/" style="font-size: 10px;">Bit Manipulation</a> <a href="/tags/Boyer–Moore-Majority-Vote-Algorithm/" style="font-size: 12px;">Boyer–Moore Majority Vote Algorithm</a> <a href="/tags/DFS/" style="font-size: 20px;">DFS</a> <a href="/tags/Design/" style="font-size: 14px;">Design</a> <a href="/tags/Dynamic-Programming/" style="font-size: 12px;">Dynamic Programming</a> <a href="/tags/Encode/" style="font-size: 10px;">Encode</a> <a href="/tags/Hash-Table/" style="font-size: 16px;">Hash Table</a> <a href="/tags/Math/" style="font-size: 12px;">Math</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Recursion/" style="font-size: 10px;">Recursion</a> <a href="/tags/Stack/" style="font-size: 14px;">Stack</a> <a href="/tags/String/" style="font-size: 14px;">String</a> <a href="/tags/Tree/" style="font-size: 18px;">Tree</a> <a href="/tags/Two-Pointers/" style="font-size: 16px;">Two Pointers</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Union-Find/" style="font-size: 10px;">Union Find</a> <a href="/tags/需要复习/" style="font-size: 18px;">需要复习</a>
+        <a href="/tags/Array/" style="font-size: 15.71px;">Array</a> <a href="/tags/BFS/" style="font-size: 11.43px;">BFS</a> <a href="/tags/Backtracking/" style="font-size: 12.86px;">Backtracking</a> <a href="/tags/Binary-Search/" style="font-size: 11.43px;">Binary Search</a> <a href="/tags/Bit-Manipulation/" style="font-size: 10px;">Bit Manipulation</a> <a href="/tags/Boyer–Moore-Majority-Vote-Algorithm/" style="font-size: 11.43px;">Boyer–Moore Majority Vote Algorithm</a> <a href="/tags/DFS/" style="font-size: 20px;">DFS</a> <a href="/tags/Design/" style="font-size: 12.86px;">Design</a> <a href="/tags/Dynamic-Programming/" style="font-size: 14.29px;">Dynamic Programming</a> <a href="/tags/Dyunamic-Programming/" style="font-size: 10px;">Dyunamic Programming</a> <a href="/tags/Encode/" style="font-size: 10px;">Encode</a> <a href="/tags/Hash-Table/" style="font-size: 14.29px;">Hash Table</a> <a href="/tags/Math/" style="font-size: 11.43px;">Math</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Recursion/" style="font-size: 10px;">Recursion</a> <a href="/tags/Stack/" style="font-size: 12.86px;">Stack</a> <a href="/tags/String/" style="font-size: 12.86px;">String</a> <a href="/tags/Tree/" style="font-size: 18.57px;">Tree</a> <a href="/tags/Two-Pointers/" style="font-size: 15.71px;">Two Pointers</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Union-Find/" style="font-size: 10px;">Union Find</a> <a href="/tags/需要复习/" style="font-size: 17.14px;">需要复习</a>
     </div>
 </div>
 
@@ -338,16 +353,16 @@
         
         <article class="media">
             
-            <a href="/2019/06/01/267. Palindrome Permutation II/" class="media-left">
+            <a href="/2019/06/07/304. Range Sum Query 2D - Immutable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="267. Palindrome Permutation II">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="304. Range Sum Query 2D - Immutable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-31T16:35:32.000Z">2019-06-01</time></div>
-                    <a href="/2019/06/01/267. Palindrome Permutation II/" class="has-link-black-ter is-size-6">267. Palindrome Permutation II</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-07T15:27:48.000Z">2019-06-07</time></div>
+                    <a href="/2019/06/07/304. Range Sum Query 2D - Immutable/" class="has-link-black-ter is-size-6">304. Range Sum Query 2D - Immutable</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -357,16 +372,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/31/266. Palindrome Permutation/" class="media-left">
+            <a href="/2019/06/07/303. Range Sum Query - Immutable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Permutation">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="303. Range Sum Query - Immutable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-31T15:20:56.000Z">2019-05-31</time></div>
-                    <a href="/2019/05/31/266. Palindrome Permutation/" class="has-link-black-ter is-size-6">Permutation</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-07T15:13:35.000Z">2019-06-07</time></div>
+                    <a href="/2019/06/07/303. Range Sum Query - Immutable/" class="has-link-black-ter is-size-6">303. Range Sum Query - Immutable</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -376,16 +391,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/30/261. Graph Valid Tree/" class="media-left">
+            <a href="/2019/06/07/300. Longest Increasing Subsequence/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="261. Graph Valid Tree">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="300. Longest Increasing Subsequence">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-30T12:50:15.000Z">2019-05-30</time></div>
-                    <a href="/2019/05/30/261. Graph Valid Tree/" class="has-link-black-ter is-size-6">261. Graph Valid Tree</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-07T14:14:52.000Z">2019-06-07</time></div>
+                    <a href="/2019/06/07/300. Longest Increasing Subsequence/" class="has-link-black-ter is-size-6">300. Longest Increasing Subsequence</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -395,16 +410,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/30/207. Course Schedule/" class="media-left">
+            <a href="/2019/06/06/289. Game of Life/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="207. Course Schedule">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="289. Game of Life">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-30T12:48:47.000Z">2019-05-30</time></div>
-                    <a href="/2019/05/30/207. Course Schedule/" class="has-link-black-ter is-size-6">207. Course Schedule</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T15:56:47.000Z">2019-06-06</time></div>
+                    <a href="/2019/06/06/289. Game of Life/" class="has-link-black-ter is-size-6">289. Game of Life</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -414,18 +429,18 @@
         
         <article class="media">
             
-            <a href="/2019/05/30/259. 3Sum Smaller/" class="media-left">
+            <a href="/2019/06/06/286. Walls and Gates/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="259. 3Sum Smaller">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="286. Walls and Gates">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-30T08:32:35.000Z">2019-05-30</time></div>
-                    <a href="/2019/05/30/259. 3Sum Smaller/" class="has-link-black-ter is-size-6">259. 3Sum Smaller</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-05T16:05:49.000Z">2019-06-06</time></div>
+                    <a href="/2019/06/06/286. Walls and Gates/" class="has-link-black-ter is-size-6">286. Walls and Gates</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                        <a class="has-link-grey -link" href="/categories/Leetcide/">Leetcide</a>
                     </p>
                 </div>
             </div>
@@ -449,7 +464,7 @@
                     <span class="level-item">June 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -492,35 +507,28 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Array/">
                         <span class="tag">Array</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/BFS/">
                         <span class="tag">BFS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/BackTracking/">
-                        <span class="tag">BackTracking</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Backtracking/">
                         <span class="tag">Backtracking</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Binary-Search/">
                         <span class="tag">Binary Search</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -541,7 +549,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DFS/">
                         <span class="tag">DFS</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -555,7 +563,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Dynamic-Programming/">
                         <span class="tag">Dynamic Programming</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dyunamic-Programming/">
+                        <span class="tag">Dyunamic Programming</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -611,14 +626,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Tree/">
                         <span class="tag">Tree</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Two-Pointers/">
                         <span class="tag">Two Pointers</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -639,7 +654,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/需要复习/">
                         <span class="tag">需要复习</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -668,16 +683,16 @@
         
         <article class="media">
             
-            <a href="/2019/06/01/267. Palindrome Permutation II/" class="media-left">
+            <a href="/2019/06/07/304. Range Sum Query 2D - Immutable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="267. Palindrome Permutation II">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="304. Range Sum Query 2D - Immutable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-31T16:35:32.000Z">2019-06-01</time></div>
-                    <a href="/2019/06/01/267. Palindrome Permutation II/" class="has-link-black-ter is-size-6">267. Palindrome Permutation II</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-07T15:27:48.000Z">2019-06-07</time></div>
+                    <a href="/2019/06/07/304. Range Sum Query 2D - Immutable/" class="has-link-black-ter is-size-6">304. Range Sum Query 2D - Immutable</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -687,16 +702,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/31/266. Palindrome Permutation/" class="media-left">
+            <a href="/2019/06/07/303. Range Sum Query - Immutable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Permutation">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="303. Range Sum Query - Immutable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-31T15:20:56.000Z">2019-05-31</time></div>
-                    <a href="/2019/05/31/266. Palindrome Permutation/" class="has-link-black-ter is-size-6">Permutation</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-07T15:13:35.000Z">2019-06-07</time></div>
+                    <a href="/2019/06/07/303. Range Sum Query - Immutable/" class="has-link-black-ter is-size-6">303. Range Sum Query - Immutable</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -706,16 +721,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/30/261. Graph Valid Tree/" class="media-left">
+            <a href="/2019/06/07/300. Longest Increasing Subsequence/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="261. Graph Valid Tree">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="300. Longest Increasing Subsequence">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-30T12:50:15.000Z">2019-05-30</time></div>
-                    <a href="/2019/05/30/261. Graph Valid Tree/" class="has-link-black-ter is-size-6">261. Graph Valid Tree</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-07T14:14:52.000Z">2019-06-07</time></div>
+                    <a href="/2019/06/07/300. Longest Increasing Subsequence/" class="has-link-black-ter is-size-6">300. Longest Increasing Subsequence</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -725,16 +740,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/30/207. Course Schedule/" class="media-left">
+            <a href="/2019/06/06/289. Game of Life/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="207. Course Schedule">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="289. Game of Life">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-30T12:48:47.000Z">2019-05-30</time></div>
-                    <a href="/2019/05/30/207. Course Schedule/" class="has-link-black-ter is-size-6">207. Course Schedule</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T15:56:47.000Z">2019-06-06</time></div>
+                    <a href="/2019/06/06/289. Game of Life/" class="has-link-black-ter is-size-6">289. Game of Life</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -744,18 +759,18 @@
         
         <article class="media">
             
-            <a href="/2019/05/30/259. 3Sum Smaller/" class="media-left">
+            <a href="/2019/06/06/286. Walls and Gates/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="259. 3Sum Smaller">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="286. Walls and Gates">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-30T08:32:35.000Z">2019-05-30</time></div>
-                    <a href="/2019/05/30/259. 3Sum Smaller/" class="has-link-black-ter is-size-6">259. 3Sum Smaller</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-05T16:05:49.000Z">2019-06-06</time></div>
+                    <a href="/2019/06/06/286. Walls and Gates/" class="has-link-black-ter is-size-6">286. Walls and Gates</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                        <a class="has-link-grey -link" href="/categories/Leetcide/">Leetcide</a>
                     </p>
                 </div>
             </div>
@@ -779,7 +794,7 @@
                     <span class="level-item">June 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -822,35 +837,28 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Array/">
                         <span class="tag">Array</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/BFS/">
                         <span class="tag">BFS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/BackTracking/">
-                        <span class="tag">BackTracking</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Backtracking/">
                         <span class="tag">Backtracking</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Binary-Search/">
                         <span class="tag">Binary Search</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -871,7 +879,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DFS/">
                         <span class="tag">DFS</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -885,7 +893,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Dynamic-Programming/">
                         <span class="tag">Dynamic Programming</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dyunamic-Programming/">
+                        <span class="tag">Dyunamic Programming</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -941,14 +956,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Tree/">
                         <span class="tag">Tree</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Two-Pointers/">
                         <span class="tag">Two Pointers</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -969,7 +984,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/需要复习/">
                         <span class="tag">需要复习</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 

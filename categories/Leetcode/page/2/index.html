@@ -135,6 +135,424 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-31T15:20:56.000Z">2019-05-31</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 112 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/31/266. Palindrome Permutation/">266. Palindrome Permutation</a>
+            
+        </h1>
+        <div class="content">
+            <p>这道题开始的时候我的思路是是用hashmap，但其实用hashset是非常好的做法.</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/05/31/266. Palindrome Permutation/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-30T12:50:15.000Z">2019-05-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a few seconds read (About 0 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/30/261. Graph Valid Tree/">261. Graph Valid Tree</a>
+            
+        </h1>
+        <div class="content">
+            
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-30T12:48:47.000Z">2019-05-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a few seconds read (About 0 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/30/207. Course Schedule/">207. Course Schedule</a>
+            
+        </h1>
+        <div class="content">
+            
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-30T08:32:35.000Z">2019-05-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 129 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/30/259. 3Sum Smaller/">259. 3Sum Smaller</a>
+            
+        </h1>
+        <div class="content">
+            <p>这道题也是很典型的3sum题型的变种，采用的方法也就是固定一个pointer，然后再使用两个pointer进行操作。</p>
+<p>时间复杂度:O(n^2)，外部循环O(n)，内部循环也是O(n),空间复杂度O(1)</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int threeSumSmaller(int[] nums, int target) &#123;</span><br><span class="line">        if(nums==null||nums.length==0)</span><br><span class="line">            return 0;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        int count = 0;</span><br><span class="line">        for(int i=0;i&lt;=nums.length-3;i++)&#123;</span><br><span class="line">            int start = i+1;</span><br><span class="line">            int end = nums.length-1;</span><br><span class="line">            while(start&lt;end)&#123;</span><br><span class="line">                int sum = nums[i]+nums[start]+nums[end];</span><br><span class="line">                if(sum&lt;target)&#123;</span><br><span class="line">                    count = count + end - start;</span><br><span class="line">                    start++;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    end--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-30T07:46:52.000Z">2019-05-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a few seconds read (About 18 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/30/258. Add Digits/">258. Add Digits</a>
+            
+        </h1>
+        <div class="content">
+            <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int addDigits(int num) &#123;</span><br><span class="line">        //规律是01234567891234.....</span><br><span class="line">        if(num==0)</span><br><span class="line">            return 0;</span><br><span class="line">        if(num%9==0)</span><br><span class="line">            return 9;</span><br><span class="line">        return num%9;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-29T15:46:41.000Z">2019-05-29</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a few seconds read (About 87 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/29/257. Binary Tree Paths/">257. Binary Tree Paths</a>
+            
+        </h1>
+        <div class="content">
+            <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public List&lt;String&gt; binaryTreePaths(TreeNode root) &#123;</span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; ans = new ArrayList&lt;&gt;();</span><br><span class="line">        if(root==null)</span><br><span class="line">            return ans;</span><br><span class="line">        helper(root, ans, &quot;&quot;+root.val);</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void helper(TreeNode root, List&lt;String&gt; ans, String tmp)&#123;</span><br><span class="line">        if(root.left==null&amp;&amp;root.right==null)&#123;</span><br><span class="line">            ans.add(tmp);</span><br><span class="line">            return;</span><br><span class="line">        &#125;            </span><br><span class="line">        if(root.left!=null)</span><br><span class="line">            helper(root.left, ans, tmp+&quot;-&gt;&quot;+root.left.val);</span><br><span class="line">        if(root.right!=null)</span><br><span class="line">            helper(root.right, ans, tmp+&quot;-&gt;&quot;+root.right.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-29T10:17:58.000Z">2019-05-29</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 169 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/29/256. Paint House/">256. Paint House</a>
+            
+        </h1>
+        <div class="content">
+            <p>首先经过思考发现这道题不能用greedy，因为即使第一个选择了最小的花销，也不代表后面的选择是正确的。<br>所以正确的做法是采用dp，因为一共用三种颜色，所以需要设置三个变量，代表的分别是第i个房子采用这种颜色的最低花销。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int minCost(int[][] costs) &#123;</span><br><span class="line">        if(costs==null||costs.length==0)</span><br><span class="line">            return 0;</span><br><span class="line">        int red = costs[0][0];</span><br><span class="line">        int blue = costs[0][1];</span><br><span class="line">        int green = costs[0][2];</span><br><span class="line">        for(int i =1;i&lt;=costs.length-1;i++)&#123;</span><br><span class="line">            int tmpRed = red;</span><br><span class="line">            int tmpBlue = blue;</span><br><span class="line">            int tmpGreen = green;</span><br><span class="line">            red = costs[i][0]+Math.min(tmpBlue, tmpGreen);</span><br><span class="line">            blue = costs[i][1]+Math.min(tmpRed, tmpGreen);</span><br><span class="line">            green = costs[i][2] + Math.min(tmpRed, tmpBlue);           </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return Math.min(green, Math.min(red, blue));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-08T12:42:05.000Z">2019-05-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a few seconds read (About 71 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/08/254. Factor Combinations/">254. Factor Combinations</a>
+            
+        </h1>
+        <div class="content">
+            <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; getFactors(int n) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; ans = new ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; l = new ArrayList&lt;&gt;();</span><br><span class="line">        helper(n, ans, l, 2);</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void helper(int n, List&lt;List&lt;Integer&gt;&gt; ans, List&lt;Integer&gt; l, int start)&#123;</span><br><span class="line">        if(l.size()!=0)&#123;</span><br><span class="line">            l.add(n);</span><br><span class="line">            ans.add(new ArrayList&lt;&gt;(l));</span><br><span class="line">            l.remove(l.size()-1);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i =start;i*i&lt;=n;i++)&#123;</span><br><span class="line">            if(n%i==0)&#123;</span><br><span class="line">                l.add(i);</span><br><span class="line">                helper(n/i, ans, l, i);</span><br><span class="line">                l.remove(l.size()-1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-08T10:53:17.000Z">2019-05-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 364 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/08/250. Count Univalue Subtrees/">250. Count Univalue Subtrees</a>
+            
+        </h1>
+        <div class="content">
+            <p>这道题我在写的发现的问题是helper函数的返回值应该怎么取，因为我既需要得到int值的uni-value tree number，也需要知道左子树或右子树是否是uni-value tree<br>解决办法是应该使用 boolean返回值的helper函数，然后在函数参数中或者在全局定义一个count value<br></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/05/08/250. Count Univalue Subtrees/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-05-08T09:54:53.000Z">2019-05-08</time>
                 
                 <div class="level-item">
@@ -169,447 +587,6 @@
                 </div>
             </div>
         </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-08T08:04:07.000Z">2019-05-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 168 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/08/247. Strobogrammatic Number II/">247. Strobogrammatic Number II</a>
-            
-        </h1>
-        <div class="content">
-            <p>观察到n位的Strobogrammatic Number与n-2位的Strobogrammatic Number有相应的关系。<br><strong>很容易遗忘的一个corner case是类似于10801这种，当<code>00</code>不是在最边上是是可以在结果中的</strong></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/08/247. Strobogrammatic Number II/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-07T12:31:37.000Z">2019-05-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds read (About 41 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/07/246. Strobogrammatic Number/">246. Strobogrammatic Number</a>
-            
-        </h1>
-        <div class="content">
-            <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean isStrobogrammatic(String num) &#123;</span><br><span class="line">        // number&apos;s pair. 0 - 0, 1 - 1, 6 - 9, 8 - 8, others -1</span><br><span class="line">        char[] map = new char[]&#123;&apos;0&apos;, &apos;1&apos;, &apos;n&apos;, &apos;n&apos;, &apos;n&apos;, &apos;n&apos;, &apos;9&apos;, &apos;n&apos;, &apos;8&apos;, &apos;6&apos;&#125;;</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; num.length(); i++) &#123;</span><br><span class="line">            if (map[num.charAt(i) - &apos;0&apos;] != num.charAt(num.length() - 1 - i)) &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-07T12:17:53.000Z">2019-05-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 117 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/07/245. Shortest Word Distance III/">245. Shortest Word Distance III</a>
-            
-        </h1>
-        <div class="content">
-            <p>与243的不同在于可能存在两个一样的word，所以我们需要把这一情况单独列出列，其他与243相同。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/07/245. Shortest Word Distance III/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-07T11:36:55.000Z">2019-05-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 minutes read (About 372 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/07/244. Shortest Word Distance II/">244. Shortest Word Distance II</a>
-            
-        </h1>
-        <div class="content">
-            <p>由于这道题题目中说会多次使用shortest函数，所以如果我们像243那样使用一个list来存储所有元素，那每次我们使用shortest函数的时候我们都要遍历所有元素。</p>
-<p>为了使得shortest函数使用更少的时间，我们可以用HashMap&lt;String, List<integer>&gt;存储所有词出现的位置，这样我们的shortest函数可以采用类似merge sort的思想，也就相当于变为比较两个list中差最小的元素。<br>我们可以得到：<strong>如果了l1中当前元素小于l2中当前元素，l1指针前进，相反，l2指针前进</strong>。<br></integer></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/07/244. Shortest Word Distance II/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-06T12:05:43.000Z">2019-05-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds read (About 61 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/06/243. Shortest Word Distance/">243. Shortest Word Distance</a>
-            
-        </h1>
-        <div class="content">
-            <p>时间复杂度O(n)<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int shortestDistance(String[] words, String word1, String word2) &#123;</span><br><span class="line">        int p1 = -1;</span><br><span class="line">        int p2 = -1;</span><br><span class="line">        int ans = Integer.MAX_VALUE;</span><br><span class="line">        for(int i =0;i&lt;=words.length-1;i++)&#123;</span><br><span class="line">            if(words[i].equals(word1))</span><br><span class="line">                p1 = i;</span><br><span class="line">            if(words[i].equals(word2))</span><br><span class="line">                p2 = i;</span><br><span class="line">            </span><br><span class="line">            if(p1!=-1&amp;&amp;p2!=-1)&#123;</span><br><span class="line">                ans = Math.min(ans, Math.abs(p2-p1));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-02T17:13:41.000Z">2019-05-03</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds read (About 102 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/03/242. Valid Anagram/">242. Valid Anagram</a>
-            
-        </h1>
-        <div class="content">
-            <p>如果只是字母的话用26长度的array即可，如果还有别的字符改用hashtable。<br>时间复杂度o(n)。空间复杂度o(1)(follow up用hash table的应该是o(n))。<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/03/242. Valid Anagram/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-26T17:38:07.000Z">2019-04-27</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 151 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/04/27/238. Product of Array Except Self/">238. Product of Array Except Self</a>
-            
-        </h1>
-        <div class="content">
-            <p>这道题的思路非常特别，看过答案后其实不难理解。<strong>通过使用一个left用来记录所有num[i]左侧的(不包括num[i]本身)pre-mutiply,使用一个right用来记录所有num[i]右侧的pre-mutiply</strong><br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/04/27/238. Product of Array Except Self/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-26T17:30:32.000Z">2019-04-27</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 174 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/04/27/236. Lowest Common Ancestor of a Binary Tree/">236. Lowest Common Ancestor of a Binary Tree</a>
-            
-        </h1>
-        <div class="content">
-            <p>这道题递归不是很好想。<br>时间复杂度：O(n)，最差情况下所有node都要访问一次，空间复杂度O(n)，递归深度最多为所有node都进栈。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) &#123;</span><br><span class="line">        if(root==null||root==p||root==q)</span><br><span class="line">            return root;</span><br><span class="line">        TreeNode left = lowestCommonAncestor(root.left, p, q);</span><br><span class="line">        TreeNode right = lowestCommonAncestor(root.right, p, q);</span><br><span class="line">        if(left!=null&amp;&amp;right!=null)//如果左右均不为空，说明p和q在左右都出现过，所以直接return root。</span><br><span class="line">            return root;</span><br><span class="line">        return left==null?right:left;//如果左右中有空的，说明p和q全在非空的那一侧</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-26T16:51:46.000Z">2019-04-27</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds read (About 82 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/04/27/235. Lowest Common Ancestor of a Binary Search Tree/">235. Lowest Common Ancestor of a Binary Search Tree</a>
-            
-        </h1>
-        <div class="content">
-            <p>时间复杂度：O(n)，空间复杂度：O(n)<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) &#123;</span><br><span class="line"></span><br><span class="line">        if(root.val&gt;p.val&amp;&amp;root.val&gt;q.val)</span><br><span class="line">            return lowestCommonAncestor(root.left, p, q);</span><br><span class="line">        else if(root.val&lt;p.val&amp;&amp;root.val&lt;q.val)</span><br><span class="line">            return lowestCommonAncestor(root.right,p, q);</span><br><span class="line">        else</span><br><span class="line">            return root;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-        </div>
-        
         
         
     </div>
@@ -684,7 +661,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        43
                     </p>
                 </div>
             </div>
@@ -694,7 +671,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        3
                     </p>
                 </div>
             </div>
@@ -755,12 +732,20 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Leetcide/">
+            <span class="level-start">
+                <span class="level-item">Leetcide</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Leetcode/">
             <span class="level-start">
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">31</span>
+                <span class="level-item tag">40</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Technique/">
@@ -782,7 +767,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Array/" style="font-size: 16px;">Array</a> <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/BackTracking/" style="font-size: 10px;">BackTracking</a> <a href="/tags/Backtracking/" style="font-size: 12px;">Backtracking</a> <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/Bit-Manipulation/" style="font-size: 10px;">Bit Manipulation</a> <a href="/tags/Boyer–Moore-Majority-Vote-Algorithm/" style="font-size: 12px;">Boyer–Moore Majority Vote Algorithm</a> <a href="/tags/DFS/" style="font-size: 20px;">DFS</a> <a href="/tags/Design/" style="font-size: 14px;">Design</a> <a href="/tags/Dynamic-Programming/" style="font-size: 12px;">Dynamic Programming</a> <a href="/tags/Encode/" style="font-size: 10px;">Encode</a> <a href="/tags/Hash-Table/" style="font-size: 16px;">Hash Table</a> <a href="/tags/Math/" style="font-size: 12px;">Math</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Recursion/" style="font-size: 10px;">Recursion</a> <a href="/tags/Stack/" style="font-size: 14px;">Stack</a> <a href="/tags/String/" style="font-size: 14px;">String</a> <a href="/tags/Tree/" style="font-size: 18px;">Tree</a> <a href="/tags/Two-Pointers/" style="font-size: 16px;">Two Pointers</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Union-Find/" style="font-size: 10px;">Union Find</a> <a href="/tags/需要复习/" style="font-size: 18px;">需要复习</a>
+        <a href="/tags/Array/" style="font-size: 15.71px;">Array</a> <a href="/tags/BFS/" style="font-size: 11.43px;">BFS</a> <a href="/tags/Backtracking/" style="font-size: 12.86px;">Backtracking</a> <a href="/tags/Binary-Search/" style="font-size: 11.43px;">Binary Search</a> <a href="/tags/Bit-Manipulation/" style="font-size: 10px;">Bit Manipulation</a> <a href="/tags/Boyer–Moore-Majority-Vote-Algorithm/" style="font-size: 11.43px;">Boyer–Moore Majority Vote Algorithm</a> <a href="/tags/DFS/" style="font-size: 20px;">DFS</a> <a href="/tags/Design/" style="font-size: 12.86px;">Design</a> <a href="/tags/Dynamic-Programming/" style="font-size: 14.29px;">Dynamic Programming</a> <a href="/tags/Dyunamic-Programming/" style="font-size: 10px;">Dyunamic Programming</a> <a href="/tags/Encode/" style="font-size: 10px;">Encode</a> <a href="/tags/Hash-Table/" style="font-size: 14.29px;">Hash Table</a> <a href="/tags/Math/" style="font-size: 11.43px;">Math</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Recursion/" style="font-size: 10px;">Recursion</a> <a href="/tags/Stack/" style="font-size: 12.86px;">Stack</a> <a href="/tags/String/" style="font-size: 12.86px;">String</a> <a href="/tags/Tree/" style="font-size: 18.57px;">Tree</a> <a href="/tags/Two-Pointers/" style="font-size: 15.71px;">Two Pointers</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Union-Find/" style="font-size: 10px;">Union Find</a> <a href="/tags/需要复习/" style="font-size: 17.14px;">需要复习</a>
     </div>
 </div>
 
@@ -799,16 +784,16 @@
         
         <article class="media">
             
-            <a href="/2019/06/01/267. Palindrome Permutation II/" class="media-left">
+            <a href="/2019/06/07/304. Range Sum Query 2D - Immutable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="267. Palindrome Permutation II">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="304. Range Sum Query 2D - Immutable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-31T16:35:32.000Z">2019-06-01</time></div>
-                    <a href="/2019/06/01/267. Palindrome Permutation II/" class="has-link-black-ter is-size-6">267. Palindrome Permutation II</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-07T15:27:48.000Z">2019-06-07</time></div>
+                    <a href="/2019/06/07/304. Range Sum Query 2D - Immutable/" class="has-link-black-ter is-size-6">304. Range Sum Query 2D - Immutable</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -818,16 +803,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/31/266. Palindrome Permutation/" class="media-left">
+            <a href="/2019/06/07/303. Range Sum Query - Immutable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Permutation">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="303. Range Sum Query - Immutable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-31T15:20:56.000Z">2019-05-31</time></div>
-                    <a href="/2019/05/31/266. Palindrome Permutation/" class="has-link-black-ter is-size-6">Permutation</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-07T15:13:35.000Z">2019-06-07</time></div>
+                    <a href="/2019/06/07/303. Range Sum Query - Immutable/" class="has-link-black-ter is-size-6">303. Range Sum Query - Immutable</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -837,16 +822,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/30/261. Graph Valid Tree/" class="media-left">
+            <a href="/2019/06/07/300. Longest Increasing Subsequence/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="261. Graph Valid Tree">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="300. Longest Increasing Subsequence">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-30T12:50:15.000Z">2019-05-30</time></div>
-                    <a href="/2019/05/30/261. Graph Valid Tree/" class="has-link-black-ter is-size-6">261. Graph Valid Tree</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-07T14:14:52.000Z">2019-06-07</time></div>
+                    <a href="/2019/06/07/300. Longest Increasing Subsequence/" class="has-link-black-ter is-size-6">300. Longest Increasing Subsequence</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -856,16 +841,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/30/207. Course Schedule/" class="media-left">
+            <a href="/2019/06/06/289. Game of Life/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="207. Course Schedule">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="289. Game of Life">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-30T12:48:47.000Z">2019-05-30</time></div>
-                    <a href="/2019/05/30/207. Course Schedule/" class="has-link-black-ter is-size-6">207. Course Schedule</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T15:56:47.000Z">2019-06-06</time></div>
+                    <a href="/2019/06/06/289. Game of Life/" class="has-link-black-ter is-size-6">289. Game of Life</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -875,18 +860,18 @@
         
         <article class="media">
             
-            <a href="/2019/05/30/259. 3Sum Smaller/" class="media-left">
+            <a href="/2019/06/06/286. Walls and Gates/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="259. 3Sum Smaller">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="286. Walls and Gates">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-30T08:32:35.000Z">2019-05-30</time></div>
-                    <a href="/2019/05/30/259. 3Sum Smaller/" class="has-link-black-ter is-size-6">259. 3Sum Smaller</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-05T16:05:49.000Z">2019-06-06</time></div>
+                    <a href="/2019/06/06/286. Walls and Gates/" class="has-link-black-ter is-size-6">286. Walls and Gates</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                        <a class="has-link-grey -link" href="/categories/Leetcide/">Leetcide</a>
                     </p>
                 </div>
             </div>
@@ -910,7 +895,7 @@
                     <span class="level-item">June 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -953,35 +938,28 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Array/">
                         <span class="tag">Array</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/BFS/">
                         <span class="tag">BFS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/BackTracking/">
-                        <span class="tag">BackTracking</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Backtracking/">
                         <span class="tag">Backtracking</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Binary-Search/">
                         <span class="tag">Binary Search</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1002,7 +980,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DFS/">
                         <span class="tag">DFS</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1016,7 +994,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Dynamic-Programming/">
                         <span class="tag">Dynamic Programming</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dyunamic-Programming/">
+                        <span class="tag">Dyunamic Programming</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1072,14 +1057,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Tree/">
                         <span class="tag">Tree</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Two-Pointers/">
                         <span class="tag">Two Pointers</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -1100,7 +1085,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/需要复习/">
                         <span class="tag">需要复习</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1129,16 +1114,16 @@
         
         <article class="media">
             
-            <a href="/2019/06/01/267. Palindrome Permutation II/" class="media-left">
+            <a href="/2019/06/07/304. Range Sum Query 2D - Immutable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="267. Palindrome Permutation II">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="304. Range Sum Query 2D - Immutable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-31T16:35:32.000Z">2019-06-01</time></div>
-                    <a href="/2019/06/01/267. Palindrome Permutation II/" class="has-link-black-ter is-size-6">267. Palindrome Permutation II</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-07T15:27:48.000Z">2019-06-07</time></div>
+                    <a href="/2019/06/07/304. Range Sum Query 2D - Immutable/" class="has-link-black-ter is-size-6">304. Range Sum Query 2D - Immutable</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -1148,16 +1133,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/31/266. Palindrome Permutation/" class="media-left">
+            <a href="/2019/06/07/303. Range Sum Query - Immutable/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Permutation">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="303. Range Sum Query - Immutable">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-31T15:20:56.000Z">2019-05-31</time></div>
-                    <a href="/2019/05/31/266. Palindrome Permutation/" class="has-link-black-ter is-size-6">Permutation</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-07T15:13:35.000Z">2019-06-07</time></div>
+                    <a href="/2019/06/07/303. Range Sum Query - Immutable/" class="has-link-black-ter is-size-6">303. Range Sum Query - Immutable</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -1167,16 +1152,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/30/261. Graph Valid Tree/" class="media-left">
+            <a href="/2019/06/07/300. Longest Increasing Subsequence/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="261. Graph Valid Tree">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="300. Longest Increasing Subsequence">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-30T12:50:15.000Z">2019-05-30</time></div>
-                    <a href="/2019/05/30/261. Graph Valid Tree/" class="has-link-black-ter is-size-6">261. Graph Valid Tree</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-07T14:14:52.000Z">2019-06-07</time></div>
+                    <a href="/2019/06/07/300. Longest Increasing Subsequence/" class="has-link-black-ter is-size-6">300. Longest Increasing Subsequence</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -1186,16 +1171,16 @@
         
         <article class="media">
             
-            <a href="/2019/05/30/207. Course Schedule/" class="media-left">
+            <a href="/2019/06/06/289. Game of Life/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="207. Course Schedule">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="289. Game of Life">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-30T12:48:47.000Z">2019-05-30</time></div>
-                    <a href="/2019/05/30/207. Course Schedule/" class="has-link-black-ter is-size-6">207. Course Schedule</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T15:56:47.000Z">2019-06-06</time></div>
+                    <a href="/2019/06/06/289. Game of Life/" class="has-link-black-ter is-size-6">289. Game of Life</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -1205,18 +1190,18 @@
         
         <article class="media">
             
-            <a href="/2019/05/30/259. 3Sum Smaller/" class="media-left">
+            <a href="/2019/06/06/286. Walls and Gates/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="259. 3Sum Smaller">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="286. Walls and Gates">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-30T08:32:35.000Z">2019-05-30</time></div>
-                    <a href="/2019/05/30/259. 3Sum Smaller/" class="has-link-black-ter is-size-6">259. 3Sum Smaller</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-05T16:05:49.000Z">2019-06-06</time></div>
+                    <a href="/2019/06/06/286. Walls and Gates/" class="has-link-black-ter is-size-6">286. Walls and Gates</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                        <a class="has-link-grey -link" href="/categories/Leetcide/">Leetcide</a>
                     </p>
                 </div>
             </div>
@@ -1240,7 +1225,7 @@
                     <span class="level-item">June 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -1283,35 +1268,28 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Array/">
                         <span class="tag">Array</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/BFS/">
                         <span class="tag">BFS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/BackTracking/">
-                        <span class="tag">BackTracking</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Backtracking/">
                         <span class="tag">Backtracking</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Binary-Search/">
                         <span class="tag">Binary Search</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1332,7 +1310,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DFS/">
                         <span class="tag">DFS</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1346,7 +1324,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Dynamic-Programming/">
                         <span class="tag">Dynamic Programming</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dyunamic-Programming/">
+                        <span class="tag">Dyunamic Programming</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1402,14 +1387,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Tree/">
                         <span class="tag">Tree</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Two-Pointers/">
                         <span class="tag">Two Pointers</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -1430,7 +1415,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/需要复习/">
                         <span class="tag">需要复习</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
