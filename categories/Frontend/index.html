@@ -2,7 +2,7 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Archives: 2019 - Shiyu - Blog</title>
+<title>Category: Frontend - Shiyu - Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -117,94 +117,130 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-09-13T15:35:09.000Z">2019-09-13</time>
-                        <a href="/2019/09/13/元素脱离文档流的方法/" class="has-link-black-ter is-size-6">元素脱离文档流的方法</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-09-13T15:32:47.000Z">2019-09-13</time>
-                        <a href="/2019/09/13/Hosts/" class="has-link-black-ter is-size-6">Hosts</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-09-13T15:27:24.000Z">2019-09-13</time>
-                        <a href="/2019/09/13/Angular学习笔记/" class="has-link-black-ter is-size-6">Angular学习笔记</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-04-29T19:43:23.000Z">2019-04-29</time>
-                        <a href="/2019/04/29/python字符编解码/" class="has-link-black-ter is-size-6">Python字符编解码</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">Categories</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">Frontend</a></li>
+        </ul>
+        </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-13T15:35:09.000Z">2019-09-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 408 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/13/元素脱离文档流的方法/">元素脱离文档流的方法</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>有三种情况将使得元素脱离文档流，分别是浮动(float left or right)、绝对定位(position:absolute)、固定定位(position:fixed)。</strong></p>
+<ol>
+<li>position<br>position有四个选项，分别是默认值static，absolute，relative，fixed，常和top, bottom, left, right 或者 z-index联合使用，用来改变块元素位置。<br>默认值static：默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。。<br>将窗体自上而下分成一行行，并在每一行中按从左到右的顺序排放元素，即为文档流。<br>absolute： 块元素根据第一个不是static属性的父元素进行定位(如果没有的则默认根据body定位)。对象虽然确定好了，但有些地方需要思考，如果父级设定了 margin，border，padding等属性，那么这个定位点将从哪里开始呢？答案是从padding开始。<br>以下的例子中由于绿色div设置了position为absolute，同时它的父元素红色的position不是static，所以它会浮起并根据红色元素的padding进行定位。他下面的蓝色元素按照正常的static文件流进行定位<br><img src="/2019/09/13/元素脱离文档流的方法/元素脱离文档流.png" alt>。<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 1000px; height: 1000px; background: red; position: relative; left:300px"</span> &gt;</span>      </span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 100px; height: 100; background: green; position:absolute; left:50px"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 500px; height: 500px; background: blue"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>fixed： 很好理解，块元素永远根据打开浏览器的窗体进行定位<br>relative：块元素根据本身原来自身的位置进行定位</p>
+<ol start="2">
+<li>float: <a href="https://www.cnblogs.com/iyangyuan/archive/2013/03/27/2983813.html" target="_blank" rel="noopener">https://www.cnblogs.com/iyangyuan/archive/2013/03/27/2983813.html</a></li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-13T15:27:24.000Z">2019-09-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    37 minutes read (About 5591 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/13/Angular学习笔记/">Angular学习笔记</a>
+            
+        </h1>
+        <div class="content">
+            <p>Angular笔记</p>
+<h1 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h1><ol>
+<li><p>Angular的Component可以反复使用也可以使用在其他Component中， Angular有一个根Component叫做<code>&lt;app-root&gt;&lt;/app-root&gt;</code>，其他我们生成的Component都需要在该Component内部</p>
+</li>
+<li><p>可以手动生成Component，<strong>但不要忘记在app.modules.ts的declarations中声明(类似于spring中对Component的scan)</strong>；也可以用ng generate component<code>&lt;name&gt;</code> 自动生成，则不再需要手动添加声明(确保ng serve在运行)。</p>
+</li>
+<li><p>@Component指明了该组件的配置情况，其中templateUrl指定了该组件的内容(可以不用templateUrl而是使用template，那么此时是在typescript文件中直接写html)，styleUrls和styles起着相同的作用，唯一的区别是style可以有多个css文件。selector很像css的selector，不止可以做为选中元素，也可以做为选中属性( [<code>&lt;attribute&gt;</code>] )或者选中class ( [<code>.&lt;class&gt;</code>] )</p>
+ <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Component, OnInit &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'app-servers'</span>,</span><br><span class="line">  templateUrl: <span class="hljs-string">'./servers.component.html'</span>,</span><br><span class="line">  styleUrls: [<span class="hljs-string">'./servers.component.css'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServersComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">constructor</span>() &#123; &#125;</span><br><span class="line"></span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/09/13/Angular学习笔记/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
 
 
 </div>

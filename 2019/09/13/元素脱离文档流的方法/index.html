@@ -2,7 +2,7 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Archives: 2019 - Shiyu - Blog</title>
+<title>元素脱离文档流的方法 - Shiyu - Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -117,92 +117,76 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-13T15:35:09.000Z">2019-09-13</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-09-13T15:35:09.000Z">2019-09-13</time>
-                        <a href="/2019/09/13/元素脱离文档流的方法/" class="has-link-black-ter is-size-6">元素脱离文档流的方法</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-09-13T15:32:47.000Z">2019-09-13</time>
-                        <a href="/2019/09/13/Hosts/" class="has-link-black-ter is-size-6">Hosts</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-09-13T15:27:24.000Z">2019-09-13</time>
-                        <a href="/2019/09/13/Angular学习笔记/" class="has-link-black-ter is-size-6">Angular学习笔记</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 408 words)
+                </span>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-04-29T19:43:23.000Z">2019-04-29</time>
-                        <a href="/2019/04/29/python字符编解码/" class="has-link-black-ter is-size-6">Python字符编解码</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                元素脱离文档流的方法
+            
+        </h1>
+        <div class="content">
+            <p><strong>有三种情况将使得元素脱离文档流，分别是浮动(float left or right)、绝对定位(position:absolute)、固定定位(position:fixed)。</strong></p>
+<ol>
+<li>position<br>position有四个选项，分别是默认值static，absolute，relative，fixed，常和top, bottom, left, right 或者 z-index联合使用，用来改变块元素位置。<br>默认值static：默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。。<br>将窗体自上而下分成一行行，并在每一行中按从左到右的顺序排放元素，即为文档流。<br>absolute： 块元素根据第一个不是static属性的父元素进行定位(如果没有的则默认根据body定位)。对象虽然确定好了，但有些地方需要思考，如果父级设定了 margin，border，padding等属性，那么这个定位点将从哪里开始呢？答案是从padding开始。<br>以下的例子中由于绿色div设置了position为absolute，同时它的父元素红色的position不是static，所以它会浮起并根据红色元素的padding进行定位。他下面的蓝色元素按照正常的static文件流进行定位<br><img src="/2019/09/13/元素脱离文档流的方法/元素脱离文档流.png" alt>。<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 1000px; height: 1000px; background: red; position: relative; left:300px"</span> &gt;</span>      </span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 100px; height: 100; background: green; position:absolute; left:50px"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 500px; height: 500px; background: blue"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>fixed： 很好理解，块元素永远根据打开浏览器的窗体进行定位<br>relative：块元素根据本身原来自身的位置进行定位</p>
+<ol start="2">
+<li>float: <a href="https://www.cnblogs.com/iyangyuan/archive/2013/03/27/2983813.html" target="_blank" rel="noopener">https://www.cnblogs.com/iyangyuan/archive/2013/03/27/2983813.html</a></li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/CSS/">CSS</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/13/Hosts/">
+                <span class="level-item">Hosts</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
     </div>
 </div>
 
