@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 408 words)
+                    3 minutes read (About 399 words)
                 </span>
                 
                 
@@ -159,17 +159,16 @@
         </h1>
         <div class="content">
             <p><strong>有三种情况将使得元素脱离文档流，分别是浮动(float left or right)、绝对定位(position:absolute)、固定定位(position:fixed)。</strong></p>
-<ol>
-<li>position<br>position有四个选项，分别是默认值static，absolute，relative，fixed，常和top, bottom, left, right 或者 z-index联合使用，用来改变块元素位置。<br>默认值static：默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。。<br>将窗体自上而下分成一行行，并在每一行中按从左到右的顺序排放元素，即为文档流。<br>absolute： 块元素根据第一个不是static属性的父元素进行定位(如果没有的则默认根据body定位)。对象虽然确定好了，但有些地方需要思考，如果父级设定了 margin，border，padding等属性，那么这个定位点将从哪里开始呢？答案是从padding开始。<br>以下的例子中由于绿色div设置了position为absolute，同时它的父元素红色的position不是static，所以它会浮起并根据红色元素的padding进行定位。他下面的蓝色元素按照正常的static文件流进行定位<br><img src="/2019/09/13/元素脱离文档流的方法/元素脱离文档流.png" alt>。<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 1000px; height: 1000px; background: red; position: relative; left:300px"</span> &gt;</span>      </span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 100px; height: 100; background: green; position:absolute; left:50px"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 500px; height: 500px; background: blue"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>fixed： 很好理解，块元素永远根据打开浏览器的窗体进行定位<br>relative：块元素根据本身原来自身的位置进行定位</p>
-<ol start="2">
-<li>float: <a href="https://www.cnblogs.com/iyangyuan/archive/2013/03/27/2983813.html" target="_blank" rel="noopener">https://www.cnblogs.com/iyangyuan/archive/2013/03/27/2983813.html</a></li>
-</ol>
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/09/13/元素脱离文档流的方法/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -217,9 +216,6 @@
 <li><p>Angular的Component可以反复使用也可以使用在其他Component中， Angular有一个根Component叫做<code>&lt;app-root&gt;&lt;/app-root&gt;</code>，其他我们生成的Component都需要在该Component内部</p>
 </li>
 <li><p>可以手动生成Component，<strong>但不要忘记在app.modules.ts的declarations中声明(类似于spring中对Component的scan)</strong>；也可以用ng generate component<code>&lt;name&gt;</code> 自动生成，则不再需要手动添加声明(确保ng serve在运行)。</p>
-</li>
-<li><p>@Component指明了该组件的配置情况，其中templateUrl指定了该组件的内容(可以不用templateUrl而是使用template，那么此时是在typescript文件中直接写html)，styleUrls和styles起着相同的作用，唯一的区别是style可以有多个css文件。selector很像css的selector，不止可以做为选中元素，也可以做为选中属性( [<code>&lt;attribute&gt;</code>] )或者选中class ( [<code>.&lt;class&gt;</code>] )</p>
- <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Component, OnInit &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'app-servers'</span>,</span><br><span class="line">  templateUrl: <span class="hljs-string">'./servers.component.html'</span>,</span><br><span class="line">  styleUrls: [<span class="hljs-string">'./servers.component.css'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServersComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">constructor</span>() &#123; &#125;</span><br><span class="line"></span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
         </div>
@@ -284,7 +280,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        17
                     </p>
                 </div>
             </div>
@@ -294,7 +290,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        3
                     </p>
                 </div>
             </div>
@@ -368,6 +364,14 @@
             <span class="level-end">
                 <span class="level-item tag">2</span>
             </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Leetcode/">
+            <span class="level-start">
+                <span class="level-item">Leetcode</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
         </a></li>
             </ul>
         </div>
@@ -394,6 +398,82 @@
         
         <article class="media">
             
+            <a href="/2019/10/03/约瑟夫环问题/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="约瑟夫环问题">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-03T22:46:02.000Z">2019-10-03</time></div>
+                    <a href="/2019/10/03/约瑟夫环问题/" class="has-link-black-ter is-size-6">约瑟夫环问题</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/03/Sliding Window总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Sliding Window总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-03T22:39:10.000Z">2019-10-03</time></div>
+                    <a href="/2019/10/03/Sliding Window总结/" class="has-link-black-ter is-size-6">Sliding Window总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/03/Deep copy类型题总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Deep copy类型题总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-03T21:50:54.000Z">2019-10-03</time></div>
+                    <a href="/2019/10/03/Deep copy类型题总结/" class="has-link-black-ter is-size-6">Deep copy类型题总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/28/Behavior Questions/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Behavior Questions">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T20:21:27.000Z">2019-09-28</time></div>
+                    <a href="/2019/09/28/Behavior Questions/" class="has-link-black-ter is-size-6">Behavior Questions</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/24/java垃圾回收/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java垃圾回收">
@@ -406,82 +486,6 @@
                     <a href="/2019/09/24/java垃圾回收/" class="has-link-black-ter is-size-6">java垃圾回收</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/24/java中final、finally和finalize的区别/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java中final、finally和finalize的区别">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-24T14:16:26.000Z">2019-09-24</time></div>
-                    <a href="/2019/09/24/java中final、finally和finalize的区别/" class="has-link-black-ter is-size-6">java中final、finally和finalize的区别</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/24/数据库索引/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="数据库索引">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-24T13:21:00.000Z">2019-09-24</time></div>
-                    <a href="/2019/09/24/数据库索引/" class="has-link-black-ter is-size-6">数据库索引</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/17/原码、反码与补码/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="原码、反码与补码">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-17T17:32:27.000Z">2019-09-17</time></div>
-                    <a href="/2019/09/17/原码、反码与补码/" class="has-link-black-ter is-size-6">原码、反码与补码</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/13/元素脱离文档流的方法/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="元素脱离文档流的方法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-13T15:35:09.000Z">2019-09-13</time></div>
-                    <a href="/2019/09/13/元素脱离文档流的方法/" class="has-link-black-ter is-size-6">元素脱离文档流的方法</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
                     </p>
                 </div>
             </div>
@@ -500,12 +504,23 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/09/">
                 <span class="level-start">
                     <span class="level-item">September 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>

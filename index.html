@@ -124,6 +124,216 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-03T22:46:02.000Z">2019-10-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a few seconds read (About 11 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/03/约瑟夫环问题/">约瑟夫环问题</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="约瑟夫环"><a href="#约瑟夫环" class="headerlink" title="约瑟夫环"></a>约瑟夫环</h1><p><a href="https://blog.csdn.net/u011500062/article/details/72855826" target="_blank" rel="noopener">https://blog.csdn.net/u011500062/article/details/72855826</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-03T22:39:10.000Z">2019-10-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 964 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/03/Sliding Window总结/">Sliding Window总结</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Sliding-Window"><a href="#Sliding-Window" class="headerlink" title="Sliding Window"></a>Sliding Window</h1><p>sliding window问题的思想并不复杂，就是设立一个start和一个end指针进行遍历，end不停地在前进，start只有在条件不符合的时候前进，但是在进行过程中由于变量的更改会出现有思路写不出来的问题，所以总结一下模板。</p>
+<p>sliding window思路：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while(end&lt;length)&#123;</span><br><span class="line">    1. 处理end位置的character，end++</span><br><span class="line">    2. 如果达到了某种条件，我们使用while loop或者if打破这种条件，start++</span><br><span class="line">    3. 更新结果，这个时候的end是还没处理过的，start是处理过的，所以如果求长度什么的是end-start而不是end-start+1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/10/03/Sliding Window总结/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-03T21:50:54.000Z">2019-10-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 416 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/03/Deep copy类型题总结/">Deep copy类型题总结</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Deep-copy类型题总结"><a href="#Deep-copy类型题总结" class="headerlink" title="Deep copy类型题总结"></a>Deep copy类型题总结</h1><p>这种类型题不难，只有两道代表类型题，一道是deep copy linkedlist，一道是deep copy graph。</p>
+<p>最直观的想法就是就是使用HashMap，首先把node都先copy一遍，然后再连接他们。</p>
+<p>提升一点的做法是使用dfs，在copy的过程中边copy边连接。注意，对于使用dfs copy graph我们不需要visited[]数组，我们可以直接通过判断Map中有没有该node来确认是否visited。</p>
+<p>对于copy linkedlist，有一个提升空间复杂度的做法。<strong>Follow Up 如果不适用额外的辅助存储空间</strong>：</p>
+<p>第一步：将每个节点复制并插入相邻节点中。如1-&gt;2-&gt;3-&gt;NULL变为：1-&gt;1’-&gt;2-&gt;2’-&gt;3-&gt;3’-&gt;NULL。</p>
+<p>第二步：接下来连接Random指针，如果存在一条Random指针从A指向B，那么将A-&gt;next的Random指针指向B-&gt;next。</p>
+<p>第三步：将链表拆开。A=head, A’=head-&gt;next;  A-&gt;next=A-&gt;next-&gt;next；A’-&gt;next=A’-&gt;next-&gt;next; …</p>
+<p>时间复杂度O(n)，额外空间复杂度O(1)</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/10/03/Deep copy类型题总结/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-28T20:21:27.000Z">2019-09-28</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 790 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/28/Behavior Questions/">Behavior Questions</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Behavior-Questions"><a href="#Behavior-Questions" class="headerlink" title="Behavior Questions"></a>Behavior Questions</h1><p>The STAR format stands for Situation, Task, Action, Result:</p>
+<p>Situation: An event, project, or challenge faced<br>Task: Your responsibilities and assignments for the situation<br>Action: Steps or procedure taken to relieve or rectify situation<br>Result: Results of actions taken.</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/09/28/Behavior Questions/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-24T14:20:28.000Z">2019-09-24</time>
                 
                 <div class="level-item">
@@ -134,7 +344,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 602 words)
+                    4 minutes read (About 587 words)
                 </span>
                 
                 
@@ -324,14 +534,14 @@
                 <time class="level-item has-text-grey" datetime="2019-09-13T15:35:09.000Z">2019-09-13</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 408 words)
+                    2 minutes read (About 326 words)
                 </span>
                 
                 
@@ -340,128 +550,22 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/13/元素脱离文档流的方法/">元素脱离文档流的方法</a>
+                <a class="has-link-black-ter" href="/2019/09/13/Merge K sorted lists总结/">Merge K sorted lists类型题总结</a>
             
         </h1>
         <div class="content">
-            <p><strong>有三种情况将使得元素脱离文档流，分别是浮动(float left or right)、绝对定位(position:absolute)、固定定位(position:fixed)。</strong></p>
-<ol>
-<li>position<br>position有四个选项，分别是默认值static，absolute，relative，fixed，常和top, bottom, left, right 或者 z-index联合使用，用来改变块元素位置。<br>默认值static：默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。。<br>将窗体自上而下分成一行行，并在每一行中按从左到右的顺序排放元素，即为文档流。<br>absolute： 块元素根据第一个不是static属性的父元素进行定位(如果没有的则默认根据body定位)。对象虽然确定好了，但有些地方需要思考，如果父级设定了 margin，border，padding等属性，那么这个定位点将从哪里开始呢？答案是从padding开始。<br>以下的例子中由于绿色div设置了position为absolute，同时它的父元素红色的position不是static，所以它会浮起并根据红色元素的padding进行定位。他下面的蓝色元素按照正常的static文件流进行定位<br><img src="/2019/09/13/元素脱离文档流的方法/元素脱离文档流.png" alt>。<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 1000px; height: 1000px; background: red; position: relative; left:300px"</span> &gt;</span>      </span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 100px; height: 100; background: green; position:absolute; left:50px"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 500px; height: 500px; background: blue"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>fixed： 很好理解，块元素永远根据打开浏览器的窗体进行定位<br>relative：块元素根据本身原来自身的位置进行定位</p>
-<ol start="2">
-<li>float: <a href="https://www.cnblogs.com/iyangyuan/archive/2013/03/27/2983813.html" target="_blank" rel="noopener">https://www.cnblogs.com/iyangyuan/archive/2013/03/27/2983813.html</a></li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-13T15:32:47.000Z">2019-09-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 minutes read (About 226 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/13/Hosts/">Hosts</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="https://blog.csdn.net/qq_35246620/article/details/66970211" target="_blank" rel="noopener">https://blog.csdn.net/qq_35246620/article/details/66970211</a></p>
-<p>为什么有些网站通过host可以访问而直接输入ip不能？<br>因为是虚拟主机，主机上放置了N个网站，而每个网站绑定1个或以上域名，所以用域名访问主机可以解析到网站目录，但用IP的话服务器就不知道解析到哪个目录了！因为http请求里包含了域名信息，所以用域名访问，虚拟主机服务器会根据域名来返回网站，直接用IP访问因为没有域名信息所以服务器不知道要访问的是哪个网站目录，只有共享IP的虚拟主机或者VPS才有这情况，像有邦定独立IP功能或者独立主机的那些服务器就不会有这问题了 。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-13T15:27:24.000Z">2019-09-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    37 minutes read (About 5591 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/13/Angular学习笔记/">Angular学习笔记</a>
-            
-        </h1>
-        <div class="content">
-            <p>Angular笔记</p>
-<h1 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h1><ol>
-<li><p>Angular的Component可以反复使用也可以使用在其他Component中， Angular有一个根Component叫做<code>&lt;app-root&gt;&lt;/app-root&gt;</code>，其他我们生成的Component都需要在该Component内部</p>
-</li>
-<li><p>可以手动生成Component，<strong>但不要忘记在app.modules.ts的declarations中声明(类似于spring中对Component的scan)</strong>；也可以用ng generate component<code>&lt;name&gt;</code> 自动生成，则不再需要手动添加声明(确保ng serve在运行)。</p>
-</li>
-<li><p>@Component指明了该组件的配置情况，其中templateUrl指定了该组件的内容(可以不用templateUrl而是使用template，那么此时是在typescript文件中直接写html)，styleUrls和styles起着相同的作用，唯一的区别是style可以有多个css文件。selector很像css的selector，不止可以做为选中元素，也可以做为选中属性( [<code>&lt;attribute&gt;</code>] )或者选中class ( [<code>.&lt;class&gt;</code>] )</p>
- <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Component, OnInit &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'app-servers'</span>,</span><br><span class="line">  templateUrl: <span class="hljs-string">'./servers.component.html'</span>,</span><br><span class="line">  styleUrls: [<span class="hljs-string">'./servers.component.css'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServersComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">constructor</span>() &#123; &#125;</span><br><span class="line"></span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+            <h1 id="Merge-K-sorted-lists"><a href="#Merge-K-sorted-lists" class="headerlink" title="Merge K sorted lists"></a>Merge K sorted lists</h1><p>首先要会做merge 2 sorted lists，这个比较简单，就是使用双指针进行merge。<br>Merge K sorted lists有两个做法：</p>
+<ul>
+<li>使用一个list长度的Priority Queue，重新构写Comparator(按照lisstnode.val进行比较)，每次取出最小的listnode以后再向Priority Queue加入新的node。 时间复杂度是O(nlogk)，因为所有的node都要进到PQ中，而每个进去都是O(k)时间。空间复杂度O(k)。</li>
+<li>divide and conquer的思想，因为我们已经做过merge 2 sorted list的题，那么很自然可以想到将list不断地divide直到只剩一个，然后再两个两个的merge，思想与merge sort很像。时间复杂度也是O(nlogk)。</li>
+</ul>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/13/Angular学习笔记/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/09/13/Merge K sorted lists总结/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -484,17 +588,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-29T19:43:23.000Z">2019-04-29</time>
+                <time class="level-item has-text-grey" datetime="2019-09-13T15:35:09.000Z">2019-09-13</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    11 minutes read (About 1662 words)
+                    7 minutes read (About 1098 words)
                 </span>
                 
                 
@@ -503,18 +607,24 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/04/29/python字符编解码/">Python字符编解码</a>
+                <a class="has-link-black-ter" href="/2019/09/13/Top K problem总结/">Top K类型题（bucket sort, inplace quick sort and Comparator）</a>
             
         </h1>
         <div class="content">
-            <h1 id="1-ASCII码"><a href="#1-ASCII码" class="headerlink" title="1. ASCII码"></a>1. ASCII码</h1><p>我们知道，计算机内部，所有信息最终都是一个二进制值。每一个二进制位（bit）有0和1两种状态，因此八个二进制位就可以组合出256种状态，这被称为一个字节（byte）。也就是说，一个字节一共可以用来表示256种不同的状态，每一个状态对应一个符号，就是256个符号，从00000000到11111111。<br></p>
+            <h1 id="Top-K类型题（bucket-sort-inplace-quick-sort-and-Comparator）"><a href="#Top-K类型题（bucket-sort-inplace-quick-sort-and-Comparator）" class="headerlink" title="Top K类型题（bucket sort, inplace quick sort and Comparator）"></a>Top K类型题（bucket sort, inplace quick sort and Comparator）</h1><p>今天总结了一下Top K这种类型的题目的做法，总的来说一般有三种做法：</p>
+<ul>
+<li>最简单的就是进行sorting，然后取前K个，时间复杂度是O(nlogn)</li>
+<li>第二种做法是使用Priority Queue，Priority Queue只存储前K个元素，超出的就poll，那么时间复杂度是O(nlogk)</li>
+<li>最复杂的做法是使用Quick Select，由于我们只关心前K个元素，所以相当于对于Quick Sort，我们每次partition只取一半，所以时间复杂度只有O(n)。(T(n) = T(n/2) + n)</li>
+</ul>
+<p><strong>注意：当我们是求某一个频率的前K个元素的时候，我们可以不用复杂的Quick Select，而是使用简单的Bucket sort。这里能够使用bucket sort的原因在于元素的frequency肯定不大于数组的长度，也就是说有一个固定的边界</strong>。我们知道bucket sort能够使用的条件就是有固定的边界。而求取前K个最大的元素，由于元素的大小是没有边界的，所以无法使用bucket sort，我们只能用Quick Select。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/04/29/python字符编解码/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/09/13/Top K problem总结/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -531,6 +641,25 @@
 
 
 
+
+    
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/page/0/">Previous</a>
+        </div>
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/page/2/">Next</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link is-current" href="/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
+            
+        </ul>
+    </nav>
+</div>
 </div>
                 
 
@@ -570,7 +699,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        17
                     </p>
                 </div>
             </div>
@@ -580,7 +709,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        3
                     </p>
                 </div>
             </div>
@@ -654,6 +783,14 @@
             <span class="level-end">
                 <span class="level-item tag">2</span>
             </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Leetcode/">
+            <span class="level-start">
+                <span class="level-item">Leetcode</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
         </a></li>
             </ul>
         </div>
@@ -680,6 +817,82 @@
         
         <article class="media">
             
+            <a href="/2019/10/03/约瑟夫环问题/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="约瑟夫环问题">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-03T22:46:02.000Z">2019-10-03</time></div>
+                    <a href="/2019/10/03/约瑟夫环问题/" class="has-link-black-ter is-size-6">约瑟夫环问题</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/03/Sliding Window总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Sliding Window总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-03T22:39:10.000Z">2019-10-03</time></div>
+                    <a href="/2019/10/03/Sliding Window总结/" class="has-link-black-ter is-size-6">Sliding Window总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/03/Deep copy类型题总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Deep copy类型题总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-03T21:50:54.000Z">2019-10-03</time></div>
+                    <a href="/2019/10/03/Deep copy类型题总结/" class="has-link-black-ter is-size-6">Deep copy类型题总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/28/Behavior Questions/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Behavior Questions">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T20:21:27.000Z">2019-09-28</time></div>
+                    <a href="/2019/09/28/Behavior Questions/" class="has-link-black-ter is-size-6">Behavior Questions</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/24/java垃圾回收/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="java垃圾回收">
@@ -692,82 +905,6 @@
                     <a href="/2019/09/24/java垃圾回收/" class="has-link-black-ter is-size-6">java垃圾回收</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/24/java中final、finally和finalize的区别/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java中final、finally和finalize的区别">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-24T14:16:26.000Z">2019-09-24</time></div>
-                    <a href="/2019/09/24/java中final、finally和finalize的区别/" class="has-link-black-ter is-size-6">java中final、finally和finalize的区别</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/24/数据库索引/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="数据库索引">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-24T13:21:00.000Z">2019-09-24</time></div>
-                    <a href="/2019/09/24/数据库索引/" class="has-link-black-ter is-size-6">数据库索引</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/17/原码、反码与补码/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="原码、反码与补码">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-17T17:32:27.000Z">2019-09-17</time></div>
-                    <a href="/2019/09/17/原码、反码与补码/" class="has-link-black-ter is-size-6">原码、反码与补码</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/13/元素脱离文档流的方法/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="元素脱离文档流的方法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-13T15:35:09.000Z">2019-09-13</time></div>
-                    <a href="/2019/09/13/元素脱离文档流的方法/" class="has-link-black-ter is-size-6">元素脱离文档流的方法</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
                     </p>
                 </div>
             </div>
@@ -786,12 +923,23 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/09/">
                 <span class="level-start">
                     <span class="level-item">September 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>
