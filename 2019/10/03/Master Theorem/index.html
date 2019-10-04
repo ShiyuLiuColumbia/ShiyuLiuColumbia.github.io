@@ -2,7 +2,7 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Hosts - Shiyu - Blog</title>
+<title>Master Theorem - Shiyu - Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -123,17 +123,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-13T15:32:47.000Z">2019-09-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                </div>
+                <time class="level-item has-text-grey" datetime="2019-10-04T00:14:39.000Z">2019-10-03</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 226 words)
+                    a few seconds read (About 73 words)
                 </span>
                 
                 
@@ -142,22 +138,15 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Hosts
+                Master Theorem
             
         </h1>
         <div class="content">
-            <p><a href="https://blog.csdn.net/qq_35246620/article/details/66970211" target="_blank" rel="noopener">https://blog.csdn.net/qq_35246620/article/details/66970211</a></p>
-<p>为什么有些网站通过host可以访问而直接输入ip不能？<br>因为是虚拟主机，主机上放置了N个网站，而每个网站绑定1个或以上域名，所以用域名访问主机可以解析到网站目录，但用IP的话服务器就不知道解析到哪个目录了！因为http请求里包含了域名信息，所以用域名访问，虚拟主机服务器会根据域名来返回网站，直接用IP访问因为没有域名信息所以服务器不知道要访问的是哪个网站目录，只有共享IP的虚拟主机或者VPS才有这情况，像有邦定独立IP功能或者独立主机的那些服务器就不会有这问题了 。</p>
+            <h1 id="Master-Theorem-主定理"><a href="#Master-Theorem-主定理" class="headerlink" title="Master Theorem(主定理)"></a>Master Theorem(主定理)</h1><p>主定理用于在divide&amp;conquer问题中求时间复杂度，以前总是记不住，今天总结了一下，方便记忆。</p>
+<p><img src="/images/blog/master.png" alt></p>
+<p>Example: merge sort: T(n) = 2*T(n/2)+O(n)</p>
+<p>a = 2, b =2, n^logba == n, 所以符合2.1, 所以结果是O(nlogn)</p>
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Host-file/">Host file</a>
-                </div>
-            </div>
         </div>
         
         
@@ -172,17 +161,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/13/Integer to something总结/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Integer to something 类型题总结</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/13/Angular学习笔记/">
-                <span class="level-item">Angular学习笔记</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/03/约瑟夫环问题/">
+                <span class="level-item">约瑟夫环问题</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
