@@ -2,7 +2,7 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>java垃圾回收 - Shiyu - Blog</title>
+<title>股票买卖问题 - Shiyu - Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -123,17 +123,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-24T14:20:28.000Z">2019-09-24</time>
+                <time class="level-item has-text-grey" datetime="2019-10-06T01:59:48.000Z">2019-10-05</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 593 words)
+                    5 minutes read (About 788 words)
                 </span>
                 
                 
@@ -142,53 +142,33 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                java垃圾回收
+                股票买卖问题
             
         </h1>
         <div class="content">
-            <h1 id="Garbage-Collection"><a href="#Garbage-Collection" class="headerlink" title="Garbage Collection"></a>Garbage Collection</h1><p>The java virtual machine(JVM) that runs your program uses hideden data structures to manage memory.<br><a id="more"></a></p>
-<h2 id="Roots-and-Reachability"><a href="#Roots-and-Reachability" class="headerlink" title="Roots and Reachability"></a>Roots and Reachability</h2><p><strong>An object your program mignt use again: live, opposite is garbage-objects your program cannot reference again</strong></p>
-<p>Root: any reference your proram can access. Primitive variable are not roots.</p>
+            <h1 id="买卖股票问题总结"><a href="#买卖股票问题总结" class="headerlink" title="买卖股票问题总结"></a>买卖股票问题总结</h1><p>买卖股票问题是dp的代表类型题目。</p>
+<a id="more"></a>
+<ol start="121">
+<li>Best Time to Buy and Sell Stock: 这道题看起来很简单，但其实之中蕴含dp的思想。我们可以将问题拆解为两个数组的dp问题：low[i]代表进行到第i天为止的最低股票价格，res[i]代表到第i天为止最大获利。所以</li>
+</ol>
 <ul>
-<li>local variables on stack</li>
-<li>class variable(static variable)</li>
+<li>low[i] = Math.min(low[i], low[i-1])</li>
+<li>res[i] = Math.max(res[i], price[i]-low[i])</li>
 </ul>
-<p>Object is live(i.e. reachable from root) if it is:</p>
+<p>当然这道题直接想就可以很简单的做出来，但这种dp的思路很重要。<br><strong>这道题还可以转化成53题maximum subarray，也就是转化成从第二天开始的profit情况</strong></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> minPrice = Integer.MAX_VALUE;</span><br><span class="line">        <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> price:prices)&#123;</span><br><span class="line">            minPrice = Math.min(minPrice, price);</span><br><span class="line">            res = Math.max(res, price-minPrice);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="122">
+<li>Best Time to Buy and Sell Stock II：这道题有非常非常简单的做法：因为我们有无限次的transaction次数，所以只要后一天的价格比前一天高，我们就买，这非常合理，因为加入我们在买股票也会这么选择。<br><strong>当然，这道题更重要的一点是它与188题一脉相承，思路非常类似，只不过188相当于多了一个限制条件，所以我们需要转为二维数组，但本质上两道题还是基本一样，dp的思想也非常的值得深思！</strong></li>
+</ol>
 <ul>
-<li>referenced by a root</li>
-<li>referenced by another live root(ListNode in a live List)</li>
+<li>第i天不卖：dp[i] = dp[i-1]</li>
+<li>第i天卖，那么可以在前面任意一天买，所以我们需要把这些都算出来求最大值(O(n^2))。然后有一种很巧妙的优化方式(O(n)))，188也用了一样的思路，主要是通过观察迭代方程得到的：dp[i] = max(price[i]-price[m]+dp[m]), m is from 0 to i-1  ===&gt; initalize tempValue = dp[0]-price[0]；dp[i] = price[i] + tempValue;tempValue = max(tempValue, dp[i] - price[i]);</li>
 </ul>
-<p>Garbage Collector run DFS from root to find live object.<br>Every object has a “visited” tag, invisible to your program.</p>
-<h2 id="Memory-Addresses"><a href="#Memory-Addresses" class="headerlink" title="Memory Addresses"></a>Memory Addresses</h2><p>Memory is array of bytes with address.<br>Declare local variable –&gt; naming a variable location.(Java picks the address)</p>
-<p>Memory address == Pointers</p>
-<h2 id="Mark-amp-Sweep-Garbarge-Collection"><a href="#Mark-amp-Sweep-Garbarge-Collection" class="headerlink" title="Mark &amp; Sweep Garbarge Collection"></a>Mark &amp; Sweep Garbarge Collection</h2><p>2 phase:</p>
-<ul>
-<li>Mark phase: Do a DFS from every root; marks all live objects</li>
-<li>Sweep phase: Pass over all objects in the memory. Garbage is reclaimed.</li>
-</ul>
-<p>Jvm data structrues keep track of free and allocated memory(最简单可以想象成LinkedList), 这种数据结构帮助我们allocate新的变量或者删除掉garbage变量。 Jvm运行一段时间会停下来进行Mark and Sweep。</p>
-<p><strong>问题: Fragmentation: tendency of free memory to get broken up into small pieces. Unable to allocate a large object despite lots of free memory</strong><br>解决方法: Compaction: A compacting garbage collector moves objects during sweep phase.<br><img src="/images/blog/GC-1.png" alt></p>
-<p>Campaction会导致很多变量移动，也就是reference的移动，但其实java中由于reference的特殊设计，使得减少大量的操作。同时refernce的移动也会造成本身的fragmentation，但由于reference的大小都是一样的，所以并不会造成像变量一样插不进去的问题，所以是无所谓的。<br><img src="/images/blog/GC-2.png" alt></p>
-<h2 id="Copying-Garbage-Collection"><a href="#Copying-Garbage-Collection" class="headerlink" title="Copying Garbage Collection"></a>Copying Garbage Collection</h2><p>Faster than mark&amp;sweep because only one phase.<br>Mwmory is divided into 2 spaces, old space and new space.</p>
-<p>Find live objects by DFS. When it encounter live object in old space, it immediately moves it to new space. Campaction included.<br>Next time, new space is relabeled old space, old space is relabeled new space<br><strong>问题: 只能使用一般的memeory</strong><br><strong>优点: 比mark&amp;sweep快</strong></p>
-<h2 id="Generational-Garbage-Collection"><a href="#Generational-Garbage-Collection" class="headerlink" title="Generational Garbage Collection"></a>Generational Garbage Collection</h2><p>Most objects have short lifetime; a few live very long.<br>A generational collection has 2 or more generations.</p>
-<ul>
-<li>can be different sizes.</li>
-<li>can change size.</li>
-</ul>
-<p>Generational Garbage集合了以上两种GC的优点。</p>
-<p>Example(Sun 1.3 JVM):<br><img src="/images/blog/GC-3.png" alt><br>Minor collections: frequent;only affect young generations.<br>Major collections: Cover all objects.<br>Special tables of references from old objects to young is added to the roots for minor collections.(由于在minor collection的时候，我们只检索年轻代，但可能会存在一些年轻代被年老代所reference，这个时候他们不应该回收，但我们没有对年老代进行DFS。解决方式是用一个table记录。)</p>
-<p><a href="https://www.cnblogs.com/wangsr-suc/p/9241652.html" target="_blank" rel="noopener">https://www.cnblogs.com/wangsr-suc/p/9241652.html</a></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">    </span></span><br><span class="line"><span class="hljs-comment">    1. dp[i] = dp[i-1]</span></span><br><span class="line"><span class="hljs-comment">    2. dp[i] = max(price[i]-price[m]+dp[m]), m is from 0 to i-1</span></span><br><span class="line"><span class="hljs-comment">    ===&gt;</span></span><br><span class="line"><span class="hljs-comment">    initalize tempValue = dp[0]-price[0]</span></span><br><span class="line"><span class="hljs-comment">    dp[i] = price[i] + tempValue;</span></span><br><span class="line"><span class="hljs-comment">    tempValue = max(tempValue, dp[i] - price[i]);</span></span><br><span class="line"><span class="hljs-comment">    </span></span><br><span class="line"><span class="hljs-comment">    */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> n = prices.length;</span><br><span class="line">        <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n+<span class="hljs-number">1</span>];</span><br><span class="line">        <span class="hljs-keyword">int</span> tmp = dp[<span class="hljs-number">1</span>] - prices[<span class="hljs-number">0</span>];</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">1</span>;i&lt;=dp.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            dp[i] = Math.max(dp[i-<span class="hljs-number">1</span>], prices[i-<span class="hljs-number">1</span>]+tmp);</span><br><span class="line">            tmp = Math.max(tmp, dp[i]-prices[i-<span class="hljs-number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="188">
+<li>Best Time to Buy and Sell Stock IV： 有了122的加持，再做188其实就会发现思路完全一样。<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">          0 3 2 6 5 0 3</span></span><br><span class="line"><span class="hljs-comment">        0 0 0 0 0 0 0 0</span></span><br><span class="line"><span class="hljs-comment">        1 0 0 0 4 4 4 4</span></span><br><span class="line"><span class="hljs-comment">        2 0 0 0 4 4 4 7</span></span><br><span class="line"><span class="hljs-comment">        </span></span><br><span class="line"><span class="hljs-comment">        recursive function</span></span><br><span class="line"><span class="hljs-comment">        1. if we do not do transaction: dp[i][j] = dp[i][j-1]</span></span><br><span class="line"><span class="hljs-comment">        2. if we do transaction at this day:</span></span><br><span class="line"><span class="hljs-comment">            dp[i][j] = max(price[j] - price[m] + dp[i-1][m])</span></span><br><span class="line"><span class="hljs-comment">            m is from 1 to j-1</span></span><br><span class="line"><span class="hljs-comment">            ==&gt;</span></span><br><span class="line"><span class="hljs-comment">            dp[i][j] = price[j]+tempMax;</span></span><br><span class="line"><span class="hljs-comment">            tempMax = Math.max(tempMax, dp[i-1][j]-price[j]);</span></span><br><span class="line"><span class="hljs-comment">            </span></span><br><span class="line"><span class="hljs-comment">        max(1, 2)</span></span><br><span class="line"><span class="hljs-comment">        */</span></span><br><span class="line">    </span><br><span class="line">        <span class="hljs-keyword">int</span> n = prices.length;</span><br><span class="line">        <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span>(k&gt;n/<span class="hljs-number">2</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> quickSolve(prices);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">int</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[k+<span class="hljs-number">1</span>][n+<span class="hljs-number">1</span>];</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;=k;i++)&#123;</span><br><span class="line">            dp[i][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            dp[<span class="hljs-number">0</span>][i] = <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">1</span>;i&lt;=k;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> maxTemp = dp[i][<span class="hljs-number">0</span>]-prices[<span class="hljs-number">0</span>];</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> value1 = dp[i][j-<span class="hljs-number">1</span>];</span><br><span class="line">                <span class="hljs-keyword">int</span> value2 = prices[j-<span class="hljs-number">1</span>] + maxTemp;</span><br><span class="line">                maxTemp = Math.max(maxTemp, dp[i-<span class="hljs-number">1</span>][j]-prices[j-<span class="hljs-number">1</span>]);</span><br><span class="line">                dp[i][j] = Math.max(value1 , value2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> dp[k][n];</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">quickSolve</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] prices)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">1</span>;i&lt;=prices.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(prices[i]-prices[i-<span class="hljs-number">1</span>]&gt;<span class="hljs-number">0</span>)</span><br><span class="line">                ans = ans+prices[i]-prices[i-<span class="hljs-number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>
-                </div>
-            </div>
         </div>
         
         
@@ -203,17 +183,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/28/Behavior Questions/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Behavior Questions</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/24/java中final、finally和finalize的区别/">
-                <span class="level-item">java中final、finally和finalize的区别</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/03/Master Theorem/">
+                <span class="level-item">Master Theorem</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
