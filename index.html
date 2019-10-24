@@ -124,6 +124,71 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-24T01:30:08.000Z">2019-10-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 minutes read (About 1229 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/23/Greedy问题慢慢总结/">Greedy问题慢慢总结</a>
+            
+        </h1>
+        <div class="content">
+            <p>Greedy慢慢总结：</p>
+<ol start="55">
+<li><p>Jump Game：这道题还是很简单的，思路就是遍历数组找到最远能到的位置。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">55. Jump Game</span></span><br><span class="line"><span class="hljs-comment">Medium</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">2523</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">241</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">Given an array of non-negative integers, you are initially positioned at the first index of the array.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Each element in the array represents your maximum jump length at that position.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Determine if you are able to reach the last index.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Example 1:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: [2,3,1,1,4]</span></span><br><span class="line"><span class="hljs-comment">Output: true</span></span><br><span class="line"><span class="hljs-comment">Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.</span></span><br><span class="line"><span class="hljs-comment">Example 2:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: [3,2,1,0,4]</span></span><br><span class="line"><span class="hljs-comment">Output: false</span></span><br><span class="line"><span class="hljs-comment">Explanation: You will always arrive at index 3 no matter what. Its maximum</span></span><br><span class="line"><span class="hljs-comment">             jump length is 0, which makes it impossible to reach the last index.</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">canJump</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> farest = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;=farest &amp;&amp; i&lt;=nums.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            farest = Math.max(farest, i+nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> farest &gt;= nums.length-<span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Jump Game II:我们需要记录的是我们跳出一步所能走的最远距离，同时在走到这个局部最远距离的过程中，我们会记录下来下一次的局部最短距离，当我们行进到本次的局部最远距离的时候，我们知道是时候该跳下一步了，所以我们step++并更新局部最远距离。<strong>所以这道题我们的i要小于nums.length-1，因为nums.length-1这个点是最后一个我们可能在跳的点</strong></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">45. Jump Game II</span></span><br><span class="line"><span class="hljs-comment">Hard</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">1539</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">87</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">Given an array of non-negative integers, you are initially positioned at the first index of the array.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Each element in the array represents your maximum jump length at that position.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Your goal is to reach the last index in the minimum number of jumps.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Example:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: [2,3,1,1,4]</span></span><br><span class="line"><span class="hljs-comment">Output: 2</span></span><br><span class="line"><span class="hljs-comment">Explanation: The minimum number of jumps to reach the last index is 2.</span></span><br><span class="line"><span class="hljs-comment">    Jump 1 step from index 0 to 1, then 3 steps to the last index.</span></span><br><span class="line"><span class="hljs-comment">Note:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">You can assume that you can always reach the last index.</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">jump</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> step = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> lastLargest = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> curlargest = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;nums.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            curlargest = Math.max(curlargest, i+nums[i]);</span><br><span class="line">            <span class="hljs-keyword">if</span>(i==lastLargest)&#123;</span><br><span class="line">                lastLargest = curlargest;</span><br><span class="line">                step++;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> step;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Task Scheduler:<a href="https://leetcode.com/problems/task-scheduler/discuss/104500/Java-O(n)-time-O(1)-space-1-pass-no-sorting-solution-with-detailed-explanation" target="_blank" rel="noopener">https://leetcode.com/problems/task-scheduler/discuss/104500/Java-O(n)-time-O(1)-space-1-pass-no-sorting-solution-with-detailed-explanation</a><br>Greedy点：最大频率的一定要先被选择，被选择后在里面的idle位置填充其他小于最大频率的任务。corner case：存在多个最大频率的任务，解决方法是没存在一个最大频率的任务，相当于我们idle的间隔减一。</p>
+</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">621. Task Scheduler</span></span><br><span class="line"><span class="hljs-comment">Medium</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">2060</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">382</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks. Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">You need to return the least number of intervals the CPU will take to finish all the given tasks.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment"> </span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Example:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: tasks = ["A","A","A","B","B","B"], n = 2</span></span><br><span class="line"><span class="hljs-comment">Output: 8</span></span><br><span class="line"><span class="hljs-comment">Explanation: A -&gt; B -&gt; idle -&gt; A -&gt; B -&gt; idle -&gt; A -&gt; B.</span></span><br><span class="line"><span class="hljs-comment"> </span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Note:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">The number of tasks is in the range [1, 10000].</span></span><br><span class="line"><span class="hljs-comment">The integer n is in the range [0, 100].</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">leastInterval</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] tasks, <span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> max = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> maxCount = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span>[] chs = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>];</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c:tasks)&#123;</span><br><span class="line">            chs[c-<span class="hljs-string">'A'</span>]++;</span><br><span class="line">            <span class="hljs-keyword">if</span>(chs[c-<span class="hljs-string">'A'</span>]==max)&#123;</span><br><span class="line">                maxCount++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(chs[c-<span class="hljs-string">'A'</span>]&gt;max)&#123;</span><br><span class="line">                maxCount = <span class="hljs-number">1</span>;</span><br><span class="line">                max = chs[c-<span class="hljs-string">'A'</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">int</span> partitionNumber = max-<span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> partitionCount = n-(maxCount-<span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">int</span> taskNotHighestFreq = tasks.length - max*maxCount;</span><br><span class="line">        <span class="hljs-keyword">int</span> idleNumber = partitionNumber*partitionCount -taskNotHighestFreq;</span><br><span class="line">        idleNumber = Math.max(<span class="hljs-number">0</span>, idleNumber);</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> tasks.length+idleNumber;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="135">
+<li><p>Candy: <a href="https://leetcode.com/problems/candy/solution/" target="_blank" rel="noopener">https://leetcode.com/problems/candy/solution/</a></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">135. Candy</span></span><br><span class="line"><span class="hljs-comment">Hard</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">623</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">131</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">There are N children standing in a line. Each child is assigned a rating value.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">You are giving candies to these children subjected to the following requirements:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Each child must have at least one candy.</span></span><br><span class="line"><span class="hljs-comment">Children with a higher rating get more candies than their neighbors.</span></span><br><span class="line"><span class="hljs-comment">What is the minimum candies you must give?</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Example 1:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: [1,0,2]</span></span><br><span class="line"><span class="hljs-comment">Output: 5</span></span><br><span class="line"><span class="hljs-comment">Explanation: You can allocate to the first, second and third child with 2, 1, 2 candies respectively.</span></span><br><span class="line"><span class="hljs-comment">Example 2:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: [1,2,2]</span></span><br><span class="line"><span class="hljs-comment">Output: 4</span></span><br><span class="line"><span class="hljs-comment">Explanation: You can allocate to the first, second and third child with 1, 2, 1 candies respectively.</span></span><br><span class="line"><span class="hljs-comment">             The third child gets 1 candy because it satisfies the above two conditions.</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">candy</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] ratings)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span>[] nums = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[ratings.length];</span><br><span class="line">        Arrays.fill(nums, <span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">1</span>;i&lt;=nums.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(ratings[i]&gt;ratings[i-<span class="hljs-number">1</span>])&#123;</span><br><span class="line">                nums[i] = nums[i-<span class="hljs-number">1</span>]+<span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =nums.length-<span class="hljs-number">2</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(ratings[i]&gt;ratings[i+<span class="hljs-number">1</span>])&#123;</span><br><span class="line">                nums[i] = Math.max(nums[i], nums[i+<span class="hljs-number">1</span>]+<span class="hljs-number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;=nums.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            sum += nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Gas Station:<br>If car starts at A and can not reach B. Any station between A and B<br>can not reach B.(B is the first station that A can not reach.)<br>If the total number of gas is bigger than the total number of cost. There must be a solution.<br>由以上两点，我们每次发现我们的油不够了，我们就把新起点放到当前位置(因为上一个起点到当前位置没有哪个点可以有可能油够：我们上一个起点的油一定大于起步距离，那么如果连上一个起点的油都不够开到当前位置，那么之间的点也都不可能作为起点)，并且清空我们的油桶，所以最后我们会逐步淘汰只剩一个最后的起点，如果这时我们发现总油量大于等于总里程，那么ok这个结果就是我们想要的，否则说明不可能有结果。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">134. Gas Station</span></span><br><span class="line"><span class="hljs-comment">Medium</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">982</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">322</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">There are N gas stations along a circular route, where the amount of gas at station i is gas[i].</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from station i to its next station (i+1). You begin the journey with an empty tank at one of the gas stations.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Return the starting gas station's index if you can travel around the circuit once in the clockwise direction, otherwise return -1.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Note:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">If there exists a solution, it is guaranteed to be unique.</span></span><br><span class="line"><span class="hljs-comment">Both input arrays are non-empty and have the same length.</span></span><br><span class="line"><span class="hljs-comment">Each element in the input arrays is a non-negative integer.</span></span><br><span class="line"><span class="hljs-comment">Example 1:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: </span></span><br><span class="line"><span class="hljs-comment">gas  = [1,2,3,4,5]</span></span><br><span class="line"><span class="hljs-comment">cost = [3,4,5,1,2]</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Output: 3</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Explanation:</span></span><br><span class="line"><span class="hljs-comment">Start at station 3 (index 3) and fill up with 4 unit of gas. Your tank = 0 + 4 = 4</span></span><br><span class="line"><span class="hljs-comment">Travel to station 4. Your tank = 4 - 1 + 5 = 8</span></span><br><span class="line"><span class="hljs-comment">Travel to station 0. Your tank = 8 - 2 + 1 = 7</span></span><br><span class="line"><span class="hljs-comment">Travel to station 1. Your tank = 7 - 3 + 2 = 6</span></span><br><span class="line"><span class="hljs-comment">Travel to station 2. Your tank = 6 - 4 + 3 = 5</span></span><br><span class="line"><span class="hljs-comment">Travel to station 3. The cost is 5. Your gas is just enough to travel back to station 3.</span></span><br><span class="line"><span class="hljs-comment">Therefore, return 3 as the starting index.</span></span><br><span class="line"><span class="hljs-comment">Example 2:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: </span></span><br><span class="line"><span class="hljs-comment">gas  = [2,3,4]</span></span><br><span class="line"><span class="hljs-comment">cost = [3,4,3]</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Output: -1</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Explanation:</span></span><br><span class="line"><span class="hljs-comment">You can't start at station 0 or 1, as there is not enough gas to travel to the next station.</span></span><br><span class="line"><span class="hljs-comment">Let's start at station 2 and fill up with 4 unit of gas. Your tank = 0 + 4 = 4</span></span><br><span class="line"><span class="hljs-comment">Travel to station 0. Your tank = 4 - 3 + 2 = 3</span></span><br><span class="line"><span class="hljs-comment">Travel to station 1. Your tank = 3 - 3 + 3 = 3</span></span><br><span class="line"><span class="hljs-comment">You cannot travel back to station 2, as it requires 4 unit of gas but you only have 3.</span></span><br><span class="line"><span class="hljs-comment">Therefore, you can't travel around the circuit once no matter where you start.</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">canCompleteCircuit</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] gas, <span class="hljs-keyword">int</span>[] cost)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> gasCount = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> costCount = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> tank = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;=gas.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            gasCount = gasCount + gas[i];</span><br><span class="line">            costCount = costCount+cost[i];</span><br><span class="line">            tank = tank+gas[i]-cost[i];</span><br><span class="line">            <span class="hljs-keyword">if</span>(tank&lt;<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                tank = <span class="hljs-number">0</span>;</span><br><span class="line">                start = i+<span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span>(gasCount&lt;costCount)&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> start;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-23T15:07:45.000Z">2019-10-23</time>
                 
                 <div class="level-item">
@@ -293,7 +358,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 512 words)
+                    44 minutes read (About 6568 words)
                 </span>
                 
                 
@@ -588,56 +653,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-28T20:21:27.000Z">2019-09-28</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds read (About 42 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/28/Behavior Questions/">Behavior Questions</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Behavior-Questions"><a href="#Behavior-Questions" class="headerlink" title="Behavior Questions"></a>Behavior Questions</h1><p>The STAR format stands for Situation, Task, Action, Result:</p>
-<p>Situation: An event, project, or challenge faced<br>Task: Your responsibilities and assignments for the situation<br>Action: Steps or procedure taken to relieve or rectify situation<br>Result: Results of actions taken.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/28/Behavior Questions/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -702,7 +717,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        23
+                        24
                     </p>
                 </div>
             </div>
@@ -800,7 +815,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a></li>
             </ul>
@@ -825,6 +840,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/23/Greedy问题慢慢总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Greedy问题慢慢总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-24T01:30:08.000Z">2019-10-23</time></div>
+                    <a href="/2019/10/23/Greedy问题慢慢总结/" class="has-link-black-ter is-size-6">Greedy问题慢慢总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -902,25 +936,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/05/股票买卖问题/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="股票买卖问题">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-06T01:59:48.000Z">2019-10-05</time></div>
-                    <a href="/2019/10/05/股票买卖问题/" class="has-link-black-ter is-size-6">股票买卖问题</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -939,7 +954,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
