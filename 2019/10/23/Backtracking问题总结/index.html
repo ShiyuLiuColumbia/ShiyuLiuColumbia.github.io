@@ -154,9 +154,9 @@
 </ol>
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> List&lt;List&lt;String&gt;&gt; solveNQueens(<span class="hljs-keyword">int</span> n) &#123;</span><br><span class="line">        List&lt;List&lt;String&gt;&gt; ans = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> ans;</span><br><span class="line">        <span class="hljs-keyword">char</span>[][] board = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[n][n];</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;=board.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j =<span class="hljs-number">0</span>;j&lt;=board[<span class="hljs-number">0</span>].length-<span class="hljs-number">1</span>;j++)&#123;</span><br><span class="line">                board[i][j] = <span class="hljs-string">'.'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        solve(board, ans, <span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, List&lt;List&lt;String&gt;&gt; ans, <span class="hljs-keyword">int</span> line)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(line==board.length)&#123;</span><br><span class="line">            List&lt;String&gt; l = helper(board);</span><br><span class="line">            ans.add(l);</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;=board.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(valid(board, line, i))&#123;</span><br><span class="line">                board[line][i] = <span class="hljs-string">'Q'</span>;</span><br><span class="line">                solve(board, ans, line+<span class="hljs-number">1</span>);</span><br><span class="line">                board[line][i] = <span class="hljs-string">'.'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">valid</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, <span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> column)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;=board.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(board[row][i]==<span class="hljs-string">'Q'</span> || board[i][column]==<span class="hljs-string">'Q'</span>)&#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = row-<span class="hljs-number">1</span>, j=column-<span class="hljs-number">1</span>;i&gt;=<span class="hljs-number">0</span> &amp;&amp; j&gt;=<span class="hljs-number">0</span>;i--, j--)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(board[i][j]==<span class="hljs-string">'Q'</span>)&#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = row-<span class="hljs-number">1</span>, j=column+<span class="hljs-number">1</span>;i&gt;=<span class="hljs-number">0</span>&amp;&amp;j&lt;=board.length-<span class="hljs-number">1</span>;i--,j++)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(board[i][j]==<span class="hljs-string">'Q'</span>)&#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> List&lt;String&gt; <span class="hljs-title">helper</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board)</span></span>&#123;</span><br><span class="line">        List&lt;String&gt; ans = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span>[] c:board)&#123;</span><br><span class="line">            String s = String.valueOf(c);</span><br><span class="line">            ans.add(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="22">
-<li>Generate Parentheses: 加括号只有两种情况，加(或者加)，所以不用for loop，同时我们<code>helper(ans, left+1, right, n, s+&#39;(&#39;);</code>直接在s上加不会改变原来的s，所以结束dfs后也就不用再进行额外的操作。<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title">generateParenthesis</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; ans = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> ans;</span><br><span class="line">        <span class="hljs-keyword">int</span> left = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> right = <span class="hljs-number">0</span>;</span><br><span class="line">        helper(ans, left, right, n, <span class="hljs-string">""</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">helper</span><span class="hljs-params">(List&lt;String&gt; ans , <span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right, <span class="hljs-keyword">int</span> n, String s)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(left==n &amp;&amp; right == n)&#123;</span><br><span class="line">            ans.add(s);</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span>(left&lt;n)&#123;</span><br><span class="line">            helper(ans, left+<span class="hljs-number">1</span>, right, n, s+<span class="hljs-string">'('</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span>(left&gt;right)&#123;</span><br><span class="line">            helper(ans, left, right+<span class="hljs-number">1</span>, n, s+<span class="hljs-string">')'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>Generate Parentheses: 加括号只有两种情况，加(或者加)，所以不用for loop，同时我们<code>helper(ans, left+1, right, n, s+&#39;(&#39;);</code>直接在s上加不会改变原来的s，所以结束dfs后也就不用再进行额外的操作。</li>
 </ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title">generateParenthesis</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; ans = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> ans;</span><br><span class="line">        <span class="hljs-keyword">int</span> left = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> right = <span class="hljs-number">0</span>;</span><br><span class="line">        helper(ans, left, right, n, <span class="hljs-string">""</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">helper</span><span class="hljs-params">(List&lt;String&gt; ans , <span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right, <span class="hljs-keyword">int</span> n, String s)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(left==n &amp;&amp; right == n)&#123;</span><br><span class="line">            ans.add(s);</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span>(left&lt;n)&#123;</span><br><span class="line">            helper(ans, left+<span class="hljs-number">1</span>, right, n, s+<span class="hljs-string">'('</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span>(left&gt;right)&#123;</span><br><span class="line">            helper(ans, left, right+<span class="hljs-number">1</span>, n, s+<span class="hljs-string">')'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <p>以下这六道题都有类似的结构，前一道是不含duplicate，后一道是含duplicate，含duplicate的需要进行sort。</p>
 <p>39与40题是类似题目，也都是很显而易见的backtracking。<strong>这里我们要注意到，对于同一层的recursive，下面会有很多种可能的situation，这里面会包含有不合法的situation，比如40题中的[1 1 6 7]会产生两个[1 7]。这种时候要格外小心，比如40题我们并不是所有candidate[i]==candiate[i-1]的情况都不要(if(i&gt;0 &amp;&amp; candidates[i]==candidates[i-1]))，如果这么写[1 1 6]就被排掉了；而是对于这一层的recursive，如果某个candidate不是第一次出现而且还和前面相等，那说明不要它</strong></p>
@@ -266,7 +266,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        24
+                        27
                     </p>
                 </div>
             </div>
@@ -364,7 +364,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">16</span>
             </span>
         </a></li>
             </ul>
@@ -389,6 +389,63 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/30/Path Sum总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Path Sum总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-30T19:26:19.000Z">2019-10-30</time></div>
+                    <a href="/2019/10/30/Path Sum总结/" class="has-link-black-ter is-size-6">Path Sum总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/30/Majority Vote总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Majority Vote总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-30T14:26:39.000Z">2019-10-30</time></div>
+                    <a href="/2019/10/30/Majority Vote总结/" class="has-link-black-ter is-size-6">Majority Vote总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/25/单调栈问题总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="单调栈问题总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-25T14:39:33.000Z">2019-10-25</time></div>
+                    <a href="/2019/10/25/单调栈问题总结/" class="has-link-black-ter is-size-6">单调栈问题总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -428,63 +485,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/23/Binary Search总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Search总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T15:05:27.000Z">2019-10-23</time></div>
-                    <a href="/2019/10/23/Binary Search总结/" class="has-link-black-ter is-size-6">Binary Search总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/23/LinkedList Cycle问题/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="LinkedList Cycle问题">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T15:04:45.000Z">2019-10-23</time></div>
-                    <a href="/2019/10/23/LinkedList Cycle问题/" class="has-link-black-ter is-size-6">LinkedList Cycle问题</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/12/Mapreduce and Primary-Backup Key-Value Service/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Mapreduce and Primary-Backup Key-Value Service">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-12T21:50:23.000Z">2019-10-12</time></div>
-                    <a href="/2019/10/12/Mapreduce and Primary-Backup Key-Value Service/" class="has-link-black-ter is-size-6">Mapreduce and Primary-Backup Key-Value Service</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Distributed-System/">Distributed System</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -503,7 +503,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>

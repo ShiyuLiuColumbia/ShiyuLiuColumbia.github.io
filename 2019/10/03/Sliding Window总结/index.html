@@ -157,12 +157,13 @@
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//模板写法</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> counter = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span>(end&lt;s.length())&#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> c = s.charAt(end);</span><br><span class="line">            map.put(c, map.getOrDefault(c, <span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);</span><br><span class="line">            <span class="hljs-keyword">if</span>(map.get(c)&gt;<span class="hljs-number">1</span>)&#123;</span><br><span class="line">                counter++;</span><br><span class="line">            &#125;</span><br><span class="line">            end++;</span><br><span class="line">            <span class="hljs-keyword">while</span>(counter&gt;<span class="hljs-number">0</span>)&#123;<span class="hljs-comment">//no repeat就是counter必须为零的意思</span></span><br><span class="line">                <span class="hljs-keyword">char</span> temp = s.charAt(start);</span><br><span class="line">                map.put(temp, map.get(temp)-<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">if</span>(map.get(temp)==<span class="hljs-number">1</span>)&#123;</span><br><span class="line">                    counter--;</span><br><span class="line">                &#125;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = Math.max(ans, end-start);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//优化的</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(s.length()==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span>(end&lt;=s.length()-<span class="hljs-number">1</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> c = s.charAt(end);</span><br><span class="line">            <span class="hljs-keyword">if</span>(map.containsKey(c))&#123;<span class="hljs-comment">//当条件不成立的时候，就是我们使用start的时候</span></span><br><span class="line">                start = Math.max(start, map.get(c)+<span class="hljs-number">1</span>);</span><br><span class="line">            &#125;  </span><br><span class="line">            map.put(c, end);</span><br><span class="line">            ans = Math.max(ans, end-start+<span class="hljs-number">1</span>);</span><br><span class="line">            end++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="159">
-<li><p>Longest Substring with At Most Two Distinct Characters+340. Longest Substring with At Most K Distinct Characters: 套用我们的模板即可，counter一开始为零，每当我们的end遇到在map中不存在的character的时候，我们的count++；如果counter&gt;k，说明我们现在有超过k中character，所以我们移动start直到某一个character在map中size为零，counter–。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstringKDistinct</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> counter = <span class="hljs-number">0</span>;<span class="hljs-comment">//map中数量大于0的character</span></span><br><span class="line">        <span class="hljs-keyword">while</span>(end&lt;=s.length()-<span class="hljs-number">1</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> c = s.charAt(end);</span><br><span class="line">            map.put(c, map.getOrDefault(c, <span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);</span><br><span class="line">            <span class="hljs-keyword">if</span>(map.get(c)==<span class="hljs-number">1</span>)&#123;<span class="hljs-comment">//如果某个character的数量为1，说明是我们新加进去的，也就是map中数量大于0的元素加一</span></span><br><span class="line">                counter++;</span><br><span class="line">            &#125;</span><br><span class="line">            end++;</span><br><span class="line">            <span class="hljs-keyword">while</span>(counter&gt;k)&#123;</span><br><span class="line">                <span class="hljs-keyword">char</span> temp = s.charAt(start);</span><br><span class="line">                map.put(temp, map.get(temp)-<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">if</span>(map.get(temp)==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                    counter--;</span><br><span class="line">                &#125;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">            res = Math.max(res, end-start);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Minimum Window Substring: 求最小与求最大是类似的镜像问题，他们进行结果更新的地方不一样。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">minWindow</span><span class="hljs-params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c: t.toCharArray())&#123;</span><br><span class="line">            map.put(c, map.getOrDefault(c, <span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">int</span> minLength = Integer.MAX_VALUE;</span><br><span class="line">        <span class="hljs-keyword">int</span> minStart = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> minEnd = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> counter = map.size();</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">while</span>(end&lt;s.length())&#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> c = s.charAt(end);</span><br><span class="line">            <span class="hljs-keyword">if</span>(map.containsKey(c))&#123;</span><br><span class="line">                map.put(c, map.get(c)-<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">if</span>(map.get(c)==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                    counter--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            end++;</span><br><span class="line">            </span><br><span class="line">            <span class="hljs-keyword">while</span>(counter==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                <span class="hljs-keyword">char</span> temp = s.charAt(start);</span><br><span class="line">                <span class="hljs-keyword">if</span>(minLength&gt;end-start)&#123;<span class="hljs-comment">//求最小的substring，符合条件的在while loop里面，求最长的substring，符合条件的在外面</span></span><br><span class="line">                    minStart = start;</span><br><span class="line">                    minEnd = end;</span><br><span class="line">                    minLength = end-start;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">if</span>(map.containsKey(temp))&#123;</span><br><span class="line">                    map.put(temp, map.get(temp)+<span class="hljs-number">1</span>);</span><br><span class="line">                    <span class="hljs-keyword">if</span>(map.get(temp)&gt;<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                        counter++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> minLength==Integer.MAX_VALUE?<span class="hljs-string">""</span>:s.substring(minStart, minEnd);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Longest Substring with At Most Two Distinct Characters+340. Longest Substring with At Most K Distinct Characters: 套用我们的模板即可，counter一开始为零，每当我们的end遇到在map中不存在的character的时候，我们的count++；如果counter&gt;k，说明我们现在有超过k中character，所以我们移动start直到某一个character在map中size为零，counter–。</li>
 </ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstringKDistinct</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> counter = <span class="hljs-number">0</span>;<span class="hljs-comment">//map中数量大于0的character</span></span><br><span class="line">        <span class="hljs-keyword">while</span>(end&lt;=s.length()-<span class="hljs-number">1</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> c = s.charAt(end);</span><br><span class="line">            map.put(c, map.getOrDefault(c, <span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);</span><br><span class="line">            <span class="hljs-keyword">if</span>(map.get(c)==<span class="hljs-number">1</span>)&#123;<span class="hljs-comment">//如果某个character的数量为1，说明是我们新加进去的，也就是map中数量大于0的元素加一</span></span><br><span class="line">                counter++;</span><br><span class="line">            &#125;</span><br><span class="line">            end++;</span><br><span class="line">            <span class="hljs-keyword">while</span>(counter&gt;k)&#123;</span><br><span class="line">                <span class="hljs-keyword">char</span> temp = s.charAt(start);</span><br><span class="line">                map.put(temp, map.get(temp)-<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">if</span>(map.get(temp)==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                    counter--;</span><br><span class="line">                &#125;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">            res = Math.max(res, end-start);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="76">
+<li>Minimum Window Substring: 求最小与求最大是类似的镜像问题，他们进行结果更新的地方不一样。</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">minWindow</span><span class="hljs-params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c: t.toCharArray())&#123;</span><br><span class="line">            map.put(c, map.getOrDefault(c, <span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">int</span> minLength = Integer.MAX_VALUE;</span><br><span class="line">        <span class="hljs-keyword">int</span> minStart = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> minEnd = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> counter = map.size();</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">while</span>(end&lt;s.length())&#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> c = s.charAt(end);</span><br><span class="line">            <span class="hljs-keyword">if</span>(map.containsKey(c))&#123;</span><br><span class="line">                map.put(c, map.get(c)-<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">if</span>(map.get(c)==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                    counter--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            end++;</span><br><span class="line">            </span><br><span class="line">            <span class="hljs-keyword">while</span>(counter==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                <span class="hljs-keyword">char</span> temp = s.charAt(start);</span><br><span class="line">                <span class="hljs-keyword">if</span>(minLength&gt;end-start)&#123;<span class="hljs-comment">//求最小的substring，符合条件的在while loop里面，求最长的substring，符合条件的在外面</span></span><br><span class="line">                    minStart = start;</span><br><span class="line">                    minEnd = end;</span><br><span class="line">                    minLength = end-start;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">if</span>(map.containsKey(temp))&#123;</span><br><span class="line">                    map.put(temp, map.get(temp)+<span class="hljs-number">1</span>);</span><br><span class="line">                    <span class="hljs-keyword">if</span>(map.get(temp)&gt;<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                        counter++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> minLength==Integer.MAX_VALUE?<span class="hljs-string">""</span>:s.substring(minStart, minEnd);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -241,7 +242,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        24
+                        27
                     </p>
                 </div>
             </div>
@@ -339,7 +340,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">16</span>
             </span>
         </a></li>
             </ul>
@@ -364,6 +365,63 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/30/Path Sum总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Path Sum总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-30T19:26:19.000Z">2019-10-30</time></div>
+                    <a href="/2019/10/30/Path Sum总结/" class="has-link-black-ter is-size-6">Path Sum总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/30/Majority Vote总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Majority Vote总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-30T14:26:39.000Z">2019-10-30</time></div>
+                    <a href="/2019/10/30/Majority Vote总结/" class="has-link-black-ter is-size-6">Majority Vote总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/25/单调栈问题总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="单调栈问题总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-25T14:39:33.000Z">2019-10-25</time></div>
+                    <a href="/2019/10/25/单调栈问题总结/" class="has-link-black-ter is-size-6">单调栈问题总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -403,63 +461,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/23/Binary Search总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Search总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T15:05:27.000Z">2019-10-23</time></div>
-                    <a href="/2019/10/23/Binary Search总结/" class="has-link-black-ter is-size-6">Binary Search总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/23/LinkedList Cycle问题/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="LinkedList Cycle问题">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T15:04:45.000Z">2019-10-23</time></div>
-                    <a href="/2019/10/23/LinkedList Cycle问题/" class="has-link-black-ter is-size-6">LinkedList Cycle问题</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/12/Mapreduce and Primary-Backup Key-Value Service/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Mapreduce and Primary-Backup Key-Value Service">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-12T21:50:23.000Z">2019-10-12</time></div>
-                    <a href="/2019/10/12/Mapreduce and Primary-Backup Key-Value Service/" class="has-link-black-ter is-size-6">Mapreduce and Primary-Backup Key-Value Service</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Distributed-System/">Distributed System</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -478,7 +479,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>

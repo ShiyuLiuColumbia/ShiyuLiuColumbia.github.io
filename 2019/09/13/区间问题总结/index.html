@@ -158,34 +158,15 @@
 <li>56 + 57</li>
 </ol>
 <a id="more"></a>
-<h2 id="By-end-排序："><a href="#By-end-排序：" class="headerlink" title="By end 排序："></a>By end 排序：</h2><p>这种题的鼻祖问题是schedule problem，也就是leetcode 646. Maximum Length of Pair Chain。</p>
-<ol start="646">
-<li>Maximum Length of Pair Chain，schedule：schedule问题的思想就是为了能有更多的interval，我们更关心的是interval结束的时间，越早结束代表着我们有更多interval的可能性更大，所以我们将intervals按照结束时间sort。<br>排序结束后，我们就要分析使用greedy进行分析：对于结束时间最早的元素，我们肯定要加到结果的count中；对于结束时间第二早的元素，如果他的开始时间大于第一个元素的结束时间，那么我们也加入结果count并且目前最后结束的时间是第二个元素的结束时间，如果不大于那么我们最后结束时间还是第一个元素的结束时间。依次类推，我们知道需要maintain一个endTime。</li>
-</ol>
+<h2 id="By-end-排序："><a href="#By-end-排序：" class="headerlink" title="By end 排序："></a>By end 排序：</h2><p>这种题的鼻祖问题是schedule problem，也就是leetcode 646. Maximum Length of Pair Chain。<br>646.Maximum Length of Pair Chain，schedule：schedule问题的思想就是为了能有更多的interval，我们更关心的是interval结束的时间，越早结束代表着我们有更多interval的可能性更大，所以我们将intervals按照结束时间sort。<br>排序结束后，我们就要分析使用greedy进行分析：对于结束时间最早的元素，我们肯定要加到结果的count中；对于结束时间第二早的元素，如果他的开始时间大于第一个元素的结束时间，那么我们也加入结果count并且目前最后结束的时间是第二个元素的结束时间，如果不大于那么我们最后结束时间还是第一个元素的结束时间。依次类推，我们知道需要maintain一个endTime。</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int findLongestChain(int[][] pairs) &#123;</span><br><span class="line">        if(pairs.length==0)</span><br><span class="line">            return 0;</span><br><span class="line">        Arrays.sort(pairs, (a, b) -&gt; &#123;</span><br><span class="line">            return a[1] - b[1];</span><br><span class="line">        &#125;);</span><br><span class="line">        int count = 1;</span><br><span class="line">        int end = pairs[0][1];</span><br><span class="line">        for(int i =1;i&lt;=pairs.length-1;i++)&#123;</span><br><span class="line">            if(pairs[i][0]&gt;end)&#123;</span><br><span class="line">                count++;</span><br><span class="line">                end = pairs[i][1];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="435">
-<li><p>Non-overlapping Intervals: 这道题与schedule problem可以说一模一样，只是改变了问的方式，所以我们可以先求最大可能不overlap的个数，然后size减去这个数就是结果了。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int eraseOverlapIntervals(int[][] intervals) &#123;</span><br><span class="line">        if(intervals.length==0)</span><br><span class="line">            return 0;</span><br><span class="line">        Arrays.sort(intervals, (a, b)-&gt;&#123;</span><br><span class="line">            return a[1]-b[1];</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        int count = 1;</span><br><span class="line">        int minEnd = intervals[0][1];</span><br><span class="line">        for(int i =1;i&lt;=intervals.length-1;i++)&#123;</span><br><span class="line">            if(intervals[i][0]&gt;=minEnd)&#123;</span><br><span class="line">                count++;</span><br><span class="line">                minEnd = intervals[i][1];</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return intervals.length-count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Minimum Number of Arrows to Burst Balloons: </p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int findMinArrowShots(int[][] points) &#123;</span><br><span class="line">        if(points.length==0)</span><br><span class="line">            return 0;</span><br><span class="line">        Arrays.sort(points, (a, b)-&gt;&#123;</span><br><span class="line">            return a[1]-b[1];</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        int count = 1;</span><br><span class="line">        int minEnd = points[0][1];</span><br><span class="line">        for(int i =1;i&lt;=points.length-1;i++)&#123;</span><br><span class="line">            if(points[i][0]&gt;minEnd)&#123;</span><br><span class="line">                count++;</span><br><span class="line">                minEnd = points[i][1];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>435.Non-overlapping Intervals: 这道题与schedule problem可以说一模一样，只是改变了问的方式，所以我们可以先求最大可能不overlap的个数，然后size减去这个数就是结果了。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int eraseOverlapIntervals(int[][] intervals) &#123;</span><br><span class="line">        if(intervals.length==0)</span><br><span class="line">            return 0;</span><br><span class="line">        Arrays.sort(intervals, (a, b)-&gt;&#123;</span><br><span class="line">            return a[1]-b[1];</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        int count = 1;</span><br><span class="line">        int minEnd = intervals[0][1];</span><br><span class="line">        for(int i =1;i&lt;=intervals.length-1;i++)&#123;</span><br><span class="line">            if(intervals[i][0]&gt;=minEnd)&#123;</span><br><span class="line">                count++;</span><br><span class="line">                minEnd = intervals[i][1];</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return intervals.length-count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>452.Minimum Number of Arrows to Burst Balloons:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int findMinArrowShots(int[][] points) &#123;</span><br><span class="line">        if(points.length==0)</span><br><span class="line">            return 0;</span><br><span class="line">        Arrays.sort(points, (a, b)-&gt;&#123;</span><br><span class="line">            return a[1]-b[1];</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        int count = 1;</span><br><span class="line">        int minEnd = points[0][1];</span><br><span class="line">        for(int i =1;i&lt;=points.length-1;i++)&#123;</span><br><span class="line">            if(points[i][0]&gt;minEnd)&#123;</span><br><span class="line">                count++;</span><br><span class="line">                minEnd = points[i][1];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="By-start-排序"><a href="#By-start-排序" class="headerlink" title="By start 排序"></a>By start 排序</h2><ol start="252">
-<li><p>Meeting Rooms：想象一下只有一个房间，肯定是先开始的人先用，后来的人看看房间有没有人，有人说明被占了，没人则可以使用。所以这道题我们按照start time进行排序，然后看有没有重叠既可。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean canAttendMeetings(int[][] intervals) &#123;</span><br><span class="line">        Arrays.sort(intervals, (a, b)-&gt;&#123;</span><br><span class="line">            return a[0] - b[0];</span><br><span class="line">        &#125;);</span><br><span class="line">        for(int i =1;i&lt;=intervals.length-1;i++)&#123;</span><br><span class="line">            if(intervals[i][0]&lt;intervals[i-1][1])&#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Meeting Rooms II: 这道题和252一样，都是先对start进行排序，因为先来的人肯定先用教室。不同的是这道题可以有多个教室，问题是需要的最少的教室数量。考虑到我们可以有多个教室，并且这些教室的endTime是不同的，所以我们需要maintain一个Priority Queue<integer>去记录目前使用的教室的结束时间去最快找到最小的结束时间。</integer></p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int minMeetingRooms(int[][] intervals) &#123;</span><br><span class="line">        Arrays.sort(intervals, (a, b)-&gt;&#123;</span><br><span class="line">            return a[0] - b[0];</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        PriorityQueue&lt;Integer&gt; endTime = new PriorityQueue&lt;&gt;();</span><br><span class="line">        for(int[] interval:intervals)&#123;</span><br><span class="line">            if(endTime.size()==0)&#123;</span><br><span class="line">                endTime.offer(interval[1]);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                int minEndTime = endTime.poll();</span><br><span class="line">                if(interval[0]&gt;=minEndTime)&#123;</span><br><span class="line">                    endTime.offer(interval[1]);</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    endTime.offer(minEndTime);</span><br><span class="line">                    endTime.offer(interval[1]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return endTime.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Merge Intervals: 这个题不算可以直接应用scheduling problem的方法。如果你按end排序， 那么最容易举的反例就是 [3,5],[6,7],[1,10]。显然这三个应该归并到一起， 但是因为按照end排序， 这三个反而不会相交。<br>题目是希望找到可以merge起来的所有interval，那某种程度上来说是想找相交的interval的最小起始点和最大终止点。所以这里的做法是按start排序， 然后更新end， 把所有与之相交的interval合并成一个大interval。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[][] merge(int[][] intervals) &#123;</span><br><span class="line">        if(intervals.length==0)</span><br><span class="line">            return intervals;</span><br><span class="line">        Arrays.sort(intervals, (a, b) -&gt; &#123;</span><br><span class="line">            return a[0] - b[0];</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        List&lt;int[]&gt; ans = new LinkedList&lt;&gt;();</span><br><span class="line">        int start = intervals[0][0];</span><br><span class="line">        int end = intervals[0][1];</span><br><span class="line">        for(int i =1;i&lt;=intervals.length-1;i++)&#123;</span><br><span class="line">            if(intervals[i][0]&lt;=end)&#123;</span><br><span class="line">                end = Math.max(end, intervals[i][1]);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                ans.add(new int[]&#123;start, end&#125;);</span><br><span class="line">                start = intervals[i][0];</span><br><span class="line">                end = intervals[i][1];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        ans.add(new int[]&#123;start, end&#125;);</span><br><span class="line">        </span><br><span class="line">        int[][] res = new int[ans.size()][2];</span><br><span class="line">        for(int i =0;i&lt;=ans.size()-1;i++)&#123;</span><br><span class="line">            res[i] = ans.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Insert Interval：与56题的思路一样，我们比较newInterval的start和排好序的Interval的end，如果start大于end，说明一定不存在overlap，直接将Interval放入结果中；如果start&lt;=end，代表可能存在overlap，但这道题与56的区别在于<strong>这时我们只是知道NewInterval的start小于Interval的end，并不一定存在overlap</strong></p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[][] insert(int[][] intervals, int[] newInterval) &#123;</span><br><span class="line">        List&lt;int[]&gt; ans = new LinkedList&lt;&gt;();</span><br><span class="line">        for(int[] interval:intervals)&#123;</span><br><span class="line">            if(newInterval==null||newInterval[0]&gt;interval[1])&#123;</span><br><span class="line">                ans.add(interval);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                if(newInterval[1]&lt;interval[0])&#123;//如果newInterval的end小于interval的start，那么这种情况是没有overlap的</span><br><span class="line">                    ans.add(newInterval);</span><br><span class="line">                    ans.add(interval);</span><br><span class="line">                    newInterval=null;</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;//其他情况一定有overlap，画图可以看出来</span><br><span class="line">                    newInterval[0] = Math.min(newInterval[0], interval[0]);</span><br><span class="line">                    newInterval[1] = Math.max(newInterval[1], interval[1]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(newInterval!=null)&#123;</span><br><span class="line">            ans.add(newInterval);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int[][] res = new int[ans.size()][2];</span><br><span class="line">        for(int i =0;i&lt;=ans.size()-1;i++)&#123;</span><br><span class="line">            res[i] = ans.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<h2 id="By-start-排序"><a href="#By-start-排序" class="headerlink" title="By start 排序"></a>By start 排序</h2><p>252.Meeting Rooms：想象一下只有一个房间，肯定是先开始的人先用，后来的人看看房间有没有人，有人说明被占了，没人则可以使用。所以这道题我们按照start time进行排序，然后看有没有重叠既可。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean canAttendMeetings(int[][] intervals) &#123;</span><br><span class="line">        Arrays.sort(intervals, (a, b)-&gt;&#123;</span><br><span class="line">            return a[0] - b[0];</span><br><span class="line">        &#125;);</span><br><span class="line">        for(int i =1;i&lt;=intervals.length-1;i++)&#123;</span><br><span class="line">            if(intervals[i][0]&lt;intervals[i-1][1])&#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>253.Meeting Rooms II: 这道题和252一样，都是先对start进行排序，因为先来的人肯定先用教室。不同的是这道题可以有多个教室，问题是需要的最少的教室数量。考虑到我们可以有多个教室，并且这些教室的endTime是不同的，所以我们需要maintain一个Priority Queue<integer>去记录目前使用的教室的结束时间去最快找到最小的结束时间。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int minMeetingRooms(int[][] intervals) &#123;</span><br><span class="line">        Arrays.sort(intervals, (a, b)-&gt;&#123;</span><br><span class="line">            return a[0] - b[0];</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        PriorityQueue&lt;Integer&gt; endTime = new PriorityQueue&lt;&gt;();</span><br><span class="line">        for(int[] interval:intervals)&#123;</span><br><span class="line">            if(endTime.size()==0)&#123;</span><br><span class="line">                endTime.offer(interval[1]);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                int minEndTime = endTime.poll();</span><br><span class="line">                if(interval[0]&gt;=minEndTime)&#123;</span><br><span class="line">                    endTime.offer(interval[1]);</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    endTime.offer(minEndTime);</span><br><span class="line">                    endTime.offer(interval[1]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return endTime.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></integer></p>
+<p>56.Merge Intervals: 这个题不算可以直接应用scheduling problem的方法。如果你按end排序， 那么最容易举的反例就是 [3,5],[6,7],[1,10]。显然这三个应该归并到一起， 但是因为按照end排序， 这三个反而不会相交。<br>题目是希望找到可以merge起来的所有interval，那某种程度上来说是想找相交的interval的最小起始点和最大终止点。所以这里的做法是按start排序， 然后更新end， 把所有与之相交的interval合并成一个大interval。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[][] merge(int[][] intervals) &#123;</span><br><span class="line">        if(intervals.length==0)</span><br><span class="line">            return intervals;</span><br><span class="line">        Arrays.sort(intervals, (a, b) -&gt; &#123;</span><br><span class="line">            return a[0] - b[0];</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        List&lt;int[]&gt; ans = new LinkedList&lt;&gt;();</span><br><span class="line">        int start = intervals[0][0];</span><br><span class="line">        int end = intervals[0][1];</span><br><span class="line">        for(int i =1;i&lt;=intervals.length-1;i++)&#123;</span><br><span class="line">            if(intervals[i][0]&lt;=end)&#123;</span><br><span class="line">                end = Math.max(end, intervals[i][1]);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                ans.add(new int[]&#123;start, end&#125;);</span><br><span class="line">                start = intervals[i][0];</span><br><span class="line">                end = intervals[i][1];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        ans.add(new int[]&#123;start, end&#125;);</span><br><span class="line">        </span><br><span class="line">        int[][] res = new int[ans.size()][2];</span><br><span class="line">        for(int i =0;i&lt;=ans.size()-1;i++)&#123;</span><br><span class="line">            res[i] = ans.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>57.Insert Interval：与56题的思路一样，我们比较newInterval的start和排好序的Interval的end，如果start大于end，说明一定不存在overlap，直接将Interval放入结果中；如果start&lt;=end，代表可能存在overlap，但这道题与56的区别在于<strong>这时我们只是知道NewInterval的start小于Interval的end，并不一定存在overlap</strong><br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[][] insert(int[][] intervals, int[] newInterval) &#123;</span><br><span class="line">        List&lt;int[]&gt; ans = new LinkedList&lt;&gt;();</span><br><span class="line">        for(int[] interval:intervals)&#123;</span><br><span class="line">            if(newInterval==null||newInterval[0]&gt;interval[1])&#123;</span><br><span class="line">                ans.add(interval);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                if(newInterval[1]&lt;interval[0])&#123;//如果newInterval的end小于interval的start，那么这种情况是没有overlap的</span><br><span class="line">                    ans.add(newInterval);</span><br><span class="line">                    ans.add(interval);</span><br><span class="line">                    newInterval=null;</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;//其他情况一定有overlap，画图可以看出来</span><br><span class="line">                    newInterval[0] = Math.min(newInterval[0], interval[0]);</span><br><span class="line">                    newInterval[1] = Math.max(newInterval[1], interval[1]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(newInterval!=null)&#123;</span><br><span class="line">            ans.add(newInterval);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int[][] res = new int[ans.size()][2];</span><br><span class="line">        for(int i =0;i&lt;=ans.size()-1;i++)&#123;</span><br><span class="line">            res[i] = ans.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
         </div>
         
@@ -210,8 +191,8 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/13/Integer to something总结/">
-                <span class="level-item">Integer to something 类型题总结</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/13/Merge K sorted lists总结/">
+                <span class="level-item">Merge K sorted lists类型题总结</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -264,7 +245,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        24
+                        27
                     </p>
                 </div>
             </div>
@@ -362,7 +343,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">16</span>
             </span>
         </a></li>
             </ul>
@@ -387,6 +368,63 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/30/Path Sum总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Path Sum总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-30T19:26:19.000Z">2019-10-30</time></div>
+                    <a href="/2019/10/30/Path Sum总结/" class="has-link-black-ter is-size-6">Path Sum总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/30/Majority Vote总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Majority Vote总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-30T14:26:39.000Z">2019-10-30</time></div>
+                    <a href="/2019/10/30/Majority Vote总结/" class="has-link-black-ter is-size-6">Majority Vote总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/25/单调栈问题总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="单调栈问题总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-25T14:39:33.000Z">2019-10-25</time></div>
+                    <a href="/2019/10/25/单调栈问题总结/" class="has-link-black-ter is-size-6">单调栈问题总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -426,63 +464,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/23/Binary Search总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Search总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T15:05:27.000Z">2019-10-23</time></div>
-                    <a href="/2019/10/23/Binary Search总结/" class="has-link-black-ter is-size-6">Binary Search总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/23/LinkedList Cycle问题/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="LinkedList Cycle问题">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T15:04:45.000Z">2019-10-23</time></div>
-                    <a href="/2019/10/23/LinkedList Cycle问题/" class="has-link-black-ter is-size-6">LinkedList Cycle问题</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/12/Mapreduce and Primary-Backup Key-Value Service/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Mapreduce and Primary-Backup Key-Value Service">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-12T21:50:23.000Z">2019-10-12</time></div>
-                    <a href="/2019/10/12/Mapreduce and Primary-Backup Key-Value Service/" class="has-link-black-ter is-size-6">Mapreduce and Primary-Backup Key-Value Service</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Distributed-System/">Distributed System</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -501,7 +482,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>

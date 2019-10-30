@@ -2,7 +2,7 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>股票买卖问题 - Shiyu - Blog</title>
+<title>Archives: 2019/10 - Shiyu - Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -117,92 +117,96 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
-    
-    <div class="card-content article ">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="tag is-link">
+        October 2019
+        </h3>
+        <div class="timeline">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-06T01:59:48.000Z">2019-10-05</time>
+            <article class="media">
                 
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                <div class="media-content">
+                    <div class="content">
+                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-10-03T22:46:02.000Z">2019-10-03</time>
+                        <a href="/2019/10/03/约瑟夫环问题/" class="has-link-black-ter is-size-6">约瑟夫环问题</a>
+                        <div class="level article-meta is-mobile">
+                            <div class="level-left">
+                                
+                                <div class="level-item is-size-7 is-uppercase">
+                                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </article>
+        
+            <article class="media">
                 
+                <div class="media-content">
+                    <div class="content">
+                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-10-03T22:39:10.000Z">2019-10-03</time>
+                        <a href="/2019/10/03/Sliding Window总结/" class="has-link-black-ter is-size-6">Sliding Window总结</a>
+                        <div class="level article-meta is-mobile">
+                            <div class="level-left">
+                                
+                                <div class="level-item is-size-7 is-uppercase">
+                                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        
+            <article class="media">
                 
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 788 words)
-                </span>
-                
-                
-            </div>
+                <div class="media-content">
+                    <div class="content">
+                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-10-03T21:50:54.000Z">2019-10-03</time>
+                        <a href="/2019/10/03/Deep copy类型题总结/" class="has-link-black-ter is-size-6">Deep copy类型题总结</a>
+                        <div class="level article-meta is-mobile">
+                            <div class="level-left">
+                                
+                                <div class="level-item is-size-7 is-uppercase">
+                                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                股票买卖问题
-            
-        </h1>
-        <div class="content">
-            <h1 id="买卖股票问题总结"><a href="#买卖股票问题总结" class="headerlink" title="买卖股票问题总结"></a>买卖股票问题总结</h1><p>买卖股票问题是dp的代表类型题目。</p>
-<a id="more"></a>
-<ol start="121">
-<li>Best Time to Buy and Sell Stock: 这道题看起来很简单，但其实之中蕴含dp的思想。我们可以将问题拆解为两个数组的dp问题：low[i]代表进行到第i天为止的最低股票价格，res[i]代表到第i天为止最大获利。所以</li>
-</ol>
-<ul>
-<li>low[i] = Math.min(low[i], low[i-1])</li>
-<li>res[i] = Math.max(res[i], price[i]-low[i])</li>
-</ul>
-<p>当然这道题直接想就可以很简单的做出来，但这种dp的思路很重要。<br><strong>这道题还可以转化成53题maximum subarray，也就是转化成从第二天开始的profit情况</strong></p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> minPrice = Integer.MAX_VALUE;</span><br><span class="line">        <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> price:prices)&#123;</span><br><span class="line">            minPrice = Math.min(minPrice, price);</span><br><span class="line">            res = Math.max(res, price-minPrice);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="122">
-<li>Best Time to Buy and Sell Stock II：这道题有非常非常简单的做法：因为我们有无限次的transaction次数，所以只要后一天的价格比前一天高，我们就买，这非常合理，因为加入我们在买股票也会这么选择。<br><strong>当然，这道题更重要的一点是它与188题一脉相承，思路非常类似，只不过188相当于多了一个限制条件，所以我们需要转为二维数组，但本质上两道题还是基本一样，dp的思想也非常的值得深思！</strong></li>
-</ol>
-<ul>
-<li>第i天不卖：dp[i] = dp[i-1]</li>
-<li>第i天卖，那么可以在前面任意一天买，所以我们需要把这些都算出来求最大值(O(n^2))。然后有一种很巧妙的优化方式(O(n)))，188也用了一样的思路，主要是通过观察迭代方程得到的：dp[i] = max(price[i]-price[m]+dp[m]), m is from 0 to i-1  ===&gt; initalize tempValue = dp[0]-price[0]；dp[i] = price[i] + tempValue;tempValue = max(tempValue, dp[i] - price[i]);</li>
-</ul>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">    </span></span><br><span class="line"><span class="hljs-comment">    1. dp[i] = dp[i-1]</span></span><br><span class="line"><span class="hljs-comment">    2. dp[i] = max(price[i]-price[m]+dp[m]), m is from 0 to i-1</span></span><br><span class="line"><span class="hljs-comment">    ===&gt;</span></span><br><span class="line"><span class="hljs-comment">    initalize tempValue = dp[0]-price[0]</span></span><br><span class="line"><span class="hljs-comment">    dp[i] = price[i] + tempValue;</span></span><br><span class="line"><span class="hljs-comment">    tempValue = max(tempValue, dp[i] - price[i]);</span></span><br><span class="line"><span class="hljs-comment">    </span></span><br><span class="line"><span class="hljs-comment">    */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> n = prices.length;</span><br><span class="line">        <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n+<span class="hljs-number">1</span>];</span><br><span class="line">        <span class="hljs-keyword">int</span> tmp = dp[<span class="hljs-number">1</span>] - prices[<span class="hljs-number">0</span>];</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">1</span>;i&lt;=dp.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            dp[i] = Math.max(dp[i-<span class="hljs-number">1</span>], prices[i-<span class="hljs-number">1</span>]+tmp);</span><br><span class="line">            tmp = Math.max(tmp, dp[i]-prices[i-<span class="hljs-number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="188">
-<li>Best Time to Buy and Sell Stock IV： 有了122的加持，再做188其实就会发现思路完全一样。</li>
-</ol>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">          0 3 2 6 5 0 3</span></span><br><span class="line"><span class="hljs-comment">        0 0 0 0 0 0 0 0</span></span><br><span class="line"><span class="hljs-comment">        1 0 0 0 4 4 4 4</span></span><br><span class="line"><span class="hljs-comment">        2 0 0 0 4 4 4 7</span></span><br><span class="line"><span class="hljs-comment">        </span></span><br><span class="line"><span class="hljs-comment">        recursive function</span></span><br><span class="line"><span class="hljs-comment">        1. if we do not do transaction: dp[i][j] = dp[i][j-1]</span></span><br><span class="line"><span class="hljs-comment">        2. if we do transaction at this day:</span></span><br><span class="line"><span class="hljs-comment">            dp[i][j] = max(price[j] - price[m] + dp[i-1][m])</span></span><br><span class="line"><span class="hljs-comment">            m is from 1 to j-1</span></span><br><span class="line"><span class="hljs-comment">            ==&gt;</span></span><br><span class="line"><span class="hljs-comment">            dp[i][j] = price[j]+tempMax;</span></span><br><span class="line"><span class="hljs-comment">            tempMax = Math.max(tempMax, dp[i-1][j]-price[j]);</span></span><br><span class="line"><span class="hljs-comment">            </span></span><br><span class="line"><span class="hljs-comment">        max(1, 2)</span></span><br><span class="line"><span class="hljs-comment">        */</span></span><br><span class="line">    </span><br><span class="line">        <span class="hljs-keyword">int</span> n = prices.length;</span><br><span class="line">        <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span>(k&gt;n/<span class="hljs-number">2</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> quickSolve(prices);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">int</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[k+<span class="hljs-number">1</span>][n+<span class="hljs-number">1</span>];</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;=k;i++)&#123;</span><br><span class="line">            dp[i][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            dp[<span class="hljs-number">0</span>][i] = <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">1</span>;i&lt;=k;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> maxTemp = dp[i][<span class="hljs-number">0</span>]-prices[<span class="hljs-number">0</span>];</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> value1 = dp[i][j-<span class="hljs-number">1</span>];</span><br><span class="line">                <span class="hljs-keyword">int</span> value2 = prices[j-<span class="hljs-number">1</span>] + maxTemp;</span><br><span class="line">                maxTemp = Math.max(maxTemp, dp[i-<span class="hljs-number">1</span>][j]-prices[j-<span class="hljs-number">1</span>]);</span><br><span class="line">                dp[i][j] = Math.max(value1 , value2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> dp[k][n];</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">quickSolve</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] prices)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">1</span>;i&lt;=prices.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(prices[i]-prices[i-<span class="hljs-number">1</span>]&gt;<span class="hljs-number">0</span>)</span><br><span class="line">                ans = ans+prices[i]-prices[i-<span class="hljs-number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
     </div>
 </div>
 
 
 
-
-
+    
 <div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/12/Mapreduce and Primary-Backup Key-Value Service/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Mapreduce and Primary-Backup Key-Value Service</span>
-            </a>
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/archives/2019/10/">Previous</a>
         </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/03/Master Theorem/">
-                <span class="level-item">Master Theorem</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
+        <div class="pagination-next is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/archives/2019/10/page/3/">Next</a>
         </div>
-        
-    </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/archives/2019/10/">1</a></li>
+            
+            <li><a class="pagination-link is-current" href="/archives/2019/10/page/2/">2</a></li>
+            
+        </ul>
+    </nav>
 </div>
-
-
-
 </div>
                 
 
