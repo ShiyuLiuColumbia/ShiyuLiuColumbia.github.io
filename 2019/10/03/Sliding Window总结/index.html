@@ -133,7 +133,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 minutes read (About 964 words)
+                    9 minutes read (About 1314 words)
                 </span>
                 
                 
@@ -164,7 +164,16 @@
 <li>Minimum Window Substring: 求最小与求最大是类似的镜像问题，他们进行结果更新的地方不一样。</li>
 </ol>
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">minWindow</span><span class="hljs-params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c: t.toCharArray())&#123;</span><br><span class="line">            map.put(c, map.getOrDefault(c, <span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">int</span> minLength = Integer.MAX_VALUE;</span><br><span class="line">        <span class="hljs-keyword">int</span> minStart = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> minEnd = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> counter = map.size();</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">while</span>(end&lt;s.length())&#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> c = s.charAt(end);</span><br><span class="line">            <span class="hljs-keyword">if</span>(map.containsKey(c))&#123;</span><br><span class="line">                map.put(c, map.get(c)-<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">if</span>(map.get(c)==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                    counter--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            end++;</span><br><span class="line">            </span><br><span class="line">            <span class="hljs-keyword">while</span>(counter==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                <span class="hljs-keyword">char</span> temp = s.charAt(start);</span><br><span class="line">                <span class="hljs-keyword">if</span>(minLength&gt;end-start)&#123;<span class="hljs-comment">//求最小的substring，符合条件的在while loop里面，求最长的substring，符合条件的在外面</span></span><br><span class="line">                    minStart = start;</span><br><span class="line">                    minEnd = end;</span><br><span class="line">                    minLength = end-start;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">if</span>(map.containsKey(temp))&#123;</span><br><span class="line">                    map.put(temp, map.get(temp)+<span class="hljs-number">1</span>);</span><br><span class="line">                    <span class="hljs-keyword">if</span>(map.get(temp)&gt;<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                        counter++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> minLength==Integer.MAX_VALUE?<span class="hljs-string">""</span>:s.substring(minStart, minEnd);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<hr>
+<p>K different element题目：<br>这种题目可以转换成我们之前做过的At Most K类型题，Exactly(K) = AtMost(K) - AtMost(K-1)</p>
+<ol start="992">
+<li>Subarrays with K Different Integers</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">992. Subarrays with K Different Integers</span></span><br><span class="line"><span class="hljs-comment">Hard</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">521</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">11</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">Given an array A of positive integers, call a (contiguous, not necessarily distinct) subarray of A good if the number of different integers in that subarray is exactly K.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">(For example, [1,2,3,1,2] has 3 different integers: 1, 2, and 3.)</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Return the number of good subarrays of A.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment"> </span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Example 1:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: A = [1,2,1,2,3], K = 2</span></span><br><span class="line"><span class="hljs-comment">Output: 7</span></span><br><span class="line"><span class="hljs-comment">Explanation: Subarrays formed with exactly 2 different integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2].</span></span><br><span class="line"><span class="hljs-comment">Example 2:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: A = [1,2,1,3,4], K = 3</span></span><br><span class="line"><span class="hljs-comment">Output: 3</span></span><br><span class="line"><span class="hljs-comment">Explanation: Subarrays formed with exactly 3 different integers: [1,2,1,3], [2,1,3], [1,3,4].</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">subarraysWithKDistinct</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A, <span class="hljs-keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> atMostK(A, K)-atMostK(A, K-<span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">atMostK</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A, <span class="hljs-keyword">int</span> K)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span>(end&lt;=A.length-<span class="hljs-number">1</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> num = A[end];</span><br><span class="line">            <span class="hljs-keyword">if</span>(map.getOrDefault(num, <span class="hljs-number">0</span>)==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(num, map.getOrDefault(num, <span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);</span><br><span class="line">            end++;</span><br><span class="line">            <span class="hljs-keyword">while</span>(count&gt;K)&#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> startNum = A[start];</span><br><span class="line">                map.put(startNum, map.get(startNum)-<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">if</span>(map.get(startNum)==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                    count--;</span><br><span class="line">                &#125;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = ans + end - start;<span class="hljs-comment">//the total number of subarrays ending at j that contain at most K distinct.</span></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="1248">
+<li>Count Number of Nice Subarrays</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">1248. Count Number of Nice Subarrays</span></span><br><span class="line"><span class="hljs-comment">Medium</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">56</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">0</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">Given an array of integers nums and an integer k. A subarray is called nice if there are k odd numbers on it.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Return the number of nice sub-arrays.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment"> </span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Example 1:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: nums = [1,1,2,1,1], k = 3</span></span><br><span class="line"><span class="hljs-comment">Output: 2</span></span><br><span class="line"><span class="hljs-comment">Explanation: The only sub-arrays with 3 odd numbers are [1,1,2,1] and [1,2,1,1].</span></span><br><span class="line"><span class="hljs-comment">Example 2:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: nums = [2,4,6], k = 1</span></span><br><span class="line"><span class="hljs-comment">Output: 0</span></span><br><span class="line"><span class="hljs-comment">Explanation: There is no odd numbers in the array.</span></span><br><span class="line"><span class="hljs-comment">Example 3:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: nums = [2,2,2,1,2,2,1,2,2,2], k = 2</span></span><br><span class="line"><span class="hljs-comment">Output: 16</span></span><br><span class="line"><span class="hljs-comment"> </span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Constraints:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">1 &lt;= nums.length &lt;= 50000</span></span><br><span class="line"><span class="hljs-comment">1 &lt;= nums[i] &lt;= 10^5</span></span><br><span class="line"><span class="hljs-comment">1 &lt;= k &lt;= nums.length</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">numberOfSubarrays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> atMostK(nums, k) - atMostK(nums, k-<span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">atMostK</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span>(end&lt;=nums.length-<span class="hljs-number">1</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(nums[end]%<span class="hljs-number">2</span>==<span class="hljs-number">1</span>)&#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">            end++;</span><br><span class="line">            <span class="hljs-keyword">while</span>(count&gt;k)&#123;</span><br><span class="line">                <span class="hljs-keyword">if</span>(nums[start]%<span class="hljs-number">2</span>==<span class="hljs-number">1</span>)&#123;</span><br><span class="line">                    count--;</span><br><span class="line">                &#125;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = ans + end -start;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -242,7 +251,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        27
+                        29
                     </p>
                 </div>
             </div>
@@ -340,7 +349,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">16</span>
+                <span class="level-item tag">18</span>
             </span>
         </a></li>
             </ul>
@@ -365,6 +374,44 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/06/DP慢慢总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="DP慢慢总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-06T16:27:39.000Z">2019-11-06</time></div>
+                    <a href="/2019/11/06/DP慢慢总结/" class="has-link-black-ter is-size-6">DP慢慢总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/05/Word Ladder类型题/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Word Ladder类型题">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-05T21:43:13.000Z">2019-11-05</time></div>
+                    <a href="/2019/11/05/Word Ladder类型题/" class="has-link-black-ter is-size-6">Word Ladder类型题</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -423,44 +470,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/23/Greedy问题慢慢总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Greedy问题慢慢总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-24T01:30:08.000Z">2019-10-23</time></div>
-                    <a href="/2019/10/23/Greedy问题慢慢总结/" class="has-link-black-ter is-size-6">Greedy问题慢慢总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/23/Backtracking问题总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Backtracking问题总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T15:07:45.000Z">2019-10-23</time></div>
-                    <a href="/2019/10/23/Backtracking问题总结/" class="has-link-black-ter is-size-6">Backtracking问题总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -472,6 +481,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/10/">

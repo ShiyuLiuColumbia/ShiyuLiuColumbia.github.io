@@ -133,7 +133,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes read (About 1082 words)
+                    7 minutes read (About 1118 words)
                 </span>
                 
                 
@@ -161,7 +161,7 @@
 </ol>
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">437. Path Sum III</span></span><br><span class="line"><span class="hljs-comment">Easy</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">2320</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">144</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">You are given a binary tree in which each node contains an integer value.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Find the number of paths that sum to a given value.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Example:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">      10</span></span><br><span class="line"><span class="hljs-comment">     /  \</span></span><br><span class="line"><span class="hljs-comment">    5   -3</span></span><br><span class="line"><span class="hljs-comment">   / \    \</span></span><br><span class="line"><span class="hljs-comment">  3   2   11</span></span><br><span class="line"><span class="hljs-comment"> / \   \</span></span><br><span class="line"><span class="hljs-comment">3  -2   1</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Return 3. The paths that sum to 8 are:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">1.  5 -&gt; 3</span></span><br><span class="line"><span class="hljs-comment">2.  5 -&gt; 2 -&gt; 1</span></span><br><span class="line"><span class="hljs-comment">3. -3 -&gt; 11</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="hljs-comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="hljs-comment"> *     int val;</span></span><br><span class="line"><span class="hljs-comment"> *     TreeNode left;</span></span><br><span class="line"><span class="hljs-comment"> *     TreeNode right;</span></span><br><span class="line"><span class="hljs-comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="hljs-comment"> * &#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">pathSum</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> helper(root, <span class="hljs-number">0</span>, sum, map);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">helper</span><span class="hljs-params">(TreeNode node, <span class="hljs-keyword">int</span> curSum, <span class="hljs-keyword">int</span> sum, Map&lt;Integer, Integer&gt; map)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(node==<span class="hljs-keyword">null</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        curSum = curSum + node.val;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">int</span> res = map.getOrDefault(curSum-sum, <span class="hljs-number">0</span>);</span><br><span class="line">        map.put(curSum, map.getOrDefault(curSum, <span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);</span><br><span class="line">        res = res + helper(node.left, curSum, sum, map)+helper(node.right, curSum, sum, map);</span><br><span class="line">        map.put(curSum, map.get(curSum)-<span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<p>下面两道题的思路很类似，都是求maximum path sum，思路就是正常进行DFS，但是使用一个max变量记录目前遇到过的最大的pathsum。</p>
+<p>下面两道题的思路很类似，都是求maximum path sum，思路就是正常进行DFS，<strong>DFS求的是从input node到叶节点的max path sum，而不是直接求整棵树的max path sum</strong>，在过程中，我们使用一个max变量来计算目前遇到过的最大的pathsum。</p>
 <ol start="124">
 <li>Binary Tree Maximum Path Sum： </li>
 </ol>
@@ -183,6 +183,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/11/05/Word Ladder类型题/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Word Ladder类型题</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -240,7 +247,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        27
+                        29
                     </p>
                 </div>
             </div>
@@ -338,7 +345,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">16</span>
+                <span class="level-item tag">18</span>
             </span>
         </a></li>
             </ul>
@@ -363,6 +370,44 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/06/DP慢慢总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="DP慢慢总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-06T16:27:39.000Z">2019-11-06</time></div>
+                    <a href="/2019/11/06/DP慢慢总结/" class="has-link-black-ter is-size-6">DP慢慢总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/05/Word Ladder类型题/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Word Ladder类型题">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-05T21:43:13.000Z">2019-11-05</time></div>
+                    <a href="/2019/11/05/Word Ladder类型题/" class="has-link-black-ter is-size-6">Word Ladder类型题</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -421,44 +466,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/23/Greedy问题慢慢总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Greedy问题慢慢总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-24T01:30:08.000Z">2019-10-23</time></div>
-                    <a href="/2019/10/23/Greedy问题慢慢总结/" class="has-link-black-ter is-size-6">Greedy问题慢慢总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/23/Backtracking问题总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Backtracking问题总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T15:07:45.000Z">2019-10-23</time></div>
-                    <a href="/2019/10/23/Backtracking问题总结/" class="has-link-black-ter is-size-6">Backtracking问题总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -470,6 +477,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/10/">
