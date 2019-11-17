@@ -133,7 +133,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes read (About 1162 words)
+                    8 minutes read (About 1163 words)
                 </span>
                 
                 
@@ -151,10 +151,11 @@
 <li>It’s much faster than one-end search indeed as explained in wiki.</li>
 <li><strong>BFS isn’t equivalent to Queue. Sometimes Set is more accurate representation for nodes of level. (also handy since we need to check if we meet from two ends)</strong></li>
 <li>It’s safe to share a visited set for both ends since if they meet same string it terminates early. (vis is useful since we cannot remove word from dict due to bidirectional search)</li>
-<li><p>It seems like if(set.add()) is a little slower than if(!contains()) then add() but it’s more concise.</p>
-</li>
-<li><p>Word Ladder<br>最简单的单向BFS使用Queue来做的解法：</p>
-</li>
+<li>It seems like if(set.add()) is a little slower than if(!contains()) then add() but it’s more concise.</li>
+</ol>
+<a id="more"></a>
+<ol start="127">
+<li>Word Ladder<br>最简单的单向BFS使用Queue来做的解法：</li>
 </ol>
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">127. Word Ladder</span></span><br><span class="line"><span class="hljs-comment">Medium</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">1980</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">932</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Only one letter can be changed at a time.</span></span><br><span class="line"><span class="hljs-comment">Each transformed word must exist in the word list. Note that beginWord is not a transformed word.</span></span><br><span class="line"><span class="hljs-comment">Note:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Return 0 if there is no such transformation sequence.</span></span><br><span class="line"><span class="hljs-comment">All words have the same length.</span></span><br><span class="line"><span class="hljs-comment">All words contain only lowercase alphabetic characters.</span></span><br><span class="line"><span class="hljs-comment">You may assume no duplicates in the word list.</span></span><br><span class="line"><span class="hljs-comment">You may assume beginWord and endWord are non-empty and are not the same.</span></span><br><span class="line"><span class="hljs-comment">Example 1:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input:</span></span><br><span class="line"><span class="hljs-comment">beginWord = "hit",</span></span><br><span class="line"><span class="hljs-comment">endWord = "cog",</span></span><br><span class="line"><span class="hljs-comment">wordList = ["hot","dot","dog","lot","log","cog"]</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Output: 5</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Explanation: As one shortest transformation is "hit" -&gt; "hot" -&gt; "dot" -&gt; "dog" -&gt; "cog",</span></span><br><span class="line"><span class="hljs-comment">return its length 5.</span></span><br><span class="line"><span class="hljs-comment">Example 2:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input:</span></span><br><span class="line"><span class="hljs-comment">beginWord = "hit"</span></span><br><span class="line"><span class="hljs-comment">endWord = "cog"</span></span><br><span class="line"><span class="hljs-comment">wordList = ["hot","dot","dog","lot","log"]</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Output: 0</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">ladderLength</span><span class="hljs-params">(String beginWord, String endWord, List&lt;String&gt; wordList)</span> </span>&#123;</span><br><span class="line">        Set&lt;String&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;(wordList);</span><br><span class="line">        <span class="hljs-keyword">if</span>(!set.contains(endWord))&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        Queue&lt;String&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.offer(beginWord);</span><br><span class="line">        <span class="hljs-keyword">int</span> count = <span class="hljs-number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> size = queue.size();</span><br><span class="line">            <span class="hljs-keyword">while</span>(size!=<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                String temp = queue.poll();</span><br><span class="line">                <span class="hljs-keyword">if</span>(temp.equals(endWord))&#123;</span><br><span class="line">                    <span class="hljs-keyword">return</span> count;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;=temp.length()-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">                    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c = <span class="hljs-string">'a'</span>;c&lt;=<span class="hljs-string">'z'</span>;c++)&#123;</span><br><span class="line">                        <span class="hljs-keyword">if</span>(temp.charAt(i)!=c)&#123;</span><br><span class="line">                            String newString = temp.substring(<span class="hljs-number">0</span>, i)+c+temp.substring(i+<span class="hljs-number">1</span>);</span><br><span class="line">                            <span class="hljs-keyword">if</span>(set.contains(newString))&#123;</span><br><span class="line">                                queue.offer(newString);</span><br><span class="line">                                set.remove(newString);<span class="hljs-comment">//避免出现环在图中</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                size--;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            count++;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>使用HashSet来作为Queue的做法</p>
@@ -242,7 +243,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        29
+                        30
                     </p>
                 </div>
             </div>
@@ -340,7 +341,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">18</span>
+                <span class="level-item tag">19</span>
             </span>
         </a></li>
             </ul>
@@ -365,6 +366,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/09/背包问题总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="背包问题总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T02:15:08.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/背包问题总结/" class="has-link-black-ter is-size-6">背包问题总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -442,25 +462,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/25/单调栈问题总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="单调栈问题总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-25T14:39:33.000Z">2019-10-25</time></div>
-                    <a href="/2019/10/25/单调栈问题总结/" class="has-link-black-ter is-size-6">单调栈问题总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -479,7 +480,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
