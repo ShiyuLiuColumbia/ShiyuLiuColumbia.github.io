@@ -123,7 +123,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-26T18:57:15.000Z">2019-11-26</time>
+                <time class="level-item has-text-grey" datetime="2019-11-26T19:57:15.000Z">2019-11-26</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Distributed-System/">Distributed System</a>
@@ -133,7 +133,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    23 minutes read (About 3437 words)
+                    23 minutes read (About 3505 words)
                 </span>
                 
                 
@@ -231,7 +231,7 @@
 <p><tt>test_test.go</tt> tests when we run your software on our machines.<br>We will use the timestamp of your <strong>last</strong> handin tag for the purpose<br>of calculating late days and we will only grade that version of the code.<br>(We’ll also know if you backdate the tag, don’t do that.)</p>
 <h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>Please post questions on <a href="https://www.piazza.com/columbia/fall2017/comsw4113/home" target="_blank" rel="noopener">Piazza</a>.</p>
 <hr>
-<p>Part A 部分主要是基于Paxos协议的三个阶段进行编写：prepare, accecpt and decide。由于我们的系统是可以同时处理多个请求的，所以对于不同的请求我们用instance进行代表，每一个instance可以有decided或者undecided的状态，我们的paxos协议会使每一个instance最后变成decided状态，每一个instance都储存着操作的结果。<br>PartB使用我们之前写好的Paxos Library实现Key/Value存储，与作业2相似，我们仍旧需要实现at most once semantic，所以仍现需要每次发出get或者put的时候都一起发出一个sequence unique ID。由于我们的instances中存着操作的结果，所以我们每进行put或者get，都从instance number 0开始进行检查：从0开始检查每一个instanceSeqNum，如果decided(已经有别的操作占用这个instance)，那么将这个操作的结果写入自己的数据库中；如果没有decided，那么将这次的操作占用这个instance并等待所有pvserver同步完成(同步完成也就是decided)。</p>
+<p>Part A 部分主要是基于Paxos协议的三个阶段进行编写：prepare, accecpt and decide。由于我们的系统是可以同时处理多个请求的，所以对于不同的请求我们用instance进行代表，每一个instance可以有decided或者undecided的状态，我们的paxos协议会使每一个instance最后变成decided状态，每一个instance都储存着操作的结果。<br>PartB使用我们之前写好的Paxos Library实现Key/Value存储，与作业2相似，我们仍旧需要实现at most once semantic，所以仍现需要每次发出get或者put的时候都一起发出一个sequence unique ID。由于我们的instances中存着操作的结果，所以我们每进行put或者get，都从instance number 0开始进行检查：从0开始检查每一个instanceSeqNum，如果decided(已经有别的操作占用这个instance)，那么将这个操作的结果写入自己的数据库中；如果没有decided，那么将这次的操作占用这个instance并等待所有pvserver同步完成(同步完成也就是decided)。<br><strong>所以本质上paxos协议(partA)是可以使所有的partition储存相同的信息，partB因为我们要建立有PUT和GET操作的数据库，所以相当于我们存储的相同的信息是这些操作的LOG集合</strong></p>
 
         </div>
         
@@ -246,6 +246,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/12/09/Basic Calculator类型题/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Basic Calculator类型题</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -303,7 +310,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        34
+                        36
                     </p>
                 </div>
             </div>
@@ -313,7 +320,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </div>
             </div>
@@ -372,6 +379,14 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Backend/">
+            <span class="level-start">
+                <span class="level-item">Backend</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Basics/">
             <span class="level-start">
                 <span class="level-item">Basics</span>
@@ -401,7 +416,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">21</span>
+                <span class="level-item tag">22</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/System-Design/">
@@ -437,6 +452,44 @@
         
         <article class="media">
             
+            <a href="/2020/03/26/Maven学习笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Maven学习笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-27T04:02:26.000Z">2020-03-26</time></div>
+                    <a href="/2020/03/26/Maven学习笔记/" class="has-link-black-ter is-size-6">Maven学习笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Backend/">Backend</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/09/Basic Calculator类型题/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Basic Calculator类型题">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-09T20:17:43.000Z">2019-12-09</time></div>
+                    <a href="/2019/12/09/Basic Calculator类型题/" class="has-link-black-ter is-size-6">Basic Calculator类型题</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/26/Paxos-based Key-Value Service/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Paxos-based Key/Value Service">
@@ -445,7 +498,7 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-26T18:57:15.000Z">2019-11-26</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-26T19:57:15.000Z">2019-11-26</time></div>
                     <a href="/2019/11/26/Paxos-based Key-Value Service/" class="has-link-black-ter is-size-6">Paxos-based Key/Value Service</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Distributed-System/">Distributed System</a>
@@ -464,7 +517,7 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T17:03:49.000Z">2019-11-23</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T18:03:49.000Z">2019-11-23</time></div>
                     <a href="/2019/11/23/Graph类型题总结/" class="has-link-black-ter is-size-6">Graph类型题总结</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
@@ -483,48 +536,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T19:32:14.000Z">2019-11-20</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T20:32:14.000Z">2019-11-20</time></div>
                     <a href="/2019/11/20/系统设计慢慢总结/" class="has-link-black-ter is-size-6">系统设计慢慢总结</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/System-Design/">System Design</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/16/692/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="692. Top K Frequent Words">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T02:29:33.000Z">2019-11-16</time></div>
-                    <a href="/2019/11/16/692/" class="has-link-black-ter is-size-6">692. Top K Frequent Words</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/09/背包问题总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="背包问题总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-10T02:15:08.000Z">2019-11-09</time></div>
-                    <a href="/2019/11/09/背包问题总结/" class="has-link-black-ter is-size-6">背包问题总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
                 </div>
             </div>
@@ -541,6 +556,28 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
@@ -702,7 +739,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 Shiyu Liu&nbsp;
+                &copy; 2020 Shiyu Liu&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
                 </p>
