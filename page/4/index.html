@@ -134,112 +134,6 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes read (About 1819 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/13/Top K problem总结/">Top K类型题（bucket sort, inplace quick sort and Comparator）</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Top-K类型题（bucket-sort-inplace-quick-sort-and-Comparator）"><a href="#Top-K类型题（bucket-sort-inplace-quick-sort-and-Comparator）" class="headerlink" title="Top K类型题（bucket sort, inplace quick sort and Comparator）"></a>Top K类型题（bucket sort, inplace quick sort and Comparator）</h1><h2 id="基本类top-k"><a href="#基本类top-k" class="headerlink" title="基本类top k"></a>基本类top k</h2><p>今天总结了一下Top K这种类型的题目的做法，总的来说一般有三种做法：</p>
-<ul>
-<li>最简单的就是进行sorting，然后取前K个，时间复杂度是O(nlogn)</li>
-<li>第二种做法是使用Priority Queue(最小堆)，Priority Queue只存储目前遇到的最大的K个元素，每次堆中元素大于K的时候我们就poll出目前最小的元素(已经有K个比他大，他肯定不是结果了)，那么时间复杂度是O(nlogk)</li>
-<li>最复杂的做法是使用Quick Select，由于我们只关心前K个元素，所以相当于对于Quick Sort，我们每次partition只取一半，所以时间复杂度只有O(n)。(T(n) = T(n/2) + n)</li>
-</ul>
-<p><strong>注意：当我们是求某一个频率的前K个元素的时候，我们可以不用复杂的Quick Select，而是使用简单的Bucket sort。这里能够使用bucket sort的原因在于元素的frequency肯定不大于数组的长度，也就是说有一个固定的边界</strong>。我们知道bucket sort能够使用的条件就是有固定的边界。而求取前K个最大的元素，由于元素的大小是没有边界的，所以无法使用bucket sort，我们只能用Quick Select。</p>
-<hr>
-<p>这类题目通常需要使用到Comparator对元素进行比较，下面也总结一下Comparator的三种构造用法：</p>
-<ul>
-<li><p>最原始的定义：Comparator是一个接口，所以我们需要声明一个类来实现这个接口，然后我们在实例化这个声明的类</p>
-  <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">myComparator</span>&lt;<span class="hljs-title">Integer</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Comparator</span>&lt;<span class="hljs-title">Integer</span>&gt; </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//  Compare:第一个比第二个大是1，第一个比第二个小是-1</span></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(Integer i1, Integer i2)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> freq.get(i2) - freq.get(i1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">PriorityQueue&lt;Integer&gt; pq  = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;(<span class="hljs-keyword">new</span> myComparator&lt;&gt;());</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>简单一点的写法是使用匿名类，也就是不去手动声明一个类来实现这个接口，而是直接在这个接口后面声明一个匿名类来起到想同的效果</p>
-  <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;Integer&gt; pq = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;(<span class="hljs-keyword">new</span> Comparator&lt;Integer&gt;()&#123;</span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(Integer i1, Integer i2)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> freq.get(i2)- freq.get(i1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>最简单的写法是使用java8的lambda function</p>
-  <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;Integer&gt; pq = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;((a, b)-&gt;&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> freq.get(b) - freq.get(a);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<p>下面是几道这种类型的题。</p>
-<ol start="347">
-<li>Top K Frequent Elements: 由于是要先求频率的题，而频率是有边界的，所以最好的做法是使用bucket sort,时间复杂度O(n)，空间复杂度O(n)。</li>
-<li><p>Top K Frequent Words</p>
-</li>
-<li><p>Kth Largest Element in an Array： 由于是取最大的K个数，是没有边界的，所以用应该用quick select，时间的复杂度O(n)，空间复杂度O(1)。</p>
-</li>
-<li>K Closest Points to Origin</li>
-</ol>
-<p><strong>quick select的inplace实现</strong>：<br><a href="https://blog.csdn.net/qq_20011607/article/details/82357239" target="_blank" rel="noopener">https://blog.csdn.net/qq_20011607/article/details/82357239</a></p>
-<ol>
-<li><p>普通quickSelect<br>普通的quickSort实现起来比较简单，每次固定选择最左侧或最右侧元素为pivot，设置low指针为splitPoint，splitPoint左侧的点都小于pivot，splitPoint及它右侧的点都大于等于pivot。<br>Lomuto partition scheme： <a href="https://en.wikipedia.org/wiki/Quicksort#Algorithm" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Quicksort#Algorithm</a></p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.io.*;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">/* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */</span></span><br><span class="line">        Scanner scanner = <span class="hljs-keyword">new</span> Scanner(System.in); </span><br><span class="line">        <span class="hljs-keyword">int</span> len = scanner.nextInt();</span><br><span class="line">        <span class="hljs-keyword">int</span>[] input = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[len];</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;=input.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            input[i] = scanner.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line">        quickSort(input, <span class="hljs-number">0</span>, input.length-<span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] input, <span class="hljs-keyword">int</span> low, <span class="hljs-keyword">int</span> high)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(low&gt;=high)&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="hljs-keyword">int</span> mid = partition(input, low, high);</span><br><span class="line">        quickSort(input, low, mid-<span class="hljs-number">1</span>);</span><br><span class="line">        quickSort(input, mid+<span class="hljs-number">1</span>, high);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">partition</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] input, <span class="hljs-keyword">int</span> low, <span class="hljs-keyword">int</span> high)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> pivot = input[high];</span><br><span class="line">        <span class="hljs-keyword">int</span> splitPoint = low;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = low; i&lt;=high; i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(input[i]&lt;pivot)&#123;</span><br><span class="line">                swap(input, i , splitPoint);</span><br><span class="line">                splitPoint++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(input, high, splitPoint);</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;=input.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            System.out.print(input[i]+<span class="hljs-string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        <span class="hljs-keyword">return</span> splitPoint;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] input, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> num = input[i];</span><br><span class="line">        input[i] = input[j];</span><br><span class="line">        input[j] = num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>双路quickSelect<br>思路是选择最左侧的点为pivot，然后设置两个pointer i和j，i一直运动直到遇到比pivot大的元素，j一直向左运动直到遇到比pivot小的元素，如果此时i&lt;=j,那么swap(i，j)。那么最后j及j之前的都是小于pivot的，i及i之后的都是大于pivot的。</p>
-</li>
-</ol>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findKthLargest</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> left = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> right = nums.length-<span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> mid = partition(nums, left, right);</span><br><span class="line">            <span class="hljs-keyword">if</span>(mid==nums.length - k)&#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> nums[mid];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(mid&lt;nums.length - k)&#123;</span><br><span class="line">                left = mid+<span class="hljs-number">1</span>;</span><br><span class="line">            &#125;            </span><br><span class="line">            <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                right = mid-<span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">partition</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> i = left+<span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> j = right;</span><br><span class="line">        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">while</span>(i&lt;=right)&#123;</span><br><span class="line">                <span class="hljs-keyword">if</span>(nums[i]&lt;=nums[left])&#123;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">                    <span class="hljs-keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">while</span>(j&gt;=left+<span class="hljs-number">1</span>)&#123;</span><br><span class="line">                <span class="hljs-keyword">if</span>(nums[j]&gt;nums[left])&#123;</span><br><span class="line">                    j--;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    <span class="hljs-keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">if</span>(i&gt;j)&#123;</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            swap(nums, i, j);</span><br><span class="line">        &#125;</span><br><span class="line">        swap(nums, left, j);</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> a = nums[j];</span><br><span class="line">        nums[j] = nums[i];</span><br><span class="line">        nums[i] = a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="topK-多个sorted-array-sorted-list"><a href="#topK-多个sorted-array-sorted-list" class="headerlink" title="topK + 多个sorted array/sorted list"></a>topK + 多个sorted array/sorted list</h2><p>这种类型题本质上就是topK问题，最简单的想法当然是像topK一样把所有元素都加入到一个K大小的PQ中就好了，这样确实能得到结果，但是时间复杂度是O(nlogn)，n是总共元素的个数。一个很重要的优化方式是我们应该注意到给我们的都是排好序的元素，所以我们要利用他们排好序的性质。<strong>思路类似于Merge K sorted LinkedList，在那道题中我们使用Priority Queue，并且利用了Sorted LinkedList的next指针去找到下一个元素，这类题目我们可以利用index去找到下一个元素，时间复杂度是O(klogk)</strong></p>
-<ol start="378">
-<li><p>Kth Smallest Element in a Sorted Matrix：我们把sorted matrix看成是多个sorted array，我们先把所有sorted array的第一个元素加入PQ中，然后每次我们从PQ中取出一个元素以后，我们都把这个元素所在的sorted array的下一个元素加入到PQ中去(所以我们需要存储目前的index)，可以发现和Merge K Sorted LinkedList非常相似。当然这里我们把横着或者竖着当成sorted array都可以。</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">kthSmallest</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] matrix, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> n  = matrix.length;</span><br><span class="line">        PriorityQueue&lt;Tuple&gt; pq = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;=n-<span class="hljs-number">1</span> &amp;&amp; i&lt;=k-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            pq.offer(<span class="hljs-keyword">new</span> Tuple(<span class="hljs-number">0</span>, i, matrix[<span class="hljs-number">0</span>][i]));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">while</span>(k&gt;<span class="hljs-number">1</span>)&#123;</span><br><span class="line">            Tuple tmp = pq.poll();</span><br><span class="line">            k--;</span><br><span class="line">            <span class="hljs-keyword">if</span>(tmp.row==n-<span class="hljs-number">1</span>)</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            pq.offer(<span class="hljs-keyword">new</span> Tuple(tmp.row+<span class="hljs-number">1</span>, tmp.column, matrix[tmp.row+<span class="hljs-number">1</span>][tmp.column]));</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> pq.poll().value;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Tuple</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Comparable</span>&lt;<span class="hljs-title">Tuple</span>&gt;</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> row;</span><br><span class="line">        <span class="hljs-keyword">int</span> column;</span><br><span class="line">        <span class="hljs-keyword">int</span> value;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Tuple</span><span class="hljs-params">(<span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> column, <span class="hljs-keyword">int</span> value)</span></span>&#123;</span><br><span class="line">            <span class="hljs-keyword">this</span>.row = row;</span><br><span class="line">            <span class="hljs-keyword">this</span>.column = column;</span><br><span class="line">            <span class="hljs-keyword">this</span>.value = value;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compareTo</span><span class="hljs-params">(Tuple that)</span></span>&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.value-that.value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Find K Pairs with Smallest Sums：这道题本质上和上道题完全一样，但是需要变化一下，如下图，我们把所有他们的和求出来就会发现其实和上一道题完全一样了。<br><img src="/images/blog/373.jpg" alt></p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; kSmallestPairs(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2, <span class="hljs-keyword">int</span> k) &#123;</span><br><span class="line">        <span class="hljs-comment">//int[] num; num[0]存num1，num[1]存num2，num[2]存num2的index</span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; ans = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span>(nums1.length==<span class="hljs-number">0</span> || nums2.length==<span class="hljs-number">0</span> || k==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> ans;</span><br><span class="line">        PriorityQueue&lt;<span class="hljs-keyword">int</span>[]&gt; pq = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;((a, b)-&gt;&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> a[<span class="hljs-number">0</span>]+a[<span class="hljs-number">1</span>] - b[<span class="hljs-number">0</span>]-b[<span class="hljs-number">1</span>];</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;=nums1.length-<span class="hljs-number">1</span>&amp;&amp;i&lt;=k-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            pq.offer(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;nums1[i], nums2[<span class="hljs-number">0</span>], <span class="hljs-number">0</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">while</span>(k&gt;<span class="hljs-number">0</span> &amp;&amp; pq.size()!=<span class="hljs-number">0</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span>[] tmp = pq.poll();</span><br><span class="line">            List&lt;Integer&gt; l = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">            l.add(tmp[<span class="hljs-number">0</span>]);</span><br><span class="line">            l.add(tmp[<span class="hljs-number">1</span>]);</span><br><span class="line">            ans.add(l);</span><br><span class="line">            k--;</span><br><span class="line">            </span><br><span class="line">            <span class="hljs-keyword">if</span>(tmp[<span class="hljs-number">2</span>]==nums2.length-<span class="hljs-number">1</span>)</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            pq.offer(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;tmp[<span class="hljs-number">0</span>], nums2[tmp[<span class="hljs-number">2</span>]+<span class="hljs-number">1</span>], tmp[<span class="hljs-number">2</span>]+<span class="hljs-number">1</span>&#125;);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<hr>
-<h2 id="处理流数据中的Top-K问题：system-design"><a href="#处理流数据中的Top-K问题：system-design" class="headerlink" title="处理流数据中的Top K问题：system design"></a>处理流数据中的Top K问题：system design</h2><p>使用一个hashmap加一个最小堆。HashaMap + PriorityQueue</p>
-<p>每次进来的数据先在hashmap中加1。如果：</p>
-<ul>
-<li>新进来的数据已经在堆中，调整堆(java的priority queue实现不了，但是这是系统设计题，调整操作在堆中是很简单的，因为只需要去判断一下改变的这个元素和它堆下面的元素的大小关系)</li>
-<li>新进来的数据不再堆中<ul>
-<li>Priority Queue的size小于K，新进来的数据放入最小堆中</li>
-<li>Priority Queue的size等于K，我们比较新进来数据在hashmap的value与最小堆在hashmap的value。如果大于，排除最小堆的最小值加入这个新的string，否则什么都不做。</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">PriorityQueue&lt;String&gt; pq = new PriorityQueue&lt;&gt;((a, b)-&gt;&#123;</span><br><span class="line">    return map.get(a) - map.get(b);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-13T16:35:09.000Z">2019-09-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
                     6 minutes read (About 898 words)
                 </span>
                 
@@ -291,14 +185,14 @@
                 <time class="level-item has-text-grey" datetime="2019-09-13T16:35:09.000Z">2019-09-13</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 401 words)
+                    12 minutes read (About 1850 words)
                 </span>
                 
                 
@@ -307,18 +201,28 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/13/元素脱离文档流的方法/">元素脱离文档流的方法</a>
+                <a class="has-link-black-ter" href="/2019/09/13/区间问题总结/">区间问题总结</a>
             
         </h1>
         <div class="content">
-            <p><strong>有三种情况将使得元素脱离文档流，分别是浮动(float left or right)、绝对定位(position:absolute)、固定定位(position:fixed)。</strong></p>
+            <h1 id="Interval类型题"><a href="#Interval类型题" class="headerlink" title="Interval类型题"></a>Interval类型题</h1><p>Interval类型的题目很烧脑，这里尽量总结一下，要多复习。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/26657786" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26657786</a></p>
+<p><strong>这种题的思路是：1.由于本身start和end都是无序的，所以第一步是先要针对start或者end进行排序，具体针对start还是end需要具体问题具体分析，一般来说针对start进行排序的情况比较多；2.对于已经排好序的数组使用greedy</strong></p>
+<blockquote>
+<p><a href="https://www.1point3acres.com/bbs/thread-432526-1-1.html" target="_blank" rel="noopener">https://www.1point3acres.com/bbs/thread-432526-1-1.html</a><br>我的体验是， 如果能改成类似经典问题的话 [寻找最多non overlapping interval]类型的题目，就是按end排序。 按end排序只&gt; 需要考虑一个情况就是[3,5],[7,8],[1,10]这样。 如果这个是个反例，那得考虑start排序。</p>
+</blockquote>
+<ol>
+<li>646 + 435 + 452</li>
+<li>253 + 253</li>
+<li>56 + 57</li>
+</ol>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/13/元素脱离文档流的方法/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/09/13/区间问题总结/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -429,6 +333,59 @@
             <div class="level-start">
                 <div class="level-item">
                 <a class="button is-size-7 is-light" href="/2019/09/13/Merge K sorted lists总结/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-13T16:35:09.000Z">2019-09-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 401 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/13/元素脱离文档流的方法/">元素脱离文档流的方法</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>有三种情况将使得元素脱离文档流，分别是浮动(float left or right)、绝对定位(position:absolute)、固定定位(position:fixed)。</strong></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/09/13/元素脱离文档流的方法/#more">Read More</a>
                 </div>
             </div>
         </div>
