@@ -133,7 +133,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 266 words)
+                    5 minutes read (About 720 words)
                 </span>
                 
                 
@@ -146,16 +146,35 @@
             
         </h1>
         <div class="content">
-            <h1 id="Maven简介"><a href="#Maven简介" class="headerlink" title="Maven简介"></a>Maven简介</h1><p>Maven是基于项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。Maven可以很好的管理项目中的第三方jar包，避免冲突，一键配置。</p>
+            <h1 id="Maven简介"><a href="#Maven简介" class="headerlink" title="Maven简介"></a>Maven简介</h1><p>Maven是基于项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。Maven可以很好的管理项目中的第三方jar包，避免冲突，一键配置(关于jar包和classpath看另一篇博客)。</p>
+<a id="more"></a>
+<p>代码：<a href="https://github.com/ShiyuLiuColumbia/MavenStudy" target="_blank" rel="noopener">https://github.com/ShiyuLiuColumbia/MavenStudy</a></p>
 <h1 id="Maven的目录结构"><a href="#Maven的目录结构" class="headerlink" title="Maven的目录结构"></a>Maven的目录结构</h1><p>代码见maven01</p>
 <p>-src<br>    -main<br>        -java<br>            -packages(这里存放程序的java源码)<br>    -test<br>        -java<br>            -packages(这里存放测试的java源码)<br>    resource<br>-pom.xml</p>
 <p>pom.xml即存储了这个java项目的各种信息，包括所在的package名称，项目名称，所用到的依赖等等，maven根据pom.xml使用maven命令管理我们的java项目。</p>
 <h1 id="Maven基础知识"><a href="#Maven基础知识" class="headerlink" title="Maven基础知识"></a>Maven基础知识</h1><ol>
 <li><p>Maven主要命令<br>mvn compile 编译maven项目中主程序的源码，生成target目录，里面存放着源码编译成的.class文件以及测试报告<br>mvn test 测试<br>mvn package 打包成jar包<br>mvn clean 删除target目录<br>mvn install 安装jar包到本地仓库中</p>
 </li>
-<li><p>mvn install例子<br>代码见maven02</p>
+<li><p>mvn install例子<br>代码见maven02<br>如果我们想要在maven02工程中使用上面例子中的maven01 package，需要先将maven01打包成jar包，然后将该jar包安装到本地仓库中(mvn install)。然后再将maven01的依赖写入maven02的pom文件即可。</p>
+</li>
+<li><p>maven中的坐标与仓库<br>坐标：groupId+artifactId+version<br>仓库：本地仓库和远程仓库，maven根据坐标在仓库中查找依赖的jar包</p>
+</li>
+<li><p>maven生命周期：<br><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1309301196980257" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1309301196980257</a><br>clean：清理项目<br>default：构建项目<br>site：生成项目站点</p>
+</li>
+<li><p>maven插件<br><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1309301217951777" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1309301217951777</a></p>
+</li>
+<li><p>pom.xml中常见元素解析</p>
 </li>
 </ol>
+<project><br><br>    <modelversion>4.0.0</modelversion>  //当前pom版本<br><br>    <groupid>反写公司网址+项目名</groupid><br>    <artifactid>项目名+模块名</artifactid><br>    <version>0.0.1</version><br>    <packaging></packaging> //项目打包方式，默认是jar，也可以是war，zip，pom<br>    <name></name> //项目描述名<br>    <url></url> //项目地址<br>    <description></description> //项目描述<br>    <developers></developers><br>    <licenses><licenses><br><br>    <dependencies><br>        <dependency><br>               <groupid>反写公司网址+项目名</groupid><br>                <artifactid>项目名+模块名</artifactid><br>                <version>0.0.1</version><br>                <type></type><br>                <scope>test</scope> //依赖范围，比如这里这个依赖只在测试阶段有用<br>                <optional></optional> //设置依赖是否可选，默认false<br>                <exclusions> //排除依赖列表<br>                    <exclusion><br>                    <exclusion><br>                <exclusions><br>        </exclusions></exclusion></exclusion></exclusions></dependency><br>    </dependencies><br><br>    <dependencymanagement> //另一在父模块中，用于子模块继承，但是这之中的依赖不会被使用<br>    </dependencymanagement><br><br>    <build><br>        <plugins><br>            <plugin><br>               <groupid>反写公司网址+项目名</groupid><br>                <artifactid>项目名+模块名</artifactid><br>                <version>0.0.1</version><br>            </plugin><br>        </plugins><br>    </build><br><br>    <parent></parent><br>    <modules></modules><br><br><br><br></licenses></licenses></project>
+
+<ol start="7">
+<li><p>maven依赖范围<br>Dependency scope is used to limit the transitivity of a dependency, and also to affect the classpath used for various build tasks.<br><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank" rel="noopener">https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html</a><br>默认的依赖范围是compile，对编译，测试，运行三种阶段的classpath均有效</p>
+</li>
+<li><p>maven依赖传递与依赖冲突<br>maven的依赖是逐步传递的</p>
+</li>
+</ol>
+<p>如何某个依赖多次被使用，那么依据1.短路优先 2.若路径长度相同，谁先出现使用谁</p>
 
         </div>
         
