@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="utf-8">
+<title>web与java web发展史. - Shiyu - Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <strong>Shiyu - Blog</strong>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+                <a class="navbar-item" href="/projects">Project</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-28T22:07:25.000Z">2020-03-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Backend/">Backend</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    an hour read (About 8947 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                web与java web发展史.
+            
+        </h1>
+        <div class="content">
+            <p>最近在准备学spring和spring boot，但是又看到servelet什么的很困惑，所以了解了以下java web的发展。<br><a href="https://blog.csdn.net/weixin_39893958/article/details/84389384?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39893958/article/details/84389384?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a><br><a href="https://www.tianmaying.com/tutorial/web-history" target="_blank" rel="noopener">https://www.tianmaying.com/tutorial/web-history</a><br><a id="more"></a></p>
+<h1 id="Web开发技术发展历史"><a href="#Web开发技术发展历史" class="headerlink" title="Web开发技术发展历史"></a>Web开发技术发展历史</h1><h2 id="Web的诞生"><a href="#Web的诞生" class="headerlink" title="Web的诞生"></a>Web的诞生</h2><p>提到Web，不得不提一个词就是“互联网”。Web是World Wide Web的简称，中文译为万维网。“万维网”和我们经常说的“互联网”是两个联系极其紧密但却不尽相同的概念。今天“互联网”三个字已经承载了太多的内涵，提到互联网，我们通常想到的一种战略思维，或者是一种颠覆传统的商业模式。抛开那些纷繁凌乱的商业化概念，回归技术本身，互联网就是指通过TCP/IP协议族互相连接在一起的计算机网络。而Web是运行在互联网上的一个超大规模的分布式系统。Web设计初衷是一个静态信息资源发布媒介，通过超文本标记语言（HTML）描述信息资源，通过统一资源标识符（URI）定位信息资源，通过超文本转移协议（HTTP）请求信息资源。HTML、URL和HTTP三个规范构成了Web的核心体系结构，是支撑着Web运行的基石。用通俗的一点的话来说，客户端（一般为浏览器）通过URL找到网站(如<a href="http://www.google.com)，发出HTTP请求，服务器收到请求后返回HTML页面。可见，Web是基于TCP/IP协议的，TCP/IP协议把计算机连接在一起，而Web在这个协议族之上，进一步将计算机的信息资源连接在一起，形成我们说的万维网。大家开发的Web应用本质上就是可以提供信息或者功能的Web资源，成为Web这个全球超大规模分布式系统中的一部分。在技术层面进一步理解Web和互联网，建议找一本计算机网络的书去看看，了解一下计算机网络的分层结构和发展历史。" target="_blank" rel="noopener">www.google.com)，发出HTTP请求，服务器收到请求后返回HTML页面。可见，Web是基于TCP/IP协议的，TCP/IP协议把计算机连接在一起，而Web在这个协议族之上，进一步将计算机的信息资源连接在一起，形成我们说的万维网。大家开发的Web应用本质上就是可以提供信息或者功能的Web资源，成为Web这个全球超大规模分布式系统中的一部分。在技术层面进一步理解Web和互联网，建议找一本计算机网络的书去看看，了解一下计算机网络的分层结构和发展历史。</a></p>
+<p>1991年8月6日，Tim Berners Lee在alt.hypertext新闻组贴出了一份关于World Wide Web的简单摘要，标志了Web页面在Internet上的首次登场。最早Web主要被一帮科学家们用来共享和传递信息，全世界的Web服务器也就几十台。第一个Web浏览器是Berners Lee在NeXT机器上实现，也只能跑在NeXT机器上，苹果和乔布斯的粉丝对NeXT的历史肯定耳熟能详。真正使得Web开始流行起来的是Mosaic浏览器，这便是曾经大名鼎鼎的Netscape Navigator的前身。Berners Lee在1993年建立了万维网联盟（World Wide Web Consortium，W3C），负责Web相关标准的制定。浏览器的普及和W3C的推动，使得Web上可以访问的资源逐渐丰富起来。这个时候Web的主要功能就是浏览器向服务器请求静态HTML信息。95年的时候马云在美国看到了互联网，更准确的说他其实看到的就是Web，阿里早先做的黄页也就是把企业信息通过进行HTML展示的Web应用。</p>
+<p><a href="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/Static-Page.png" target="_blank" rel="noopener"><img src="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/Static-Page.png" alt="Static-Page"></a></p>
+<h2 id="动态内容的出现：CGI"><a href="#动态内容的出现：CGI" class="headerlink" title="动态内容的出现：CGI"></a>动态内容的出现：CGI</h2><p>最初在浏览器中主要展现的是静态的文本或图像信息，GIF图片则第一次为HTML页面引入了动态元素。不过人们已经不仅仅满足于访问放在Web服务器上的静态文件，1993年CGI（Common Gateway Interface）出现了，Web上的动态信息服务开始蓬勃兴起。CGI定义了Web服务器与外部应用程序之间的通信接口标准，因此Web服务器可以通过CGI执行外部程序，让外部程序根据Web请求内容生成动态的内容。Perl因为跨操作系统和易于修改的特性成为CGI的主要编写语言。当然，CGI可以用任何支持标准输入输出和环境变量的语言编写，比如Shell脚本,C/C++语言，只要符合接口标准即可。比如你用C语言编写CGI程序，你把希望返回的HTML内容通过printf输出就可以发送给Web服务器，进而返回给用户。</p>
+<p><a href="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/CGI.png" target="_blank" rel="noopener"><img src="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/CGI.png" alt="CGI"></a></p>
+<h2 id="Web编程脚本语言：PHP-ASP-JSP"><a href="#Web编程脚本语言：PHP-ASP-JSP" class="headerlink" title="Web编程脚本语言：PHP/ASP/JSP"></a>Web编程脚本语言：PHP/ASP/JSP</h2><p>这个时候我们已经可以在Web上提供动态功能了，比如网站访问的计数，表单的处理。CGI对每个请求都会启动一个进程来处理，因此性能上的扩展性不高。另外，想象一下用在Perl和C语言中的程序中去输出一大堆复杂的HTML字符串，是不是有点蛋疼，可读性和维护性是个大问题。为了处理更复杂的应用，一种方法是把HTML返回中固定的部分存起来（我们称之为模版），把动态的部分标记出来，Web请求处理的时候，你的程序先生成那部分动态的内容，再把模版读入进来，把动态内容填充进去，形成最终返回。举个例子，搜索一个关键词，搜索引擎的Web服务器可以先从后台索引服务器里拿到数据，然后把这些数据填充到返回结果的HTML模版中，返回给浏览器。但是这件事情自己来做显然太繁琐而且是重复劳动。于是1994年的时候，PHP诞生了，PHP可以把程序（动态内容）嵌入到HTML（模版）中去执行，不仅能更好的组织Web应用的内容，而且执行效率比CGI还更高。之后96年出现的ASP和98年出现的JSP本质上也都可以看成是一种支持某种脚本语言编程（分别是VB和Java）的模版引擎。96年W3C发布了CSS1.0规范。CSS允许开发者用外联的样式表来取代难以维护的内嵌样式，而不需要逐个去修改HTML元素，这让HTML页面更加容易创建和维护。此时，有了这些脚本语言，搭配上后端的数据库技术，Web更是开始大杀四方了，像电子商务这样的应用系统也可以通过Web技术来构建。Web已经从一个静态资源分享媒介真正变为了一个分布式的计算平台了。反过来看，你也应该知道，不是只有当今这些流行脚本语言可以写Web应用，C语言一样可以做这件事情。前面举的搜索引擎通过C语言来获取数据和渲染Web页面的例子在追求极致访问速度的互联网公司是非常常见的，但是脚本语言在开发效率上更胜一筹。</p>
+<p><a href="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/PHP.png" target="_blank" rel="noopener"><img src="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/PHP.png" alt="PHP"></a></p>
+<h2 id="分布式企业计算平台：J2EE-Net"><a href="#分布式企业计算平台：J2EE-Net" class="headerlink" title="分布式企业计算平台：J2EE/.Net"></a>分布式企业计算平台：J2EE/.Net</h2><p>Web开始广泛用于构建大型应用时，在分布式、安全性、事务性等方面的要求催生了J2EE(现在已更名为Java EE)平台在1999年的诞生，从那时开始为企业应用提供支撑平台的各种应用服务器也开始大行其道。Java Servlet、Java Server Pages (JSP)和Enterprise Java Bean (EJB )是Java EE中的核心规范，Servlet和JSP是运行在服务器端的Web组件，EJB运行在服务器端的业务组件，是一种分布式组件技术。2000年随之而来的.net平台，其ASP.net构件化的Web开发方式以及Visual Stidio.net开发环境的强大支持，大大降低了开发企业应用的复杂度。ASP.Net第一次让程序员可以像拖拽组件来创建Windows Form程序那样来组件化地创建Web页面，Java平台后来出现的JSF也承袭了这一思想。两大平台在相互竞争和模仿中不断向前发展。</p>
+<p><a href="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/J2EE.png" target="_blank" rel="noopener"><img src="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/J2EE.png" alt="J2EE"></a></p>
+<h2 id="框架横飞的年代：MVC，ORM"><a href="#框架横飞的年代：MVC，ORM" class="headerlink" title="框架横飞的年代：MVC，ORM"></a>框架横飞的年代：MVC，ORM</h2><p>两大平台诞生之后，组件化编程技术盛极一时，Web技术的发展开始了一段框架横飞的年代，各种辅助Web开发的技术框架层出不穷。虽然脚本语言大大提高了应用开发效率，但是试想一个复杂的大型Web应用，访问各种功能的URL地址纷繁复杂，涉及到的Web页面多种多样，同时还管理着大量的后台数据，因此我们需要在架构层面上解决维护性和扩展性等问题。这个时候，MVC的概念被引入到Web开发中来了。2004年出现的Struts就是当时非常流行的Java Web开发的MVC框架。MVC早在1978年就作为Smalltalk的一种设计模式被提出来了，应用到Web应用上，模型Model用于封装与业务逻辑相关的数据和数据处理方法，视图View是数据的HTML展现，控制器Controller负责响应请求，协调Model和View。Model，View和Controller的分开，是一种典型的关注点分离的思想，不仅使得代码复用性和组织性更好，使得Web应用的配置性和灵活性更好。这是Spring MVC的示意图，典型的MVC架构。</p>
+<p><a href="http://assets.tianmaying.com/md-image/600ed36961e2dbb3952809854b780b26.png" target="_blank" rel="noopener"><img src="http://assets.tianmaying.com/md-image/600ed36961e2dbb3952809854b780b26.png" alt="Spring-MVC"></a></p>
+<p>此外，数据访问也逐渐通过面向对象的方式来替代直接的SQL访问，出现了ORM（Object Relation Mapping）的概念，2001年出现的Hibernate就是其中的佼佼者，已经成为Java持久层的规范JPA的主要参考和实现。更多的全栈框架开始出现，比如2003年出现的Java开发框架Spring，同时更多的动态语言也被加入到Web编程语言的阵营中，2004年出现的Ruby开发框架Rails，2005出现的Python开发框架Django，都提供了全栈开发框架，或者自身提供Web开发的各种组件，或者可以方便的集成各种组件。比如Spring基于IoC和AOP思想可以方便得整合出全套Web开发组件，SSH（Struts+Spring+Hibernate）一度成为Java Web开发的标配。值得一提的时Rails这个MVC框架，26岁的丹麦大神David Heinemeier Hansson在开发著名项目管理软件BaseCamp的过程中形成，Ruby语言本身在快速开发上的优势，加上Rails诸如崇尚DRY（Don’t）Repeat Yourself)原则, 约定优于配置，拥抱REST等特性，使其迅速成为一个极其流行的Web开发框架。</p>
+<p><a href="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/MVC.png" target="_blank" rel="noopener"><img src="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/MVC.png" alt="MVC"></a></p>
+<h2 id="回归Web本质：REST"><a href="#回归Web本质：REST" class="headerlink" title="回归Web本质：REST"></a>回归Web本质：REST</h2><p>注意，看到这里的时候，你会发现Web开发的重点已经不在于HTTP/HTML/URL这样的Web基础架构了，而是各种平台下的各种框架和组件技术（MVC/ORM/分布式组件技术等等）。所以今天很多人可能会用一个MVC框架构建Web网站，但是可能并不了解Web本身。2000年的时候，Roy Fielding在他的博士论文中从构架风格的角度来剖析了Web本身，将Web内在的设计原则和思路系统得论述出来。Roy Fielding是HTTP协议的主要设计者，也是Apache服务器项目的联合创始人，他的这篇博士论文提出来的REST（Representation State Transformation）也成为一种流行的Web架构风格。REST鼓励基于URL来组织系统功能，充分利用HTTP本身的语义，而不是仅仅将HTTP作为一种远程数据传输协议。Web应用的开发应该回归Web的本质特征。Rails在发展过程中也完全拥抱REST，成为REST的坚定支持者。有些人认为REST和MVC是两种对立的风格，其实不尽然，两者是互为补充的，从Rails是一个全面支持REST的MVC框架这一点就可窥见。</p>
+<h2 id="浏览器端的魔术：AJAX"><a href="#浏览器端的魔术：AJAX" class="headerlink" title="浏览器端的魔术：AJAX"></a>浏览器端的魔术：AJAX</h2><p>Web应用同时涉及到浏览器端和服务器端，之前的介绍除了简单提到了CSS规范之外，主要关注的是服务器端的技术发展。在客户端，1995年NetScape公司设计的JavaScript被用作浏览器上运行脚本语言为网页增加动态性。微软随后推出类似JScript，但是缺乏统一的语言规范，使得浏览器兼容性成为一个程序员的梦魇。JavaScript最终被提交到欧洲计算机制造商协会(ECMA)，做为中立的ECMA开始了标准化脚本语言之路，并将其命名为ECMAScript。JavaScript可以响应浏览器端的用户事件，检测表单的正确性，动态修改HTML页面结构DOM，因此可以减少与服务器端的通信开销，并且做出很酷的页面动态效果。2005年出现的AJAX这个概念使得JavaScript再次大放异彩。AJAX即“Asynchronous JavaScript and XML”（异步的JavaScript与XML技术），指的是一套综合了多项技术的浏览器端网页开发技术，可以基于JavaScript的XmlHttpRequest的用于创建交互性更强的Web应用。AJAX是一种已有技术的mashup，多种技术组合在一起形成了其特色和优势，早在1998年就已经开始有人使用。Google在地图和Gmail等产品中对这项技术的深入应用，以及AJAX这个吸引眼球的名字的提出，使其正式站在了聚光灯下，开始吸引无数人的目光。我们知道Web应用中用户提交表单时就向Web服务器发送一个请求，服务器接收并处理传来的表单，并返回一个新的网页。而前后两个页面中的往往大部分HTML代码是一样的，每次都返回整个页面内容是一种带宽资源的浪费。而AJAX应用仅向服务器发送并取回必须的数据，并在客户端采用JavaScript处理来自服务器响应，更新页面的局部信息。这样不仅浏览器和服务器的数据交换大大减少，而且客户端也可以更加快速地响应用户操作。如果你用Gmail就应该知道，Gmail从来都不刷新页面，所有的请求都是通过AJAX获取数据进行局部更新。AJAX的出现，以及诸如EXTJS、DOJO等一些前端开发框架的出现，也使得单页应用（Single Page Application）在这个时候流行起来。</p>
+<p><a href="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/AJAX.png" target="_blank" rel="noopener"><img src="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/AJAX.png" alt="AJAX"></a></p>
+<h2 id="前端MVC：Angular-Backbone"><a href="#前端MVC：Angular-Backbone" class="headerlink" title="前端MVC：Angular/Backbone"></a>前端MVC：Angular/Backbone</h2><p>这种模式下，前后端的分工非常清晰，前后端的关键协作点是 Ajax 接口，规定好交互接口后，前后端工程师就可以根据约定，分头开工，开发环境中通过Mock等方式进行测试，同时在特定时间节点进行前后端集成测试。但是，随着业务功能的愈发复杂（看看现在的Gmail），这种模式本质上和JSP时代的Web开发并无本质区别，只不过是将复杂的业务逻辑从JSP文件转移到了JavaScript文件中而已。现在，对于一个前端功能、交互复杂的SPA，JavaScript代码很容易膨胀（超过10万行）。很自然地，像服务端从JSP向MVC框架转换的过程一样，前端开发也出现了大量的MVC框架，比较典型的包括BackboneJS, AngularJS, EmberJS, KnockoutJS。总的来说，MV*框架的提出是为了解决前端开发的复杂度，提供一套规则组织代码、分层（MVC），通过合理的组织和分层，前端的代码职责明确、清晰，便于开发与测试。</p>
+<p><a href="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/Frontend-MVC.png" target="_blank" rel="noopener"><img src="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/Frontend-MVC.png" alt="Frontend-MVC"></a></p>
+<h2 id="JavaScript在服务器端的逆袭：Node"><a href="#JavaScript在服务器端的逆袭：Node" class="headerlink" title="JavaScript在服务器端的逆袭：Node"></a>JavaScript在服务器端的逆袭：Node</h2><p>各大浏览器的竞争，使其引擎的性能不断提升，至今Google V8引擎的性能已经足以运行大型Javascript程序。在V8之上加以网络、文件系统等内置模块，形成了如今的Node.js。</p>
+<p>随着Node.js的出现，JavaScript开始拥有在服务端运行的能力，它的异步本质使得Node.js在处理I/O密集型业务中优势凸显，而大多Web业务中I/O性能都是瓶颈。eBay、Yahoo、甚至Microsoft Azure纷纷引入Node.js以提升性能。Node.js的package每天都有几千万的下载量。这对前端工程师来说可是一个好消息，精通JavaScript的他们也能够做服务端开发了！虽然现实中并不是这样美好（服务端开发涉及的不仅仅是语言层面），但一种新的开发模式也因此兴起：浏览器端处理展现层逻辑、而服务端Controller这一层以及相关的模板渲染、路由、数据接口以及Session/Cookie先关处理实际上交给了Nodejs来做。通过Nodejs, 意味着前后端很多代码可以复用（例如数据验证逻辑），在需要SEO的场景下也可以选择服务端模板渲染。</p>
+<p>但另一方面，JavaScript刚被引入到服务器端开发，其生态环境还未成熟，甚至大量的常用package主版本号都是0。长期用来实现页面逻辑，天生自由的JavaScript，在服务器端开发中，仍未形成统一的开发范型。不同开发原则和编码风格的应用，都将对Node.js项目的性能、可维护性产生重大影响。现在而言，服务器端javascript开发究竟是魔鬼还是天使，仍取决于团队中的开发者。</p>
+<p><a href="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/Node.png" target="_blank" rel="noopener"><img src="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/Node.png" alt="Node"></a></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>Web技术依然在快速发展，Web本身的基础规范也在不断完善，HTML5和CSS3引入了更多激动人心的特性。回顾Web的发展历史，从某个角度看，就是抽象层次不断提高的一个过程，更高的抽象层次屏蔽更低层的复杂性，从而提高开发效率。每当技术发展到一定程度，出现某些局限性的时候，就会有更优秀的技术出现来突破这些局限性。其实这是计算机技术发展的一个普遍规律，比如高级语言的出现屏蔽了汇编语言的复杂性，帮助我们更快速的编程；数据库技术的出现使得我们无需关心物理存储和访问细节，写简单的SQL语句就能搞定，更进一步，ORM框架使得我们通过一条语句调用一个类的一个方法就能方便就行数据操作。我们应该让自己的技术视野具备一定的高度和广度，看到一门技术的发展规律和发展历程，这是一种技术修养的体现，其实跟人文修养是一样的。同时也应该具有一定的深度，因为我们往往站在比较高的抽象层次，比如今天你写几行代码就能把数据库创建好，增删改查的功能也自动生成好了，但是成为高手需要你对底层的原理机制有更透彻的理解，真正遇到问题的时候才能抽丝剥茧迎刃而解。</p>
+<p>Java Web 发展史</p>
+<p>一、原起<br>唉，说来惭愧，本来是想整理一下SpringBoot相关的知识，顺便结合书和网上的资料写一套完整的东西来作为以后复习、供大家借鉴，然后想先写一篇介绍SpringBoot的文章作为开篇，可是要介绍SpringBoot就得好好说说Spring，，好吧还是一点点来，先把Spring的东西好好整理一下吧<del>~那么先来一篇介绍Spring版本和起源的文章吧，问题又来 了…为啥要用Spring啊？没有Spring之前用什么啊？（对于我这个刚开始接触没几年时间的程序猿，一开始接触的就是框架，也许这就是人们常说的生在好时代了吧 哇哈哈）好吧，抱着我的好奇心还是先看看整个Java Web的发展史（就联想到这里吧！在想可能要回去翻翻汇编的书了</del>~），看看都是怎么一点点的发展到现在这个地步的吧，上网找了好些类似的文章，做了对比，这里整理一下当做了解和以后的查阅，虽然好些没经历过，但也尽量准确的记录下~~~</p>
+<p>二、JavaWeb发展历程<br>Servlet出现之前<br>servlet大多数人还是了解的，也还在使用，这里就从servlet说起吧。传说在上世纪90年代，因为nternet和浏览器的飞速发展，使得基于浏览器的B/S模式随之火爆发展起来。最初，用户使用浏览器向WEB服务器发送的请求都是请求静态的资源，比如html、css等。 但是可以想象：根据用户请求的不同动态的处理并返回资源是理所当然必须的要求，例如用户提交一些东西，服务器就能按提交的内容反馈用户不同的效果。所以人们应该非常迫切想要推出一项技术来实现动态的处理， java 为了应对上述需求，促进了servlet技术诞生。</p>
+<p>Servlet出现（纯Servlet开发）<br>SUN公司刚刚推出JavaEE（Java企业版）时，推出了Servlet这个东西，命名就是Service+Applet，即服务小程序。Servlet可以说是Java技术中最早的Web解决方案，Servlet与普通Java类的编写非常类似。在Servlet中可以通过挨着行输出Html等语句来实现页面的样式和输出，数据的动态功能当然也就实现了。表现、逻辑、控制、业务全部混在Servlet类中。下面给出一个简单例子来直观感受一下。</p>
+<p>public void doGet(HttpServletRequest request,HttpServletResponse)<br>   throws IOException,ServletException<br>{<br>    response.setContentType(“text/html;charset=gb2312”);<br>    PrintWriter out = response.getWriter();<br>    out.println(“<html>“);<br>    out.println(“<head><meta name="generator" content="Hexo 3.8.0"><title>Hello World！</title></head>“);<br>    out.println(“<body>“);<br>    out.println(“<p>Hello World！</p>“);<br>    out.println(“</body></html>“);<br>}<br>这样就动态的生成了一个内容为Hello World!的HTML页面在浏览器上显示。</p>
+<p>一项技术的出现必然解决了一些现存的问题，但是我们知道servlet之后还有好些技术来替代在servlet中生成HTML页面的方式，那就说明servlet还存在痛点。从上面代码中我们可以看到servlet编程其实很繁琐：</p>
+<p>servlet代码有大量冗余代码，out输出就得写上百遍；</p>
+<p>开发servlet必须精通网页前端和美工，你得非常不直观的在Servlet中写前端代码，这使得实现各种页面效果和风格非常困难。</p>
+<p>对于后端来说，所有的业务逻辑、页面跳转、央视表现全部混杂在同一个类中，并且一项业务一般只有一个Servlet类与其对应，实在是….太麻烦了。</p>
+<p>所以为了解决这些问题（真庆幸晚生了好多年），sun公司借鉴 微软的asp,正式推出了JSP（servlet1.1）</p>
+<p>JSP（纯JSP开发）<br>经过纯Servlet开发的噩梦之后，Sun公司又推出（或者说是倡导）了JSP技术，全称是Java Server Page，JSP中采用HTML语言直接生成界面，还可以在界面中使用&lt;% %&gt;脚本标识嵌入Java代码，揪其本质也是最终生成一个Servlet类来编译解析。如果要开发具有大量网页内容的网站，可以先使用网页编辑工具编写网页，然后在网页中嵌入处理代码即可。再来一个简单的例子：</p>
+<p><html><br>   <head><meta name="generator" content="Hexo 3.8.0"><title>测试</title></head><br>   <body><br>     显示的内容是：&lt;% String aa= “hello” ; out.println(aa); %&gt;<br>    </body><br></html><br>虽然JSP可以实现网站的快速开发，但依然存在缺点：网站的输入输出、处理、控制全部夹杂在一起，维护不方便，即使只需要修改该页面的一个简单按钮文本，或者一段静态的文本内容，也不得不打开混杂的动态脚本的页面源文件进行修改。当网站中需要进行大量的处理代码的时候，JSP文件将很难维护，并且代码也不容易共享。</p>
+<p>前端开发人员需要看大量他看不懂的后端代码；</p>
+<p>同样，servlet开发人员也在复杂的前端代码中找到其能写servlet代码的地方</p>
+<p>因为JSP在编写网页方面具有优势，而编写处理代码存在很多问题，所以人们把JSP中的处理代码使用JavaBean来实现。于是出现了JSP+JavaBean的开发模式（有人叫做Model1开发模式，为什么这么叫，嗯<del>不知道</del>~）。</p>
+<p>JSP+JavaBean（Model1）<br>这里就要首先弄清楚JavaBean到底是啥?JavaBean 是一种JAVA语言写成的可重用组件。为写成JavaBean，类必须是具体的和公共的，并且具有无参数的构造器。JavaBean 通过提供符合一致性设计模式的公共方法将内部域暴露成员属性，set和get方法获取（百度）。其实可以理解就是Java类，这里我理解为JavaBean的出现作为和数据库交互的类，Jsp页面里边中写部分Java代码用于转发等操作以及HTML页面的生成代码，而获取数据的方式以及部分业务逻辑则通过JavaBean来实现。整体结构</p>
+<p>​                  </p>
+<p>这种开发模式有一个简单的分层 JSP：表现层、控制层 JavaBean：模型层  利用我们现在熟悉的MVC模型的思想去看，虽然编写代码十分容易，但Jsp混淆了MVC模型中的视图层和控制层，高度耦合的结果是Jsp代码十分复杂，后期维护依旧困难。由原有的Model1开发模式转变成Model2开发模式，即Servlet+JSP+JavaBean。同时也使得在Web项目中将MVC设计模式实现。</p>
+<p>Servlet+JSP+JavaBean（Model2）<br>Model1虽然在一定程度上解耦了，但JSP依旧即要负责页面控制，又要负责逻辑处理，职责不单一！此时Model2应运而生，使得各个部分各司其职，Model2是基于MVC模式的。Model2的开发模式是：Jsp+Servlet+JavaBean的模式，它和Model1不同的是，增加了Servlet。</p>
+<p>在这种开发模式下，JSP页面中就可以不用任何的&lt;%%&gt;语句了，包括&lt;%=%&gt;全部用EL表达式来代替，列表的遍历和条件判断等（Java中的for循环和if语句）也可以通过JSTL来代替。 这样的话视图层相比较之前的开发模式来说要薄得多的多，JSP中不涉及任何的业务逻辑，前端人员修改样式也十分方便。这里可以理解为JSP为MVC设计模式中的V,即视图。</p>
+<p>控制层通过Servlet来实现，获取前台传的参数、控制页面跳转，封装对象、向前台传输对象或者参数。并且可以由自己设计，设法用一个Servlet类实现该模块的所有功能的页面跳转。这里可以理解为Servlet为MVC设计模式中的C,即控制器。</p>
+<p>但这里要说明的是Model2并不是一个完全标准的MVC设计模式，因为JavaBean还过于臃肿，并不能完全作为M层存在，所以将JavaBean再一次进行分割：业务逻辑、数据持久化。</p>
+<p>三层架构与MVC设计模式<br>这里首先讨论一下三层架构和MVC的关系。我们大多数人总会把三层架构和MVC混为一谈，其实并非如此。三层架构是指软件系统的整体设计分层：业务逻辑层、数据持久化层和表现层。而MVC设计模式只体现在表现层中，即将表现层又分为模型、视图和控制器。所以在上面Model2模式下对JavaBean分割后形成了三层架构与MVC的全新的JavaWeb开发模式。</p>
+<p>这里在分别介绍一下三层架构以及MVC设计模式：</p>
+<p>三层架构：</p>
+<p>表现层（Web层）：通俗说就是用户所能看到的直观的界面。其作用就是接收用户提交的请求数据，以及将程序对用户请求所产生的响应数据反馈给用户。目的就是为用户提供可交互的操作界面。所以，表现层就像已经搭好的积木。</p>
+<p>业务逻辑层：简单讲就是“具体问题，具体分析”。它根据用户的不同请求而做出不同响应的处理。可以说是对数据层的一种整合方式。所以，就如同每个人会根据自己的喜好搭建不同的积木一样，业务逻辑层代表的就是搭积木的方式。</p>
+<p>数据访问层（持久化）：它只是提供对数据库操作的多种途径。不同的数据就好比形状各异的积木，而数据访问层就好比取出或放回这些积木的动作。</p>
+<p>MVC设计模式：</p>
+<p>模型（Model）：封装的是数据源和所有基于对这些数据的操作。在一个组件中，Model往往表示组件的状态和操作状态的方法。</p>
+<p>视图（View）：封装的是对数据源Model的一种显示。一个模型可以由多个视图，而一个视图理论上也可以与不同的模型关联起来。</p>
+<p>控制器（Control）：封装的是外界作用于模型的操作。通常，这些操作会转发到模型上，并调用模型中相应的一个或者多个方法。一般Controller在Model和View之间起到了沟通的作用，处理用户在View上的输入，并转发给Model。这样Model和View两者之间可以做到松散耦合，甚至可以彼此不知道对方，而由Controller连接起这两个部分。</p>
+<p>至此，页面的表现由jsp实现，转发控制由servlet实现，业务逻辑写在业务逻辑层，操作数据库部分写在持久化层，分工明确，各司其职。Model1、Model2、三层是在解耦的基础上一步步进化而来，通过解耦我们可以进行进一步的抽象，以应对现实需求的变动。这里要说的就是，从servlet一直到三层架构的转变，其实都是为了实现高内聚，低耦合。一步一步将各个功能分配到不同的地方实现。</p>
+<p>ps:<a href="https://blog.csdn.net/weixin_39893958/article/details/84335159" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39893958/article/details/84335159</a> 这里整理了一些关于高内聚，低耦合的内容。</p>
+<p>小结<br>前面也只是简单说来一下Javaweb发展历程中的一小部分，随着时间的推演，后面又出现企业级JavaBean EJB等大型框架，再到我们熟悉的Spring、SpringBoot。而Spring诞生之初，主要目的是用来替代更加重量级的企业级技术 尤其是EJB，相对于EJB来说Spring提供了更加轻量级和简单的编程模型。它增强了简单老式的Java对象POJO的功能，使其具备了之前只有EJB和其他企业级Java规范才有的功能。</p>
+<p>EJB没用过，所以就Spring和EJB的比较以及Spring对于EJB的提升优点等不作过多解释，但从前面的种种发展历程来看，我们现在使用的Spring等都相对来说简单、方便了很多，框架的产生也对Javaweb开发影响极深，也是发展的必然趋势。简单了解了下Javaweb的发展趋势，下面在继续说说我们为什么会选择Spring，即Spring的优缺点。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/27/Package, classpath and jar/">
+                <span class="level-item">Package, classpath and jar</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/Shiyu.jpg" alt="Shiyu Liu">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Shiyu Liu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Software Engineer, Student
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Columbia University, NY</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        38
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ShiyuLiuColumbia" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/ShiyuLiuColumbia">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/shiyu-liu-6623a3158/">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Email" href="mailto:sl4401@columbia.edu">
+                
+                <i class="fas fa-envelope-open"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/BQ/">
+            <span class="level-start">
+                <span class="level-item">BQ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Backend/">
+            <span class="level-start">
+                <span class="level-item">Backend</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Basics/">
+            <span class="level-start">
+                <span class="level-item">Basics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Distributed-System/">
+            <span class="level-start">
+                <span class="level-item">Distributed System</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Frontend/">
+            <span class="level-start">
+                <span class="level-item">Frontend</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Leetcode/">
+            <span class="level-start">
+                <span class="level-item">Leetcode</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">22</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/System-Design/">
+            <span class="level-start">
+                <span class="level-item">System Design</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Encode/" style="font-size: 10px;">Encode</a> <a href="/tags/Host-file/" style="font-size: 10px;">Host file</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/28/web与java web发展史/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="web与java web发展史.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-28T22:07:25.000Z">2020-03-28</time></div>
+                    <a href="/2020/03/28/web与java web发展史/" class="has-link-black-ter is-size-6">web与java web发展史.</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Backend/">Backend</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/27/Package, classpath and jar/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Package, classpath and jar">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-27T20:59:43.000Z">2020-03-27</time></div>
+                    <a href="/2020/03/27/Package, classpath and jar/" class="has-link-black-ter is-size-6">Package, classpath and jar</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/26/Maven学习笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Maven学习笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-27T04:02:26.000Z">2020-03-26</time></div>
+                    <a href="/2020/03/26/Maven学习笔记/" class="has-link-black-ter is-size-6">Maven学习笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Backend/">Backend</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/09/Basic Calculator类型题/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Basic Calculator类型题">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-09T20:17:43.000Z">2019-12-09</time></div>
+                    <a href="/2019/12/09/Basic Calculator类型题/" class="has-link-black-ter is-size-6">Basic Calculator类型题</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/26/Paxos-based Key-Value Service/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Paxos-based Key/Value Service">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-26T19:57:15.000Z">2019-11-26</time></div>
+                    <a href="/2019/11/26/Paxos-based Key-Value Service/" class="has-link-black-ter is-size-6">Paxos-based Key/Value Service</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Distributed-System/">Distributed System</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Angular/">
+                        <span class="tag">Angular</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Database/">
+                        <span class="tag">Database</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Encode/">
+                        <span class="tag">Encode</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Host-file/">
+                        <span class="tag">Host file</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Javascript/">
+                        <span class="tag">Javascript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Unicode/">
+                        <span class="tag">Unicode</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+        
+        </div>
+    
+</div>
+
+                <!-- 
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+    
+    
+</div>
+ -->
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+
+                    Shiyu - Blog
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Shiyu Liu&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

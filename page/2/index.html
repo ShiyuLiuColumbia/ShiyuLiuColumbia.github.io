@@ -124,6 +124,65 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-05T22:43:13.000Z">2019-11-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 minutes read (About 1163 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/05/Word Ladder类型题/">Word Ladder类型题</a>
+            
+        </h1>
+        <div class="content">
+            <p>Word Ladder I和Word Ladder II两道题给我们的经验：</p>
+<ol>
+<li>It’s much faster than one-end search indeed as explained in wiki.</li>
+<li><strong>BFS isn’t equivalent to Queue. Sometimes Set is more accurate representation for nodes of level. (also handy since we need to check if we meet from two ends)</strong></li>
+<li>It’s safe to share a visited set for both ends since if they meet same string it terminates early. (vis is useful since we cannot remove word from dict due to bidirectional search)</li>
+<li>It seems like if(set.add()) is a little slower than if(!contains()) then add() but it’s more concise.</li>
+</ol>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/11/05/Word Ladder类型题/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-30T20:26:19.000Z">2019-10-30</time>
                 
                 <div class="level-item">
@@ -596,55 +655,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-04T01:14:39.000Z">2019-10-03</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds read (About 73 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/03/Master Theorem/">Master Theorem</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Master-Theorem-主定理"><a href="#Master-Theorem-主定理" class="headerlink" title="Master Theorem(主定理)"></a>Master Theorem(主定理)</h1><p>主定理用于在divide&amp;conquer问题中求时间复杂度，以前总是记不住，今天总结了一下，方便记忆。</p>
-<p><img src="/images/blog/master.png" alt></p>
-<p>Example: merge sort: T(n) = 2*T(n/2)+O(n)</p>
-<p>a = 2, b =2, n^logba == n, 所以符合2.1, 所以结果是O(nlogn)</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -711,7 +721,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        37
+                        38
                     </p>
                 </div>
             </div>
@@ -793,7 +803,7 @@
                 <span class="level-item">Backend</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Basics/">
@@ -858,6 +868,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/28/web与java web发展史/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="web与java web发展史.">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-28T22:07:25.000Z">2020-03-28</time></div>
+                    <a href="/2020/03/28/web与java web发展史/" class="has-link-black-ter is-size-6">web与java web发展史.</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Backend/">Backend</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -935,25 +964,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/23/Graph类型题总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Graph类型题总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T18:03:49.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/Graph类型题总结/" class="has-link-black-ter is-size-6">Graph类型题总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -972,7 +982,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1083,7 +1093,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
