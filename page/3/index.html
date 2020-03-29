@@ -587,14 +587,14 @@
                 <time class="level-item has-text-grey" datetime="2019-09-13T16:35:09.000Z">2019-09-13</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a>
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 401 words)
+                    6 minutes read (About 898 words)
                 </span>
                 
                 
@@ -603,18 +603,23 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/13/元素脱离文档流的方法/">元素脱离文档流的方法</a>
+                <a class="has-link-black-ter" href="/2019/09/13/String matching总结/">String Matching类型问题总结</a>
             
         </h1>
         <div class="content">
-            <p><strong>有三种情况将使得元素脱离文档流，分别是浮动(float left or right)、绝对定位(position:absolute)、固定定位(position:fixed)。</strong></p>
+            <h1 id="String-Matching类型问题总结"><a href="#String-Matching类型问题总结" class="headerlink" title="String Matching类型问题总结"></a>String Matching类型问题总结</h1><p>这类问题的鼻祖问题Sequence Alignment(Edit distance)在算法课上学习过，但是理解不够深刻，本质上就是二维DP的问题。时间空间复杂度都是O(mn)。<br><strong>这种String Matching或者DP的问题，一定不要上来就想*号该怎么处理，而是应该用一种recursive的思想去处理（算法的问题就是要把大问题逐渐变成更小的问题）</strong>：</p>
+<ul>
+<li>对于两个string，想要把两个长string比较的大问题变成两个更短的string比较的问题，那么做法无疑就是比较两个string的最后一位，根据不同的情况可以使他们缩短，然后再比较缩短了的string，再缩短不断重复，这就是recursive的思想。</li>
+<li>对于recursive，我们可以发现会有很多的子问题在其中，所以可以用dp[][]数组进行memorize。</li>
+<li>进一步总结变成bottom up的DP解法。</li>
+</ul>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/13/元素脱离文档流的方法/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/09/13/String matching总结/#more">Read More</a>
                 </div>
             </div>
         </div>
