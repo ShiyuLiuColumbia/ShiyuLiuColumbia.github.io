@@ -2,7 +2,7 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>web与java web发展史. - Shiyu - Blog</title>
+<title>java web发展史与java学习路线 - Shiyu - Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -133,7 +133,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    an hour read (About 9358 words)
+                    an hour read (About 9400 words)
                 </span>
                 
                 
@@ -142,11 +142,11 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                web与java web发展史.
+                java web发展史与java学习路线
             
         </h1>
         <div class="content">
-            <p>最近在准备学spring和spring boot，但是又看到servelet什么的很困惑，所以了解了以下java web的发展。<br><a href="https://www.jianshu.com/p/bec6736dcc3d" target="_blank" rel="noopener">https://www.jianshu.com/p/bec6736dcc3d</a><br><a href="https://www.tianmaying.com/tutorial/web-history" target="_blank" rel="noopener">https://www.tianmaying.com/tutorial/web-history</a><br><a id="more"></a></p>
+            <p>最近在准备学spring和spring boot，但是又看到servelet什么的很困惑，所以了解了以下java web的发展。同时也看到一个很好的java学习路线图。<br><a href="https://www.jianshu.com/p/bec6736dcc3d" target="_blank" rel="noopener">https://www.jianshu.com/p/bec6736dcc3d</a><br><a href="https://www.tianmaying.com/tutorial/web-history" target="_blank" rel="noopener">https://www.tianmaying.com/tutorial/web-history</a><br><a href="https://www.runoob.com/servlet/servlet-intro.html" target="_blank" rel="noopener">https://www.runoob.com/servlet/servlet-intro.html</a><br><a href="https://www.runoob.com/jsp/jsp-intro.html" target="_blank" rel="noopener">https://www.runoob.com/jsp/jsp-intro.html</a><br><a id="more"></a></p>
 <h1 id="Web开发技术发展历史"><a href="#Web开发技术发展历史" class="headerlink" title="Web开发技术发展历史"></a>Web开发技术发展历史</h1><h2 id="Web的诞生"><a href="#Web的诞生" class="headerlink" title="Web的诞生"></a>Web的诞生</h2><p>提到Web，不得不提一个词就是“互联网”。Web是World Wide Web的简称，中文译为万维网。“万维网”和我们经常说的“互联网”是两个联系极其紧密但却不尽相同的概念。今天“互联网”三个字已经承载了太多的内涵，提到互联网，我们通常想到的一种战略思维，或者是一种颠覆传统的商业模式。抛开那些纷繁凌乱的商业化概念，回归技术本身，互联网就是指通过TCP/IP协议族互相连接在一起的计算机网络。而Web是运行在互联网上的一个超大规模的分布式系统。Web设计初衷是一个静态信息资源发布媒介，通过超文本标记语言（HTML）描述信息资源，通过统一资源标识符（URI）定位信息资源，通过超文本转移协议（HTTP）请求信息资源。HTML、URL和HTTP三个规范构成了Web的核心体系结构，是支撑着Web运行的基石。用通俗的一点的话来说，客户端（一般为浏览器）通过URL找到网站(如<a href="http://www.google.com)，发出HTTP请求，服务器收到请求后返回HTML页面。可见，Web是基于TCP/IP协议的，TCP/IP协议把计算机连接在一起，而Web在这个协议族之上，进一步将计算机的信息资源连接在一起，形成我们说的万维网。大家开发的Web应用本质上就是可以提供信息或者功能的Web资源，成为Web这个全球超大规模分布式系统中的一部分。在技术层面进一步理解Web和互联网，建议找一本计算机网络的书去看看，了解一下计算机网络的分层结构和发展历史。" target="_blank" rel="noopener">www.google.com)，发出HTTP请求，服务器收到请求后返回HTML页面。可见，Web是基于TCP/IP协议的，TCP/IP协议把计算机连接在一起，而Web在这个协议族之上，进一步将计算机的信息资源连接在一起，形成我们说的万维网。大家开发的Web应用本质上就是可以提供信息或者功能的Web资源，成为Web这个全球超大规模分布式系统中的一部分。在技术层面进一步理解Web和互联网，建议找一本计算机网络的书去看看，了解一下计算机网络的分层结构和发展历史。</a></p>
 <p>1991年8月6日，Tim Berners Lee在alt.hypertext新闻组贴出了一份关于World Wide Web的简单摘要，标志了Web页面在Internet上的首次登场。最早Web主要被一帮科学家们用来共享和传递信息，全世界的Web服务器也就几十台。第一个Web浏览器是Berners Lee在NeXT机器上实现，也只能跑在NeXT机器上，苹果和乔布斯的粉丝对NeXT的历史肯定耳熟能详。真正使得Web开始流行起来的是Mosaic浏览器，这便是曾经大名鼎鼎的Netscape Navigator的前身。Berners Lee在1993年建立了万维网联盟（World Wide Web Consortium，W3C），负责Web相关标准的制定。浏览器的普及和W3C的推动，使得Web上可以访问的资源逐渐丰富起来。这个时候Web的主要功能就是浏览器向服务器请求静态HTML信息。95年的时候马云在美国看到了互联网，更准确的说他其实看到的就是Web，阿里早先做的黄页也就是把企业信息通过进行HTML展示的Web应用。</p>
 <p><a href="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/Static-Page.png" target="_blank" rel="noopener"><img src="http://tmy-course.oss-cn-beijing.aliyuncs.com/web-history/Static-Page.png" alt="Static-Page"></a></p>
@@ -277,6 +277,7 @@
 <p>实践证明，单纯使用Servlet、JSP和MVC开发，依然会面临诸多的问题。而程序员普遍存在一种特质，就是懒。因为懒，所以才想着能有更简单的解决办法。因为懒，针对一些通用问题，才会想出通用解决方法。可以说，因为懒，科技才有了进步。。。这时候，为了解放劳动力，一些开源框架营运而出。这些框架的目的只有一个：<strong>让开发简单，简单，更简单</strong></p>
 <p>提到Java Web框架，就不得不提几乎所有开发者都知道的三大框架：<strong>SSH</strong></p>
 <h3 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h3><p>关于三大框架，这里不做介绍了，网上的文章铺天盖地。想要说的是：无论什么框架，都是对常见问题的抽象和封装，再出什么新的框架，也万变不离其宗，脱离不了Servlet这个根基。学习的时候千万不能跟着框架走，框架让做什么就做什么，而是要想为什么这样做。否则，今天学会了一个框架，明天又出了新的框架，又会抓瞎了。</p>
+<h1 id="Java学习路线"><a href="#Java学习路线" class="headerlink" title="Java学习路线"></a>Java学习路线</h1><p><img src="./java-learning-map.pdf" alt></p>
 
         </div>
         
@@ -507,16 +508,16 @@
         
         <article class="media">
             
-            <a href="/2020/03/28/web与java web发展史/" class="media-left">
+            <a href="/2020/03/28/java web发展史与java学习路线/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="web与java web发展史.">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java web发展史与java学习路线">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-28T22:07:25.000Z">2020-03-28</time></div>
-                    <a href="/2020/03/28/web与java web发展史/" class="has-link-black-ter is-size-6">web与java web发展史.</a>
+                    <a href="/2020/03/28/java web发展史与java学习路线/" class="has-link-black-ter is-size-6">java web发展史与java学习路线</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Backend/">Backend</a>
                     </p>
