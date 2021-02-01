@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>单调栈问题总结 - Shiyu - Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <strong>Shiyu - Blog</strong>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+                <a class="navbar-item" href="/projects">Project</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-25T15:39:33.000Z">2019-10-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 minutes read (About 1131 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                单调栈问题总结
+            
+        </h1>
+        <div class="content">
+            <h1 id="Monotonic-Stack问题总结"><a href="#Monotonic-Stack问题总结" class="headerlink" title="Monotonic Stack问题总结"></a>Monotonic Stack问题总结</h1><p>单调栈问题的思路就是栈中的元素都是单调增或者单调减的，当我们想要新加入元素到栈的时候，我们回去查看是否符合单调标准，不符合的弹出。<br><a href="https://blog.csdn.net/qq_17550379/article/details/86519771" target="_blank" rel="noopener">https://blog.csdn.net/qq_17550379/article/details/86519771</a></p>
+<a id="more"></a>
+<ol start="496">
+<li>Next Greater Element I：这道题是单调栈的代表问题与基础问题，是解决后面复杂问题的工具，也就是让我们找某个元素右侧最近的大于自身的元素，由于在遇到比自身大的元素之前可能中间会与其他元素，而这些其他元素的信息我们也是需要的，所以自然而然可以联想到栈的性质。</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">496. Next Greater Element I</span></span><br><span class="line"><span class="hljs-comment">Easy</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">961</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">1543</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">You are given two arrays (without duplicates) nums1 and nums2 where nums1’s elements are subset of nums2. Find all the next greater numbers for nums1's elements in the corresponding places of nums2.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">The Next Greater Number of a number x in nums1 is the first greater number to its right in nums2. If it does not exist, output -1 for this number.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Example 1:</span></span><br><span class="line"><span class="hljs-comment">Input: nums1 = [4,1,2], nums2 = [1,3,4,2].</span></span><br><span class="line"><span class="hljs-comment">Output: [-1,3,-1]</span></span><br><span class="line"><span class="hljs-comment">Explanation:</span></span><br><span class="line"><span class="hljs-comment">    For number 4 in the first array, you cannot find the next greater number for it in the second array, so output -1.</span></span><br><span class="line"><span class="hljs-comment">    For number 1 in the first array, the next greater number for it in the second array is 3.</span></span><br><span class="line"><span class="hljs-comment">    For number 2 in the first array, there is no next greater number for it in the second array, so output -1.</span></span><br><span class="line"><span class="hljs-comment">Example 2:</span></span><br><span class="line"><span class="hljs-comment">Input: nums1 = [2,4], nums2 = [1,2,3,4].</span></span><br><span class="line"><span class="hljs-comment">Output: [3,-1]</span></span><br><span class="line"><span class="hljs-comment">Explanation:</span></span><br><span class="line"><span class="hljs-comment">    For number 2 in the first array, the next greater number for it in the second array is 3.</span></span><br><span class="line"><span class="hljs-comment">    For number 4 in the first array, there is no next greater number for it in the second array, so output -1.</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] nextGreaterElement(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2) &#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> num:nums2)&#123;</span><br><span class="line">            <span class="hljs-keyword">while</span>(!stack.isEmpty() &amp;&amp; stack.peek()&lt;num)&#123;</span><br><span class="line">                map.put(stack.peek(), num);</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(num);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">int</span>[] ans = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[nums1.length];</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;=ans.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(map.containsKey(nums1[i]))&#123;</span><br><span class="line">                ans[i] = map.get(nums1[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                ans[i] = -<span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="503">
+<li>Next Greater Element II：这道题与前一道思路基本一致，有两点不同：保存的是index因为会有duplicates；array是一个环，所以遍历两遍。</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">503. Next Greater Element II</span></span><br><span class="line"><span class="hljs-comment">Medium</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">860</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">49</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">Given a circular array (the next element of the last element is the first element of the array), print the Next Greater Number for every element. The Next Greater Number of a number x is the first greater number to its traversing-order next in the array, which means you could search circularly to find its next greater number. If it doesn't exist, output -1 for this number.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Example 1:</span></span><br><span class="line"><span class="hljs-comment">Input: [1,2,1]</span></span><br><span class="line"><span class="hljs-comment">Output: [2,-1,2]</span></span><br><span class="line"><span class="hljs-comment">Explanation: The first 1's next greater number is 2; </span></span><br><span class="line"><span class="hljs-comment">The number 2 can't find next greater number; </span></span><br><span class="line"><span class="hljs-comment">The second 1's next greater number needs to search circularly, which is also 2.</span></span><br><span class="line"><span class="hljs-comment">Note: The length of given array won't exceed 10000.*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] nextGreaterElements(<span class="hljs-keyword">int</span>[] nums) &#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">int</span>[] ans = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[nums.length];</span><br><span class="line">        Arrays.fill(ans, -<span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=nums.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">while</span>(!stack.isEmpty() &amp;&amp; nums[stack.peek()]&lt;nums[i])&#123;</span><br><span class="line">                ans[stack.pop()] = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=nums.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">while</span>(!stack.isEmpty() &amp;&amp; nums[stack.peek()]&lt;nums[i])&#123;</span><br><span class="line">                ans[stack.pop()] = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>有了上面两道题的铺垫，我们找到了单调栈解法这一工具，下面的题虽然看起来很复杂，但如果我们运用单调栈会将它们变得很简单。</p>
+<ol start="42">
+<li>Trapping Rain Water：42与84属于镜像问题，一个是找某个index的最近的两边比他大的，一个是找某个index的最近的两边比他小的。</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">42. Trapping Rain Water</span></span><br><span class="line"><span class="hljs-comment">Hard</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">4727</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">83</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped. Thanks Marcos for contributing this image!</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Example:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: [0,1,0,2,1,0,1,3,2,1,2,1]</span></span><br><span class="line"><span class="hljs-comment">Output: 6</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        stack.push(-<span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;=height.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">while</span>(stack.peek()!=-<span class="hljs-number">1</span> &amp;&amp; height[i]&gt;height[stack.peek()])&#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> index = stack.pop();</span><br><span class="line">                <span class="hljs-keyword">if</span>(stack.peek()!=-<span class="hljs-number">1</span>)&#123;</span><br><span class="line">                    <span class="hljs-keyword">int</span> minHeight = Math.min(height[stack.peek()], height[i]);</span><br><span class="line">                    <span class="hljs-keyword">int</span> waterHeight = minHeight - height[index];</span><br><span class="line">                    ans = ans + waterHeight*(i-<span class="hljs-number">1</span>-(stack.peek()+<span class="hljs-number">1</span>)+<span class="hljs-number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>84.Largest Rectangle in Histogram：我们在栈中储存高度单调递增的方块的索引，当我们遇到比栈顶小的方块，说明我们找到了右边界(就是遇到的这个比栈顶小的方块)，左边界(栈先pop出本方块，此时的peek是左边界)，所以我们就可以求得以这个方块高度为高的面积大小。<br>由于我们要查看栈顶来看我们的左侧边界，所以我们需要开率边界条件，也就是现在栈里面加一个-1。<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">84. Largest Rectangle in Histogram</span></span><br><span class="line"><span class="hljs-comment">Hard</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">2424</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">63</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">Given n non-negative integers representing the histogram's bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment"> </span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment"> </span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">The largest rectangle is shown in the shaded area, which has area = 10 unit.</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">largestRectangleArea</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] heights)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        stack.push(-<span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;=heights.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">while</span>(stack.peek()!=-<span class="hljs-number">1</span> &amp;&amp; heights[i]&lt;heights[stack.peek()])&#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> index = stack.pop();</span><br><span class="line">                ans = Math.max(ans , heights[index]*(i-<span class="hljs-number">1</span>-(stack.peek()+<span class="hljs-number">1</span>)+<span class="hljs-number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">while</span>(stack.peek()!=-<span class="hljs-number">1</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> index = stack.pop();</span><br><span class="line">            ans = Math.max(ans, heights[index]*(heights.length-<span class="hljs-number">1</span>-(stack.peek()+<span class="hljs-number">1</span>)+<span class="hljs-number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol start="1130">
+<li>Minimum Cost Tree From Leaf Values：拿到这道题很容易想到变成dp去做，但那样时间空间复杂度都很高，我们可以使用greedy，这篇文章里面讲的很好。<br><a href="https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/discuss/339959/One-Pass-O(N)-Time-and-Space" target="_blank" rel="noopener">https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/discuss/339959/One-Pass-O(N)-Time-and-Space</a><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">1130. Minimum Cost Tree From Leaf Values</span></span><br><span class="line"><span class="hljs-comment">Medium</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">286</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">29</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">Given an array arr of positive integers, consider all binary trees such that:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Each node has either 0 or 2 children;</span></span><br><span class="line"><span class="hljs-comment">The values of arr correspond to the values of each leaf in an in-order traversal of the tree.  (Recall that a node is a leaf if and only if it has 0 children.)</span></span><br><span class="line"><span class="hljs-comment">The value of each non-leaf node is equal to the product of the largest leaf value in its left and right subtree respectively.</span></span><br><span class="line"><span class="hljs-comment">Among all possible binary trees considered, return the smallest possible sum of the values of each non-leaf node.  It is guaranteed this sum fits into a 32-bit integer.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment"> </span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Example 1:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: arr = [6,2,4]</span></span><br><span class="line"><span class="hljs-comment">Output: 32</span></span><br><span class="line"><span class="hljs-comment">Explanation:</span></span><br><span class="line"><span class="hljs-comment">There are two possible trees.  The first has non-leaf node sum 36, and the second has non-leaf node sum 32.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">    24            24</span></span><br><span class="line"><span class="hljs-comment">   /  \          /  \</span></span><br><span class="line"><span class="hljs-comment">  12   4        6    8</span></span><br><span class="line"><span class="hljs-comment"> /  \               / \</span></span><br><span class="line"><span class="hljs-comment">6    2             2   4</span></span><br><span class="line"><span class="hljs-comment"> </span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Constraints:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">2 &lt;= arr.length &lt;= 40</span></span><br><span class="line"><span class="hljs-comment">1 &lt;= arr[i] &lt;= 15</span></span><br><span class="line"><span class="hljs-comment">It is guaranteed that the answer fits into a 32-bit signed integer (ie. it is less than 2^31).</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">mctFromLeafValues</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        stack.push(Integer.MAX_VALUE);</span><br><span class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> number:arr)&#123;</span><br><span class="line">            <span class="hljs-keyword">while</span>(stack.peek()!=Integer.MAX_VALUE &amp;&amp; number&gt;=stack.peek())&#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> num = stack.pop();</span><br><span class="line">                ans = ans + num * Math.min(number, stack.peek());</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(number);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">while</span>(stack.size()&gt;<span class="hljs-number">2</span>)&#123;</span><br><span class="line">            ans = ans + stack.pop()*stack.peek();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>由以上这三道题可以看出来，当我们需要同时求左侧和右侧的第一个最大(最小)值的时候，我们需要先在栈里面加入一个边界元素(也就是左侧没有更大(更小)的时候该怎么办)。还有这种问题不要忘记考虑最后剩在stack的元素。</p>
+<hr>
+<ol start="239">
+<li>Sliding Window Maximum: 这道题本质上也是单调栈/队列，总共有三个操作(1. Deque的头元素在k的范围内，否则poll 2. Deque的尾元素如果小于遇到的新元素，poll 3. 在Deque尾部加入新元素)。经过这三个操作我们可以确保Deque中的元素都在sliding window的范围内且是单调的，所以这个时候我们取头元素即是该sliding window的最大值。</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">239. Sliding Window Maximum</span></span><br><span class="line"><span class="hljs-comment">Hard</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">2278</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">134</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Favorite</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Share</span></span><br><span class="line"><span class="hljs-comment">Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position. Return the max sliding window.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Example:</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Input: nums = [1,3,-1,-3,5,3,6,7], and k = 3</span></span><br><span class="line"><span class="hljs-comment">Output: [3,3,5,5,6,7] </span></span><br><span class="line"><span class="hljs-comment">Explanation: </span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Window position                Max</span></span><br><span class="line"><span class="hljs-comment">---------------               -----</span></span><br><span class="line"><span class="hljs-comment">[1  3  -1] -3  5  3  6  7       3</span></span><br><span class="line"><span class="hljs-comment"> 1 [3  -1  -3] 5  3  6  7       3</span></span><br><span class="line"><span class="hljs-comment"> 1  3 [-1  -3  5] 3  6  7       5</span></span><br><span class="line"><span class="hljs-comment"> 1  3  -1 [-3  5  3] 6  7       5</span></span><br><span class="line"><span class="hljs-comment"> 1  3  -1  -3 [5  3  6] 7       6</span></span><br><span class="line"><span class="hljs-comment"> 1  3  -1  -3  5 [3  6  7]      7</span></span><br><span class="line"><span class="hljs-comment">Note:</span></span><br><span class="line"><span class="hljs-comment">You may assume k is always valid, 1 ≤ k ≤ input array's size for non-empty array.</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">Follow up:</span></span><br><span class="line"><span class="hljs-comment">Could you solve it in linear time?</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] maxSlidingWindow(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(nums==<span class="hljs-keyword">null</span> || nums.length==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        Deque&lt;Integer&gt; dq = <span class="hljs-keyword">new</span> ArrayDeque&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">int</span>[] ans = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[nums.length-k+<span class="hljs-number">1</span>];</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;=nums.length-<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">while</span>(dq.peekFirst()!=<span class="hljs-keyword">null</span> &amp;&amp; dq.peekFirst()&lt;i-k+<span class="hljs-number">1</span>)&#123;</span><br><span class="line">                dq.pollFirst();</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="hljs-keyword">while</span>(dq.peekLast()!=<span class="hljs-keyword">null</span> &amp;&amp; nums[dq.peekLast()]&lt;nums[i])&#123;</span><br><span class="line">                dq.pollLast();</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            dq.offer(i);</span><br><span class="line">            </span><br><span class="line">            <span class="hljs-keyword">if</span>(i&gt;=k-<span class="hljs-number">1</span>)&#123;</span><br><span class="line">                ans[i-k+<span class="hljs-number">1</span>] = nums[dq.peekFirst()];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/30/Leetcode/Majority Vote总结/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Majority Vote总结</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/23/Leetcode/Greedy问题慢慢总结/">
+                <span class="level-item">Greedy问题慢慢总结</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/Shiyu.jpg" alt="Shiyu Liu">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Shiyu Liu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Software Engineer, Student
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Columbia University, NY</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        41
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ShiyuLiuColumbia" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/ShiyuLiuColumbia">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/shiyu-liu-6623a3158/">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Email" href="mailto:sl4401@columbia.edu">
+                
+                <i class="fas fa-envelope-open"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/BQ/">
+            <span class="level-start">
+                <span class="level-item">BQ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Backend/">
+            <span class="level-start">
+                <span class="level-item">Backend</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Basics/">
+            <span class="level-start">
+                <span class="level-item">Basics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Distributed-System/">
+            <span class="level-start">
+                <span class="level-item">Distributed System</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Frontend/">
+            <span class="level-start">
+                <span class="level-item">Frontend</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Leetcode/">
+            <span class="level-start">
+                <span class="level-item">Leetcode</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">22</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/System-Design/">
+            <span class="level-start">
+                <span class="level-item">System Design</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Encode/" style="font-size: 10px;">Encode</a> <a href="/tags/Host-file/" style="font-size: 10px;">Host file</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/01/31/Basics/Thinking in Java阅读笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Thinking in Java阅读笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-02-01T05:37:48.000Z">2021-01-31</time></div>
+                    <a href="/2021/01/31/Basics/Thinking in Java阅读笔记/" class="has-link-black-ter is-size-6">Thinking in Java阅读笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/30/Backend/Spring/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-31T01:56:33.000Z">2020-03-30</time></div>
+                    <a href="/2020/03/30/Backend/Spring/" class="has-link-black-ter is-size-6">Spring</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Backend/">Backend</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/28/Backend/Servlets and JSPs/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Servlets and JSPs">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-29T04:45:15.000Z">2020-03-28</time></div>
+                    <a href="/2020/03/28/Backend/Servlets and JSPs/" class="has-link-black-ter is-size-6">Servlets and JSPs</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Backend/">Backend</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/28/Backend/java web发展史与java学习路线/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java web发展史与java学习路线">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-28T22:07:25.000Z">2020-03-28</time></div>
+                    <a href="/2020/03/28/Backend/java web发展史与java学习路线/" class="has-link-black-ter is-size-6">java web发展史与java学习路线</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Backend/">Backend</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/27/Basics/Package, classpath and jar/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Package, classpath and jar">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-27T20:59:43.000Z">2020-03-27</time></div>
+                    <a href="/2020/03/27/Basics/Package, classpath and jar/" class="has-link-black-ter is-size-6">Package, classpath and jar</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Angular/">
+                        <span class="tag">Angular</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Database/">
+                        <span class="tag">Database</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Encode/">
+                        <span class="tag">Encode</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Host-file/">
+                        <span class="tag">Host file</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Javascript/">
+                        <span class="tag">Javascript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Unicode/">
+                        <span class="tag">Unicode</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+        
+        </div>
+    
+</div>
+
+                <!-- 
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+    
+    
+</div>
+ -->
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+
+                    Shiyu - Blog
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2021 Shiyu Liu&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
