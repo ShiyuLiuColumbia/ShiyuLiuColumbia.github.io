@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes read (About 1850 words)
+                    6 minutes read (About 898 words)
                 </span>
                 
                 
@@ -154,28 +154,23 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/13/Leetcode/区间问题总结/">区间问题总结</a>
+                <a class="has-link-black-ter" href="/2019/09/13/Leetcode/String matching总结/">String Matching类型问题总结</a>
             
         </h1>
         <div class="content">
-            <h1 id="Interval类型题"><a href="#Interval类型题" class="headerlink" title="Interval类型题"></a>Interval类型题</h1><p>Interval类型的题目很烧脑，这里尽量总结一下，要多复习。</p>
-<p><a href="https://zhuanlan.zhihu.com/p/26657786" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26657786</a></p>
-<p><strong>这种题的思路是：1.由于本身start和end都是无序的，所以第一步是先要针对start或者end进行排序，具体针对start还是end需要具体问题具体分析，一般来说针对start进行排序的情况比较多；2.对于已经排好序的数组使用greedy</strong></p>
-<blockquote>
-<p><a href="https://www.1point3acres.com/bbs/thread-432526-1-1.html" target="_blank" rel="noopener">https://www.1point3acres.com/bbs/thread-432526-1-1.html</a><br>我的体验是， 如果能改成类似经典问题的话 [寻找最多non overlapping interval]类型的题目，就是按end排序。 按end排序只&gt; 需要考虑一个情况就是[3,5],[7,8],[1,10]这样。 如果这个是个反例，那得考虑start排序。</p>
-</blockquote>
-<ol>
-<li>646 + 435 + 452</li>
-<li>253 + 253</li>
-<li>56 + 57</li>
-</ol>
+            <h1 id="String-Matching类型问题总结"><a href="#String-Matching类型问题总结" class="headerlink" title="String Matching类型问题总结"></a>String Matching类型问题总结</h1><p>这类问题的鼻祖问题Sequence Alignment(Edit distance)在算法课上学习过，但是理解不够深刻，本质上就是二维DP的问题。时间空间复杂度都是O(mn)。<br><strong>这种String Matching或者DP的问题，一定不要上来就想*号该怎么处理，而是应该用一种recursive的思想去处理（算法的问题就是要把大问题逐渐变成更小的问题）</strong>：</p>
+<ul>
+<li>对于两个string，想要把两个长string比较的大问题变成两个更短的string比较的问题，那么做法无疑就是比较两个string的最后一位，根据不同的情况可以使他们缩短，然后再比较缩短了的string，再缩短不断重复，这就是recursive的思想。</li>
+<li>对于recursive，我们可以发现会有很多的子问题在其中，所以可以用dp[][]数组进行memorize。</li>
+<li>进一步总结变成bottom up的DP解法。</li>
+</ul>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/13/Leetcode/区间问题总结/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/09/13/Leetcode/String matching总结/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -208,7 +203,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 418 words)
+                    2 minutes read (About 326 words)
                 </span>
                 
                 
@@ -217,18 +212,22 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/13/Leetcode/Integer to something总结/">Integer to something 类型题总结</a>
+                <a class="has-link-black-ter" href="/2019/09/13/Leetcode/Merge K sorted lists总结/">Merge K sorted lists类型题总结</a>
             
         </h1>
         <div class="content">
-            <h1 id="Integer-to-something-类型题总结"><a href="#Integer-to-something-类型题总结" class="headerlink" title="Integer to something 类型题总结"></a>Integer to something 类型题总结</h1><p>这种类型题的思路就是将可能的情况放到Array中，由小到大或者由大到小排列，将需要得到的结果依次减Array中的index得出结果。之前做过的Broadway Technology的OA也是同样类型的题。</p>
+            <h1 id="Merge-K-sorted-lists"><a href="#Merge-K-sorted-lists" class="headerlink" title="Merge K sorted lists"></a>Merge K sorted lists</h1><p>首先要会做merge 2 sorted lists，这个比较简单，就是使用双指针进行merge。<br>Merge K sorted lists有两个做法：</p>
+<ul>
+<li>使用一个list长度的Priority Queue，重新构写Comparator(按照lisstnode.val进行比较)，每次取出最小的listnode以后再向Priority Queue加入新的node。 时间复杂度是O(nlogk)，因为所有的node都要进到PQ中，而每个进去都是O(k)时间。空间复杂度O(k)。</li>
+<li>divide and conquer的思想，因为我们已经做过merge 2 sorted list的题，那么很自然可以想到将list不断地divide直到只剩一个，然后再两个两个的merge，思想与merge sort很像。时间复杂度也是O(nlogk)。</li>
+</ul>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/13/Leetcode/Integer to something总结/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/09/13/Leetcode/Merge K sorted lists总结/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -309,7 +308,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        41
+                        42
                     </p>
                 </div>
             </div>
@@ -459,6 +458,25 @@
         
         <article class="media">
             
+            <a href="/2021/03/01/待学习list/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="待学习list">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-02T04:35:37.000Z">2021-03-01</time></div>
+                    <a href="/2021/03/01/待学习list/" class="has-link-black-ter is-size-6">待学习list</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/01/31/Basics/Thinking in Java阅读笔记/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Thinking in Java阅读笔记">
@@ -533,25 +551,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/27/Basics/Package, classpath and jar/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Package, classpath and jar">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-27T20:59:43.000Z">2020-03-27</time></div>
-                    <a href="/2020/03/27/Basics/Package, classpath and jar/" class="has-link-black-ter is-size-6">Package, classpath and jar</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -563,6 +562,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/01/">
