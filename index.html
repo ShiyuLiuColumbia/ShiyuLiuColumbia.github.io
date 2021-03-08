@@ -181,7 +181,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 minutes read (About 931 words)
+                    10 minutes read (About 1554 words)
                 </span>
                 
                 
@@ -223,9 +223,21 @@
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span></span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Cat</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>(<span class="hljs-string">"Fake"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">call</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>.call();</span><br><span class="line">        System.out.println(<span class="hljs-string">"Miao"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Animal animal = <span class="hljs-keyword">new</span> Cat();</span><br><span class="line">        animal.call();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="7">
 <li>关于第六条，我们可以理解为初始化子类对象的时候，会同时在其中创建一个父类的subobject，本质上的理解：<a href="https://www.zhihu.com/question/51920553" target="_blank" rel="noopener">https://www.zhihu.com/question/51920553</a></li>
+<li>继承类的初始化顺序：父类static initialization-&gt;子类static initialization-&gt;父类fields被设置成默认值-&gt;子类fields被设置成默认值-&gt;父类constructor-&gt;子类constructor</li>
 </ol>
 <h2 id="The-Final-keyword"><a href="#The-Final-keyword" class="headerlink" title="The Final keyword"></a>The Final keyword</h2><p>Final keyword means ‘This can not be changed’ in general. You might want to prevent cahges for two reasons: design or effciency.</p>
-<h3 id="Final-data"><a href="#Final-data" class="headerlink" title="Final data"></a>Final data</h3>
+<h3 id="Final-data"><a href="#Final-data" class="headerlink" title="Final data"></a>Final data</h3><p>Final data分为两种，一种是final primitives，一种是final object reference。Final primitives代表着这个field的value就是不可变的，final object reference代表这个field的reference不可以再变了，但是它的value是可以变的<br>定义为final的fields是可以没有被初始化的，但是在使用这个field之前一定要完成初始化</p>
+<h3 id="Final-arguments"><a href="#Final-arguments" class="headerlink" title="Final arguments"></a>Final arguments</h3><p>Final arguments means that inside the method you cannot change what the argument reference points</p>
+<h3 id="Final-methods"><a href="#Final-methods" class="headerlink" title="Final methods"></a>Final methods</h3><p>Final methods的作用是防止子类override</p>
+<h3 id="Final-and-Private"><a href="#Final-and-Private" class="headerlink" title="Final and Private"></a>Final and Private</h3><p>private method in a class are implicitly final. 因为private method只有自己的类中能看到，即使是子类也看到父类的private method，更不能够override它</p>
+<h3 id="Final-classes"><a href="#Final-classes" class="headerlink" title="Final classes"></a>Final classes</h3><p>Final class不能被继承，并且final class里的methods自动是final的(因为不能继承，也就谈不上override了)</p>
+<h2 id="Polymorphism-dynamic-binding-late-binding-run-time-binding"><a href="#Polymorphism-dynamic-binding-late-binding-run-time-binding" class="headerlink" title="Polymorphism(dynamic binding/late binding/run-time binding)"></a>Polymorphism(dynamic binding/late binding/run-time binding)</h2><h3 id="Method-call-binding"><a href="#Method-call-binding" class="headerlink" title="Method-call binding"></a>Method-call binding</h3><p>Early-binding: 在compile time，编译器只会根据某个对象的表面上写的是什么class从而判断他能不能call某个方法，如果不能的话会报compile-error<br>Late-binding：在run time，编译器会真的决定这个对象到底是什么class(而不是根据他表面上是什么class)，并使用它真正的class里的那个method去call<br>比如<code>Shape s = new Circle(); s.draw();</code>，compile time，编译器只会检查Shape类有没有draw这个方法，没有的话报错，run time，当我们想要使用s对象的draw method的时候，编译期才会真正去查看s对象真是的类，虽然他被定义为Shape类，但真实的类是Circle，所以最终会调用Circle类里的draw方法<br>总结来说，compile time看等号左边，run time看等号右边</p>
+<h3 id="几个不支持多态-dynamic-binding-的例子"><a href="#几个不支持多态-dynamic-binding-的例子" class="headerlink" title="几个不支持多态(dynamic binding)的例子"></a>几个不支持多态(dynamic binding)的例子</h3><ol>
+<li>overriding private method</li>
+<li>fields：fields不存在override也就没有多态，不会使用dynamic binding，会使用等号左边的class里的field。子类和父类是可以有相同名字的field的，子类默认使用本身类的field，如果想使用父类的field，需要加上super</li>
+<li>static methods： static method是和class绑定的，不会使用dynamic binding，会使用等号左边的class里的static method</li>
+</ol>
+
         </div>
         
         
