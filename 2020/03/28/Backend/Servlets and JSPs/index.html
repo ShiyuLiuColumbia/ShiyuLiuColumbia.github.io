@@ -146,7 +146,7 @@
             
         </h1>
         <div class="content">
-            <h1 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h1><h2 id="Understanding-the-servlet"><a href="#Understanding-the-servlet" class="headerlink" title="Understanding the servlet"></a>Understanding the servlet</h2><p>Tomcat可以简单的理解为一个web容器，我们编写的servelet程序必须要在web容器中才能运行，这很好理解，因为单单一个servlet java程序并不能够接收浏览器的信息，我们需要通过web容器接收到浏览器的命令，然后web容器再调用servelet处理并返回结果。<br>Tomcat从浏览器接收到请求后生成request和response两个对象，将这两个对象传入servlet，servelet处理后再返回Tomcat。<br>Servlet可以使用xml或者annotation来处理路径。<br><a id="more"></a><br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> org.shiyu.liu;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.PrintWriter;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Servlet implementation class SimpleServlet</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@WebServlet</span>(description = <span class="hljs-string">"A simple servlet"</span>, urlPatterns = &#123; <span class="hljs-string">"/SimpleServletPath"</span> &#125;)<span class="hljs-comment">//使用annotation来处理路径</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SimpleServlet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">1L</span>;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">	 * <span class="hljs-doctag">@see</span> HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line"><span class="hljs-comment">	 */</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<span class="hljs-comment">//从Tomcat中接收到的request和response对象</span></span><br><span class="line">		<span class="hljs-comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="hljs-string">"Hello From Get Method"</span>);</span><br><span class="line">		response.setContentType(<span class="hljs-string">"text/html"</span>);</span><br><span class="line">		PrintWriter writer = response.getWriter();</span><br><span class="line">		writer.println(<span class="hljs-string">"&lt;h3&gt;Hello from html&lt;/h3&gt;"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+            <h1 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h1><h2 id="Understanding-the-servlet"><a href="#Understanding-the-servlet" class="headerlink" title="Understanding the servlet"></a>Understanding the servlet</h2><p>Tomcat可以简单的理解为一个web容器，我们编写的servelet程序必须要在web容器中才能运行，这很好理解，因为单单一个servlet java程序并不能够接收浏览器的信息，我们需要通过web容器接收到浏览器的命令，然后web容器再调用servlet处理并返回结果。<br>Tomcat从浏览器接收到请求后生成request和response两个对象，将这两个对象传入servlet，servelet处理后再返回Tomcat。<br>Servlet可以使用xml或者annotation来处理路径。<br><a id="more"></a><br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> org.shiyu.liu;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.PrintWriter;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Servlet implementation class SimpleServlet</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@WebServlet</span>(description = <span class="hljs-string">"A simple servlet"</span>, urlPatterns = &#123; <span class="hljs-string">"/SimpleServletPath"</span> &#125;)<span class="hljs-comment">//使用annotation来处理路径</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SimpleServlet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">1L</span>;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">	 * <span class="hljs-doctag">@see</span> HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line"><span class="hljs-comment">	 */</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<span class="hljs-comment">//从Tomcat中接收到的request和response对象</span></span><br><span class="line">		<span class="hljs-comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="hljs-string">"Hello From Get Method"</span>);</span><br><span class="line">		response.setContentType(<span class="hljs-string">"text/html"</span>);</span><br><span class="line">		PrintWriter writer = response.getWriter();</span><br><span class="line">		writer.println(<span class="hljs-string">"&lt;h3&gt;Hello from html&lt;/h3&gt;"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="Servlet-XML-configuration"><a href="#Servlet-XML-configuration" class="headerlink" title="Servlet XML configuration"></a>Servlet XML configuration</h2><p>我们可以不使用annonation配置servlet的url，而是直接在web.xml中进行配置</p>
 <p><welcome-file-list>: welcome-file-list的工作原理是，按照welcome-file的.list一个一个去检查是否web目录下面存在这个文件，如果存在，继续下面的工作，先去webcontent(这里是Eclipse的工程目录根目录)下是否真的存在index.html这个文件，如果不存在去找是否存在index.jsp这个文件，以此类推。</welcome-file-list></p>
 <p><servlet>: 关联<servlet-name>和<servlet-class></servlet-class></servlet-name></servlet></p>
@@ -255,7 +255,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        42
+                        43
                     </p>
                 </div>
             </div>
@@ -345,7 +345,7 @@
                 <span class="level-item">Basics</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">10</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Distributed-System/">
@@ -402,6 +402,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/05/28/Basics/Git Cherry Pick/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Git Cherry Pick">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-05-29T02:23:52.000Z">2021-05-28</time></div>
+                    <a href="/2021/05/28/Basics/Git Cherry Pick/" class="has-link-black-ter is-size-6">Git Cherry Pick</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -479,25 +498,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/28/Backend/java web发展史与java学习路线/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="java web发展史与java学习路线">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-28T22:07:25.000Z">2020-03-28</time></div>
-                    <a href="/2020/03/28/Backend/java web发展史与java学习路线/" class="has-link-black-ter is-size-6">java web发展史与java学习路线</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Backend/">Backend</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -509,6 +509,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2021/03/">
