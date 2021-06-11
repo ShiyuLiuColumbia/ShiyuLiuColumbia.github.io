@@ -2,7 +2,7 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Merge K sorted lists类型题总结 - Shiyu - Blog</title>
+<title>Category: Basics - Shiyu - Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -118,22 +118,34 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">Categories</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">Basics</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-13T16:35:09.000Z">2019-09-13</time>
+                <time class="level-item has-text-grey" datetime="2019-04-29T20:43:23.000Z">2019-04-29</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 326 words)
+                    11 minutes read (About 1662 words)
                 </span>
                 
                 
@@ -142,19 +154,21 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Merge K sorted lists类型题总结
+                <a class="has-link-black-ter" href="/2019/04/29/Basics/python字符编解码/">Python字符编解码</a>
             
         </h1>
         <div class="content">
-            <h1 id="Merge-K-sorted-lists"><a href="#Merge-K-sorted-lists" class="headerlink" title="Merge K sorted lists"></a>Merge K sorted lists</h1><p>首先要会做merge 2 sorted lists，这个比较简单，就是使用双指针进行merge。<br>Merge K sorted lists有两个做法：</p>
-<ul>
-<li>使用一个list长度的Priority Queue，重新构写Comparator(按照lisstnode.val进行比较)，每次取出最小的listnode以后再向Priority Queue加入新的node。 时间复杂度是O(nlogk)，因为所有的node都要进到PQ中，而每个进去都是O(k)时间。空间复杂度O(k)。</li>
-<li>divide and conquer的思想，因为我们已经做过merge 2 sorted list的题，那么很自然可以想到将list不断地divide直到只剩一个，然后再两个两个的merge，思想与merge sort很像。时间复杂度也是O(nlogk)。</li>
-</ul>
-<a id="more"></a>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * public class ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public ListNode mergeKLists(ListNode[] lists) &#123;</span><br><span class="line">        return partition(lists, 0, lists.length-1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private ListNode partition(ListNode[] lists, int left, int right)&#123;</span><br><span class="line">        if(left&gt;right)&#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(left==right)&#123;</span><br><span class="line">            return lists[left];</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            ListNode leftPart = partition(lists, left, (left+right)/2);</span><br><span class="line">            ListNode rightPart = partition(lists, (left+right)/2+1, right);</span><br><span class="line">            return merge(leftPart, rightPart);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private ListNode merge(ListNode leftPart, ListNode rightPart)&#123;</span><br><span class="line">        //merge two sorted list</span><br><span class="line">        ListNode ans = new ListNode(0);</span><br><span class="line">        ListNode res = ans;</span><br><span class="line">        while(leftPart!=null &amp;&amp; rightPart!=null)&#123;</span><br><span class="line">            if(leftPart.val&lt;rightPart.val)&#123;</span><br><span class="line">                ans.next = leftPart;</span><br><span class="line">                leftPart = leftPart.next;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                ans.next = rightPart;</span><br><span class="line">                rightPart = rightPart.next;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = ans.next;</span><br><span class="line">        &#125;</span><br><span class="line">        if(leftPart!=null)&#123;</span><br><span class="line">            ans.next = leftPart;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            ans.next = rightPart;</span><br><span class="line">        &#125;</span><br><span class="line">        return res.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="1-ASCII码"><a href="#1-ASCII码" class="headerlink" title="1. ASCII码"></a>1. ASCII码</h1><p>我们知道，计算机内部，所有信息最终都是一个二进制值。每一个二进制位（bit）有0和1两种状态，因此八个二进制位就可以组合出256种状态，这被称为一个字节（byte）。也就是说，一个字节一共可以用来表示256种不同的状态，每一个状态对应一个符号，就是256个符号，从00000000到11111111。<br></p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/04/29/Basics/python字符编解码/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -164,29 +178,29 @@
 
 
 
+
+
+
+
+
+    
 <div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/13/Frontend/元素脱离文档流的方法/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">元素脱离文档流的方法</span>
-            </a>
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Basics/">Previous</a>
         </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/13/Leetcode/Integer to something总结/">
-                <span class="level-item">Integer to something 类型题总结</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
+        <div class="pagination-next is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/Basics/page/3/">Next</a>
         </div>
-        
-    </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/Basics/">1</a></li>
+            
+            <li><a class="pagination-link is-current" href="/categories/Basics/page/2/">2</a></li>
+            
+        </ul>
+    </nav>
 </div>
-
-
-
 </div>
                 
 

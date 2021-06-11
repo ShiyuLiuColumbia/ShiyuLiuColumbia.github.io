@@ -124,6 +124,52 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-05-31T04:31:11.000Z">2021-05-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a few seconds read (About 15 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2021/05/30/Basics/Computer Networking阅读笔记/">Computer Networking阅读笔记</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Computer-Networks-and-the-Internet"><a href="#Computer-Networks-and-the-Internet" class="headerlink" title="Computer Networks and the Internet"></a>Computer Networks and the Internet</h1><h2 id="The-network-edge"><a href="#The-network-edge" class="headerlink" title="The network edge"></a>The network edge</h2><h2 id="The-network-core"><a href="#The-network-core" class="headerlink" title="The network core"></a>The network core</h2><h3 id="Packet-switching"><a href="#Packet-switching" class="headerlink" title="Packet switching"></a>Packet switching</h3><h3 id="Circuit-switching"><a href="#Circuit-switching" class="headerlink" title="Circuit switching"></a>Circuit switching</h3><p>## </p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2021-05-29T02:23:52.000Z">2021-05-28</time>
                 
                 <div class="level-item">
@@ -177,7 +223,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 42 words)
+                    2 minutes read (About 238 words)
                 </span>
                 
                 
@@ -190,18 +236,29 @@
             
         </h1>
         <div class="content">
-            <ol>
-<li>Thinking in java </li>
+            <p>现在的工作看似非常轻松，但其实是在温水煮青蛙。人生如逆水行舟，不进则退。贪图现在的玩乐与享受，只会导致技术上的不思进取，最终落于人后。<br>趁着这次找工作的机会，把自己最薄弱的基础知识部分好好的增强一下，同时做好笔记，这样以后再要跳槽的时候也就事半功倍了。加油！</p>
+<h1 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h1><ol>
+<li>基础知识： Thinking in java</li>
+<li>Java8新特性：</li>
+<li>进阶： Effective java</li>
+<li>Java并发与多线程：</li>
+<li>Java虚拟机与垃圾回收：</li>
+<li>Java容器：</li>
+</ol>
+<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><ol>
+<li>基础知识： Computer networking</li>
+<li>HTTP： </li>
+</ol>
+<h1 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h1><h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p>Redis</p>
+<h1 id="其他杂项"><a href="#其他杂项" class="headerlink" title="其他杂项"></a>其他杂项</h1><ol>
 <li>Bash/Shell basic</li>
 <li>RPC到底是什么，为什么coral用RPC</li>
-<li>Java8新特性</li>
 <li>微服务</li>
 <li>serverless</li>
 <li>AOP</li>
 <li>build tools: ant, maven and gradle</li>
 <li>TLS, SSL, SSH</li>
-<li>OS</li>
-<li>Git cherry pick  DONE</li>
+<li>Git cherry pick  DONE  </li>
 </ol>
 
         </div>
@@ -235,7 +292,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    36 minutes read (About 5379 words)
+                    an hour read (About 11169 words)
                 </span>
                 
                 
@@ -380,8 +437,149 @@
 <li>Catch异常的时候不一定是完美符合，即子异常也会被父异常的catch语句抓到。所以我们总是在try-catchd的最后补上<code>catch(Exception e)</code>，而不能在最开始写。 </li>
 </ol>
 <h1 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h1><h2 id="Immutable-Strings"><a href="#Immutable-Strings" class="headerlink" title="Immutable Strings"></a>Immutable Strings</h2><ol>
-<li>String object都是不可更改的(immutable)，所有对于String的操作都是生成一个新的String，而非更改旧的<h2 id="Formatting-output"><a href="#Formatting-output" class="headerlink" title="Formatting output"></a>Formatting output</h2></li>
+<li>String object都是不可更改的(immutable)，所有对于String的操作都是生成一个新的String，而非更改旧的<h2 id="Overloading-‘-’-vs-StringBuilder"><a href="#Overloading-‘-’-vs-StringBuilder" class="headerlink" title="Overloading ‘+’ vs. StringBuilder"></a>Overloading ‘+’ vs. StringBuilder</h2></li>
+<li>Java编译器在处理String的加操作时，底层其实也是在使用StringBuilder的。但是在遇到循环的时候，编译器会生成多个StringBuilder在每一次循环的时候。</li>
+<li>所以对于String和StringBuilder的使用：简单的加操作直接用String，涉及到循环的时候一定要用StringBuilder</li>
+<li>StringBuilder是java1.5引入的，之前使用的是StringBuffer，原理与StringBuilder基本相同，但是StringBuffer是线程安全的，而stringBuilder是线程不安全的，所以这就导致StringBuffer比StringBuilder效率要低<h2 id="Formatting-output"><a href="#Formatting-output" class="headerlink" title="Formatting output"></a>Formatting output</h2></li>
+<li>Java中的format相关实现都是由<code>java.util.formatter</code>来完成的。常用的<code>String.format()</code>的内部实现也使用的formatter</li>
+<li>Formatter的使用见： <a href="https://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html</a><h2 id="Regular-expressions"><a href="#Regular-expressions" class="headerlink" title="Regular expressions"></a>Regular expressions</h2></li>
+<li>在其他语言中，<code>\\</code> 表示：我想要在正则表达式中插入一个普通的（字面上的）反斜杠，请不要给它任何特殊的意义。在 Java 中，<code>\\</code> 表示：我要插入一个正则表达式的反斜线，所以其后的字符具有特殊的意义。所以，在其他的语言中（如 Perl），一个反斜杠 <code>\</code> 就足以具有转义的作用，而在 Java 中正则表达式中则需要有两个反斜杠才能被解析为其他语言中的转义作用。也可以简单的理解在 Java 的正则表达式中，两个 <code>\\</code> 代表其他语言中的一个 <code>\</code>，这也就是为什么表示一位数字的正则表达式是 <code>\\d</code>，而表示一个普通的反斜杠是 <code>\\</code>。</li>
+<li>其他关于正则表达式的表达可以参考： <a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017639890281664" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400/1017639890281664</a></li>
+<li>Java中关于正则表达式的内部实现都是由Pattern类和Matcher类完成的，这里有时间可以好好看一下</li>
 </ol>
+<h1 id="Type-Information"><a href="#Type-Information" class="headerlink" title="Type Information"></a>Type Information</h1><p>Run time information(RTTI)分为两部分。传统的RTTI假定我们在编译时已经知道了所有的类型信息；另一种反射机制允许我们在运行时发现和使用类型信息。</p>
+<h2 id="The-Class-object"><a href="#The-Class-object" class="headerlink" title="The Class object"></a>The Class object</h2><ol>
+<li>平时我们生成Java对象的时候都是直接用new，但new的背后其实隐藏了一些步骤。当我们写好一个新的类并进行编译时，JVM都会为这个新的类创建一个对应的Class对象，并将其存在.class的字节码中，这个Class对象会用来生成这个类的对象。</li>
+<li>JVM一开始运行的时候，并不是所有的类都被直接装载进来，而是动态的逐渐的装载进来。JVM使用Java Class Loader来进行类的装载：每当程序第一次使用某个类的静态成员static member(包括静态常量，静态变量和静态方法)的时候，JVM就会将这个类加载进来(<strong>类的构造器默认是静态的，这也是为什么我们使用new就会装载这个类的原因</strong>)</li>
+<li>当我们想要使用某个类的静态成员的时候，Java Class Loader会先检查这个类是否已经被加载了，如果没有的话就去寻找这个类的.class字节码并进行加载，这样这个类的Class对象也就同时被加载到了内存中，后面我们就可以使用这个Class对象来创建这个类的对象</li>
+<li>如果我们想要得到Class对象的引用，我们可以使用<code>Class test = Class.forName(FULL_QUALIFIED_NAME)</code>。FULL_QUALIFIED_NAME的意思是要包括包名。这个时候有个疑问：有没有可能想要得到的Class对象还没有被加载进JVM呢？这个问题很好，答案是这个方法的一个“副作用”就是如果这个类还没有被加载，那么加载它。另一个方法去得到Class对象的引用是如果你已经有一个类的对象，可以使用<code>getClass()</code>方法。</li>
+<li>之前说过Class对象是用来生成这个类的对象，这也就说明了Class对象存储了这个类几乎所有的信息。其中有一些常用的方法：<br>getName()：返回类的全名(包括包名)<br>getSimpleName()：返回类名<br>getInterfaces()：返回一个数组，里面包括这个类的所有接口的Class对象的引用<br>getSuperClass()：返回这个类的父类的Class对象的引用<br>newInstance()：使用默认构造器创建这个类的一个对象。后面在反射部分会介绍怎么使用别的构造器创建对象<h3 id="Class-literals"><a href="#Class-literals" class="headerlink" title="Class literals"></a>Class literals</h3></li>
+<li>第三种得到Class对象引用的方式是：<code>Test.class</code>。这种方式不仅效率更高，而且避免了<code>forName()</code>方法可能抛出的异常。</li>
+<li>基本类也都有Class literals。比如<code>int.class</code>就和<code>Integer.TYPE</code>完全一样。</li>
+<li>前面我们提到把字节码加载到JVM中，但这其实只是准备使用一个类的的第一步：<ul>
+<li>加载 加载是由Java Class Loader完成的，它的作用是把.class字节码加载到JVM中(Class对象也就被创建了，因为Class对象存在.class字节码中)</li>
+<li>链接 链接会验证字节码；为静态域static field(静态变量+静态常量)分配存储空间；如果有必要的话，解析这个类创建的对其他类的引用</li>
+<li>初始化 初始化父类；执行静态变量的初始化和静态代码块<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Initable</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> staticFinal = <span class="hljs-number">47</span>;</span><br><span class="line">  <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> staticFinal2 =</span><br><span class="line">    ClassInitialization.rand.nextInt(<span class="hljs-number">1000</span>);</span><br><span class="line">  <span class="hljs-keyword">static</span> &#123;</span><br><span class="line">    System.out.println(<span class="hljs-string">"Initializing Initable"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Initable2</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> staticNonFinal = <span class="hljs-number">147</span>;</span><br><span class="line">  <span class="hljs-keyword">static</span> &#123;</span><br><span class="line">    System.out.println(<span class="hljs-string">"Initializing Initable2"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Initable3</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> staticNonFinal = <span class="hljs-number">74</span>;</span><br><span class="line">  <span class="hljs-keyword">static</span> &#123;</span><br><span class="line">    System.out.println(<span class="hljs-string">"Initializing Initable3"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassInitialization</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Random rand = <span class="hljs-keyword">new</span> Random(<span class="hljs-number">47</span>);</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Class initable = Initable.class;</span><br><span class="line">    System.out.println(<span class="hljs-string">"After creating Initable ref"</span>);</span><br><span class="line">    <span class="hljs-comment">// Does not trigger initialization:</span></span><br><span class="line">    System.out.println(Initable.staticFinal);</span><br><span class="line">    <span class="hljs-comment">// Does trigger initialization:</span></span><br><span class="line">    System.out.println(Initable.staticFinal2);</span><br><span class="line">    <span class="hljs-comment">// Does trigger initialization:</span></span><br><span class="line">    System.out.println(Initable2.staticNonFinal);</span><br><span class="line">    Class initable3 = Class.forName(<span class="hljs-string">"Initable3"</span>);</span><br><span class="line">    System.out.println(<span class="hljs-string">"After creating Initable3 ref"</span>);</span><br><span class="line">    System.out.println(Initable3.staticNonFinal);</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="hljs-comment">/* Output:</span></span><br><span class="line"><span class="hljs-comment">After creating Initable ref</span></span><br><span class="line"><span class="hljs-comment">47</span></span><br><span class="line"><span class="hljs-comment">Initializing Initable</span></span><br><span class="line"><span class="hljs-comment">258</span></span><br><span class="line"><span class="hljs-comment">Initializing Initable2</span></span><br><span class="line"><span class="hljs-comment">147</span></span><br><span class="line"><span class="hljs-comment">Initializing Initable3</span></span><br><span class="line"><span class="hljs-comment">After creating Initable3 ref</span></span><br><span class="line"><span class="hljs-comment">74</span></span><br><span class="line"><span class="hljs-comment">*/</span><span class="hljs-comment">//:~</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<p>由于类的初始化阶段会执行静态块，所以我们可以通过判断静态块是否执行来判断类是否初始化了。从这个例子中可以看出来：</p>
+<pre><code>1. `.class`只触发了类的加载，并不会触发类的初始化，但是`Class.forName()`会触发类的加载
+2. 类似Initable.staticFinal这样的final静态常量，并不会触发初始化。这很合理，因为这种静态变量在编译阶段就已经写死了，并不需要进行初始化
+3. 类似Initable.staticFinal2这样的final静态变量，会触发初始化
+4. 如果一个静态域field不是final的，那么获取他总是需要链接和初始化的步骤的
+</code></pre><h3 id="Generic-class-references"><a href="#Generic-class-references" class="headerlink" title="Generic class references"></a>Generic class references</h3><ol>
+<li><p>我们可以使用泛型来使Class类对象更具体，这样的话编译器就会在编译阶段检查Class类对象所代表的类。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GenericClassReferences</span> </span>&#123;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Class intClass = <span class="hljs-keyword">int</span>.class;</span><br><span class="line">    Class&lt;Integer&gt; genericIntClass = <span class="hljs-keyword">int</span>.class;</span><br><span class="line">    genericIntClass = Integer.class; <span class="hljs-comment">// Same thing</span></span><br><span class="line">    intClass = <span class="hljs-keyword">double</span>.class;</span><br><span class="line">    <span class="hljs-comment">// genericIntClass = double.class; // Illegal</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="hljs-comment">///:~</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>那么如果我们要放松泛型的限制该怎么做呢，可能有人会想到<code>Class&lt;Number&gt; genericNumberClass = int.class;</code>，但是这样是不对的，因为<strong>虽然Number类是Integer类的父类，但是Number Class不是Integer Class的父类。</strong>这个后面在泛型会深入讲解</p>
+</li>
+<li><p>真正可以放松限制的是使用泛型通配符<code>?</code>，它代表着任何类型。我们使用的时候应该使用<code>Class&lt;?&gt;</code>而不是<code>Class</code></p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WildcardClassReferences</span> </span>&#123;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Class&lt;?&gt; intClass = <span class="hljs-keyword">int</span>.class;</span><br><span class="line">    intClass = <span class="hljs-keyword">double</span>.class;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="hljs-comment">///:~</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用泛型的一个好处就是由于Class类对象的类型是确定的，当我们使用<code>newInstance()</code>的时候，返回的不会只是一个Object的对象，而是一个确定的类</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GenericNewInstance</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Class&lt;Test&gt; testClass = Test.class;</span><br><span class="line">        <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">            Test test = testClass.newInstance();</span><br><span class="line">            System.out.println(test);</span><br><span class="line">        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="hljs-comment">///:~</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Checking-before-a-cast"><a href="#Checking-before-a-cast" class="headerlink" title="Checking before a cast"></a>Checking before a cast</h2><ol>
+<li><code>x instanceof Y</code>可以用来进行类型检查，在进行类型转换的时候很有用，否则类型转换可能抛出<code>ClassCastException</code><br>`<h2 id="Rgistered-factories"><a href="#Rgistered-factories" class="headerlink" title="Rgistered factories"></a>Rgistered factories</h2></li>
+<li>注册工厂是一种设计模式，需要进行一下学习</li>
+</ol>
+<h2 id="instanceof-vs-Class-equicalence"><a href="#instanceof-vs-Class-equicalence" class="headerlink" title="instanceof vs. Class equicalence"></a>instanceof vs. Class equicalence</h2><ol>
+<li><code>x instanceof Y</code>的意思是判断x对象是不是Y类型的实例，所以x既可以是Y类型的对象，也可以Y类型子类的对象。所以<code>derivedClassObject instanceof BaseClass</code>返回true</li>
+<li>当我们比较Class类对象的时候，子类与父类的Class对象是不同的，所以<code>DrivedClass.class != BaseClass.class</code></li>
+</ol>
+<h2 id="Reflection-runtime-class-information"><a href="#Reflection-runtime-class-information" class="headerlink" title="Reflection: runtime class information"></a>Reflection: runtime class information</h2><ol>
+<li>反射是指我们在编译阶段不知道类的具体信息，相关信息只有在runtime才会被得到，这个时候我们使用反射。反射与普通的RTTI没什么区别，只是一个是在编译阶段知道Class类对象的信息(.class字节码编译阶段就已存在)，另一个是在runtime阶段才能够知道</li>
+<li><code>java.lang.reflect</code>包提供了Field，Method和Constructor类。我们可以使用Custructor类去创建新的对象；使用get()和set()去读或者改变一个Field对象；使用invoke()去call一个Method对象</li>
+</ol>
+<h2 id="Dynamic-proxies"><a href="#Dynamic-proxies" class="headerlink" title="Dynamic proxies"></a>Dynamic proxies</h2><ol>
+<li>动态代理是反射一个很好的应用例子： <a href="https://www.zhihu.com/question/20794107" target="_blank" rel="noopener">https://www.zhihu.com/question/20794107</a></li>
+</ol>
+<h1 id="Generics"><a href="#Generics" class="headerlink" title="Generics"></a>Generics</h1><p><a href="https://www.cnblogs.com/wuqinglong/p/9456193.html" target="_blank" rel="noopener">https://www.cnblogs.com/wuqinglong/p/9456193.html</a><br><a href="https://segmentfault.com/a/1190000020497160" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020497160</a></p>
+<h2 id="Simple-Generics-Generic-Types"><a href="#Simple-Generics-Generic-Types" class="headerlink" title="Simple Generics(Generic Types)"></a>Simple Generics(Generic Types)</h2><ol>
+<li><a href="https://docs.oracle.com/javase/tutorial/java/generics/types.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/tutorial/java/generics/types.html</a><h3 id="Raw-Type"><a href="#Raw-Type" class="headerlink" title="Raw Type"></a>Raw Type</h3>A raw type is the name of a generic class or interface without any type arguments. For example, given the generic Box class:<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public class Box&lt;T&gt; &#123;</span><br><span class="line">    public void set(T t) &#123; /* ... */ &#125;</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>To create a parameterized type of Box<t>, you supply an actual type argument for the formal type parameter T:<br><code>Box&lt;Integer&gt; intBox = new Box&lt;&gt;();</code></t></p>
+<p>If the actual type argument is omitted, you create a raw type of Box<t>:<br><code>Box rawBox = new Box();</code><br>Therefore, Box is the raw type of the generic type Box<t>. However, a non-generic class or interface type is not a raw type.</t></t></p>
+<p>Raw types show up in legacy code because lots of API classes (such as the Collections classes) were not generic prior to JDK 5.0. When using raw types, you essentially get pre-generics behavior — a Box gives you Objects. For backward compatibility, assigning a parameterized type to its raw type is allowed:<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Box&lt;String&gt; stringBox = <span class="hljs-keyword">new</span> Box&lt;&gt;();</span><br><span class="line">Box rawBox = stringBox;               <span class="hljs-comment">// OK</span></span><br><span class="line">But <span class="hljs-keyword">if</span> you assign a raw type to a parameterized type, you get a warning:</span><br><span class="line"></span><br><span class="line">Box rawBox = <span class="hljs-keyword">new</span> Box();           <span class="hljs-comment">// rawBox is a raw type of Box&lt;T&gt;</span></span><br><span class="line">Box&lt;Integer&gt; intBox = rawBox;     <span class="hljs-comment">// warning: unchecked conversion</span></span><br><span class="line">You also get a warning <span class="hljs-keyword">if</span> you use a raw type to invoke generic methods defined in the corresponding generic type:</span><br><span class="line"></span><br><span class="line">Box&lt;String&gt; stringBox = <span class="hljs-keyword">new</span> Box&lt;&gt;();</span><br><span class="line">Box rawBox = stringBox;</span><br><span class="line">rawBox.set(<span class="hljs-number">8</span>);  <span class="hljs-comment">// warning: unchecked invocation to set(T)</span></span><br></pre></td></tr></table></figure></p>
+<p>The warning shows that raw types bypass generic type checks, deferring the catch of unsafe code to runtime. Therefore, you should avoid using raw types.</p>
+<p>The Type Erasure section has more information on how the Java compiler uses raw types.</p>
+<p><strong>Raw Type的引用可以hold泛型对象，并且不会警告，这是为了兼容性；泛型的引用反之也可以hold Raw Type对象，但会报警告</strong></p>
+<p><strong>由于有Raw Type的存在，泛型间的引用传递很危险，比如：</strong><br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List list = new ArrayList&lt;String&gt;();//no warning</span><br><span class="line">List&lt;Integer&gt; = list;//warning, but very bad result!</span><br></pre></td></tr></table></figure></p>
+<p>上面的例子只会报一个警告，但是是很危险的，因为我们把一个存有String的List对象被赋值给了一个List<integer>的引用</integer></p>
+<h3 id="Unchecked-Error-Messages"><a href="#Unchecked-Error-Messages" class="headerlink" title="Unchecked Error Messages"></a>Unchecked Error Messages</h3><p>As mentioned previously, when mixing legacy code with generic code, you may encounter warning messages similar to the following:</p>
+<p>Note: Example.java uses unchecked or unsafe operations.<br>Note: Recompile with -Xlint:unchecked for details.<br>This can happen when using an older API that operates on raw types, as shown in the following example:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class WarningDemo &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Box&lt;Integer&gt; bi;</span><br><span class="line">        bi = createBox();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static Box createBox()&#123;</span><br><span class="line">        return new Box();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>The term “unchecked” means that the compiler does not have enough type information to perform all type checks necessary to ensure type safety. The “unchecked” warning is disabled, by default, though the compiler gives a hint. To see all “unchecked” warnings, recompile with -Xlint:unchecked.</p>
+<p>Recompiling the previous example with -Xlint:unchecked reveals the following additional information:</p>
+<p>WarningDemo.java:4: warning: [unchecked] unchecked conversion<br>found   : Box<br>required: Box&lt;java.lang.Integer&gt;<br>        bi = createBox();<br>                      ^<br>1 warning<br>To completely disable unchecked warnings, use the -Xlint:-unchecked flag. The @SuppressWarnings(“unchecked”) annotation suppresses unchecked warnings. If you are unfamiliar with the @SuppressWarnings syntax, see Annotations.</p>
+<h2 id="Generic-methods"><a href="#Generic-methods" class="headerlink" title="Generic methods"></a>Generic methods</h2><ol>
+<li>前面我们已经展示了在类(或者接口，接口与类是类似的)上使用泛型的例子，我们也可以直接在方法上使用泛型，语法是：在返回值之前加上一个泛型参数列表(用<code>&lt;</code>和<code>&gt;</code>括起来)<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Util</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;K, V&gt; <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">compare</span><span class="hljs-params">(Pair&lt;K, V&gt; p1, Pair&lt;K, V&gt; p2)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> p1.getKey().equals(p2.getKey()) &amp;&amp;</span><br><span class="line">               p1.getValue().equals(p2.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Type-Inference"><a href="#Type-Inference" class="headerlink" title="Type Inference"></a>Type Inference</h3><ol>
+<li>当我们使用声明好的泛型方法的时候，我们并不需要像泛型类那样显式的声明我们所要使用的类，而是可以借助Java自带的类型推断来知道我们需要使用的类。<strong>类型推断可以根据我们传入泛型方法的参数的并集来判断我们使用的类</strong><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">static</span> &lt;T&gt; <span class="hljs-function">T <span class="hljs-title">pick</span><span class="hljs-params">(T a1, T a2)</span> </span>&#123; <span class="hljs-keyword">return</span> a2; &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>&#123;</span><br><span class="line">        Serializable serializable = pick(<span class="hljs-string">"test"</span>, <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这个例子中，我们两个泛型参数T分别被一个String和一个ArrayList表示，那么最终Java系统判断结果是String和ArrayList的并集也就是Serializable</p>
+<h3 id="Explicit-type-specification"><a href="#Explicit-type-specification" class="headerlink" title="Explicit type specification"></a>Explicit type specification</h3><ol>
+<li>虽然Java系统可以自动帮我们判断泛型参数最后会使用什么类，我们也可以显式的声明它，语法是在使用函数的<code>.</code>的后面加上想使用的类型：<br>`Serializable s = Test.<serializable>pick(“d”, new ArrayList<string>());</string></serializable></li>
+</ol>
+<h2 id="Generics-Inheritance-and-Subtypes"><a href="#Generics-Inheritance-and-Subtypes" class="headerlink" title="Generics, Inheritance, and Subtypes"></a>Generics, Inheritance, and Subtypes</h2><p><a href="https://docs.oracle.com/javase/tutorial/java/generics/inheritance.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/tutorial/java/generics/inheritance.html</a><br>a-&gt;b的意思是a是b的子类<br><strong><code>Integer-&gt;Number</code>，但是<code>List&lt;Number&gt;</code>不是<code>List&lt;Integer&gt;</code>的父类，两者没有任何关系！</strong><br><code>List&lt;Number&gt;</code><br><code>List&lt;Integer&gt;-&gt;Object</code><br><code>ArrayList&lt;Integer&gt;-&gt;List&lt;Integer&gt;-&gt;Collection&lt;Integer&gt;</code></p>
+<h2 id="The-mystery-of-erasure"><a href="#The-mystery-of-erasure" class="headerlink" title="The mystery of erasure"></a>The mystery of erasure</h2><ol>
+<li><p>Java的泛型并不是在最开始就有的，而是在Java1.5才被加入的，所以Java泛型是由擦除实现的，也就是说关于泛型的信息在runtime是看不到的，所以<code>List&lt;String&gt;</code>和<code>List&lt;Integer&gt;</code>本质上在runtime是一种类型：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ErasedTypeEquivalence</span> </span>&#123;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Class c1 = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;().getClass();</span><br><span class="line">    Class c2 = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;().getClass();</span><br><span class="line">    System.out.println(c1 == c2);</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="hljs-comment">/* Output:</span></span><br><span class="line"><span class="hljs-comment">true</span></span><br><span class="line"><span class="hljs-comment">*/</span><span class="hljs-comment">//:~</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>擦除的作用效果是擦除到一个泛型的边界，如果一个泛型没有定义边界，那么它就会被擦除成<code>Object</code>类；如果一个泛型定义了边界<code>&lt;T extends Integer&gt;</code>，那么就会擦除到它的边界也就是这里的Integer。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HasF</span> </span>&#123;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span> </span>&#123; System.out.println(<span class="hljs-string">"HasF.f()"</span>); &#125;</span><br><span class="line">&#125; <span class="hljs-comment">///:~</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manipulator</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">private</span> T obj;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Manipulator</span><span class="hljs-params">(T x)</span> </span>&#123; obj = x; &#125;</span><br><span class="line">  <span class="hljs-comment">// Error: cannot find symbol: method f():</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">manipulate</span><span class="hljs-params">()</span> </span>&#123; obj.f(); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里由于T没有定义边界，被擦除成了Object，那么它不认为自己有<code>f()</code>方法<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manipulator2</span>&lt;<span class="hljs-title">T</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HasF</span>&gt; </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">private</span> T obj;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Manipulator2</span><span class="hljs-params">(T x)</span> </span>&#123; obj = x; &#125;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">manipulate</span><span class="hljs-params">()</span> </span>&#123; obj.f(); &#125;</span><br><span class="line">&#125; <span class="hljs-comment">///:~</span></span><br></pre></td></tr></table></figure></p>
+<p>这里由于T定义了边界，被擦除成了HasF，那么它知道自己有<code>f()</code>方法</p>
+<h3 id="先检查，再编译"><a href="#先检查，再编译" class="headerlink" title="先检查，再编译"></a>先检查，再编译</h3><p>Q: 既然说类型变量会在编译的时候擦除掉，那为什么我们往 ArrayList 创建的对象中添加整数会报错呢？不是说泛型变量String会在编译的时候变为Object类型吗？为什么不能存别的类型呢？既然类型擦除了，如何保证我们只能使用泛型变量限定的类型呢？</p>
+<p>A: Java编译器是通过先检查代码中泛型的类型，然后在进行类型擦除，再进行编译。</p>
+<p>例如：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span>  <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">    ArrayList&lt;String&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();  </span><br><span class="line">    list.add(<span class="hljs-string">"123"</span>);  </span><br><span class="line">    list.add(<span class="hljs-number">123</span>);<span class="hljs-comment">//编译错误  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在上面的程序中，使用add方法添加一个整型，在IDE中，直接会报错，说明这就是在编译之前的检查，因为如果是在编译之后检查，类型擦除后，原始类型为Object，是应该允许任意引用类型添加的。可实际上却不是这样的，这恰恰说明了关于泛型变量的使用，是会在编译之前检查的。</p>
+<p>那么，这个类型检查是针对谁的呢？我们先看看参数化类型和原始类型的兼容。<br>以 ArrayList举例子，以前的写法:<br><code>ArrayList list = new ArrayList();</code><br>现在的写法:<br><code>ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();</code><br>如果是与以前的代码兼容，各种引用传值之间，必然会出现如下的情况：<br>ArrayList<string> list1 = new ArrayList(); //第一种 情况, 这样是没有错误的，不过会有个编译时警告。<br>ArrayList list2 = new ArrayList<string>(); //第二种 情况<br>不过在第一种情况，可以实现与完全使用泛型参数一样的效果，第二种则没有效果。</string></string></p>
+<p><strong>因为类型检查就是编译时完成的，new ArrayList()只是在内存中开辟了一个存储空间，可以存储任何类型对象，而真正设计类型检查的是它的引用，因为我们是使用它引用list1来调用它的方法，比如说调用add方法，所以list1引用能完成泛型类型的检查。而引用list2没有使用泛型，所以不行</strong>。</p>
+<p>举例子：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;  </span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;  </span><br><span class="line"></span><br><span class="line">        ArrayList&lt;String&gt; list1 = new ArrayList();  </span><br><span class="line">        list1.add(&quot;1&quot;); //编译通过  </span><br><span class="line">        list1.add(1); //编译错误  </span><br><span class="line">        String str1 = list1.get(0); //返回类型就是String  </span><br><span class="line"></span><br><span class="line">        ArrayList list2 = new ArrayList&lt;String&gt;();  </span><br><span class="line">        list2.add(&quot;1&quot;); //编译通过  </span><br><span class="line">        list2.add(1); //编译通过  </span><br><span class="line">        Object object = list2.get(0); //返回类型就是Object  </span><br><span class="line"></span><br><span class="line">        new ArrayList&lt;String&gt;().add(&quot;11&quot;); //编译通过  </span><br><span class="line">        new ArrayList&lt;String&gt;().add(22); //编译错误  </span><br><span class="line"></span><br><span class="line">        String str2 = new ArrayList&lt;String&gt;().get(0); //返回类型就是String  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>通过上面的例子，我们可以明白，类型检查就是针对引用的，谁是一个引用，用这个引用调用泛型方法，就会对这个引用调用的方法进行类型检测，而无关它真正引用的对象。</strong></p>
+<h3 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h3><p>因为类型擦除的问题，所以所有的泛型类型变量最后都会被替换为原始类型。</p>
+<p>既然都被替换为原始类型，那么为什么我们在获取的时候，不需要进行强制类型转换呢？</p>
+<p>看下ArrayList.get()方法：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> E <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> </span>&#123;  </span><br><span class="line">    RangeCheck(index);  </span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> (E) elementData[index];  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，在return之前，会根据泛型变量进行强转。假设泛型类型变量为Date，虽然泛型信息会被擦除掉，但是会将(E) elementData[index]，编译为(Date)elementData[index]。所以我们不用自己进行强转。当存取一个泛型域时也会自动插入强制类型转换。假设Pair类的value域是public的，那么表达式：<br><code>Date date = pair.value;</code><br>也会自动地在结果字节码中插入强制类型转换</p>
+<p><strong>从以上两个小节我们得出结论：Java泛型的擦除使得代码在runtime是没有泛型信息的，泛型只作用于编译期间。编译期间，程序根据泛型信息检查输入是否符合标准，不符合会报出错误；同时根据泛型信息将输出自动进行类型转换</strong></p>
+<h2 id="Compensating-for-erasure"><a href="#Compensating-for-erasure" class="headerlink" title="Compensating for erasure"></a>Compensating for erasure</h2><ol>
+<li>由于擦除存在的原因，任何与runtime类型的操作泛型都不可以使用<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Erased</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> SIZE = <span class="hljs-number">100</span>;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(Object arg)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(arg <span class="hljs-keyword">instanceof</span> T) &#123;&#125;          <span class="hljs-comment">// Error</span></span><br><span class="line">    T <span class="hljs-keyword">var</span> = <span class="hljs-keyword">new</span> T();                 <span class="hljs-comment">// Error</span></span><br><span class="line">    T[] array = <span class="hljs-keyword">new</span> T[SIZE];         <span class="hljs-comment">// Error</span></span><br><span class="line">    T[] array = (T)<span class="hljs-keyword">new</span> Object[SIZE]; <span class="hljs-comment">// Unchecked warning</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="hljs-comment">///:~</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Creating-instances-of-types"><a href="#Creating-instances-of-types" class="headerlink" title="Creating instances of types"></a>Creating instances of types</h3><ol>
+<li>既然我们不能进行<code>new T()</code>的操作，解决的办法之一是使用反射：<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> net.mindview.util.Print.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassAsFactory</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;</span><br><span class="line">  T x;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ClassAsFactory</span><span class="hljs-params">(Class&lt;T&gt; kind)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">      x = kind.newInstance();</span><br><span class="line">    &#125; <span class="hljs-keyword">catch</span>(Exception e) &#123;</span><br><span class="line">      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> </span>&#123;&#125;	</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InstantiateGenericType</span> </span>&#123;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ClassAsFactory&lt;Employee&gt; fe =</span><br><span class="line">      <span class="hljs-keyword">new</span> ClassAsFactory&lt;Employee&gt;(Employee.class);</span><br><span class="line">    print(<span class="hljs-string">"ClassAsFactory&lt;Employee&gt; succeeded"</span>);</span><br><span class="line">    <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">      ClassAsFactory&lt;Integer&gt; fi =</span><br><span class="line">        <span class="hljs-keyword">new</span> ClassAsFactory&lt;Integer&gt;(Integer.class);</span><br><span class="line">    &#125; <span class="hljs-keyword">catch</span>(Exception e) &#123;</span><br><span class="line">      print(<span class="hljs-string">"ClassAsFactory&lt;Integer&gt; failed"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="hljs-comment">/* Output:</span></span><br><span class="line"><span class="hljs-comment">ClassAsFactory&lt;Employee&gt; succeeded</span></span><br><span class="line"><span class="hljs-comment">ClassAsFactory&lt;Integer&gt; failed</span></span><br><span class="line"><span class="hljs-comment">*/</span><span class="hljs-comment">//:~</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>从上面的例子可以看出来，确实是可以使用反射来创建泛型类的实例，但是Integer的实例创建失败了，原因是Integer类没有默认的构造器</p>
+<ol start="2">
+<li>还可以使用工厂设计模式(Factory Pattern)或者模板设计模式(Template Method)</li>
+</ol>
+<h2 id="Wildcards"><a href="#Wildcards" class="headerlink" title="Wildcards"></a>Wildcards</h2><h3 id="Upper-Bounded-Wildcards"><a href="#Upper-Bounded-Wildcards" class="headerlink" title="Upper Bounded Wildcards"></a>Upper Bounded Wildcards</h3><ol>
+<li><code>List&lt;? extends Number&gt;</code>的意思是List可以包含<strong>任何</strong>Number或者Number的子类，所以以下几种表达都是合理的<br><code>List&lt;? extends Number&gt; list= new LinkedList&lt;Number&gt;</code><br><code>List&lt;? extends Number&gt; list= new LinkedList&lt;Integer&gt;</code><br><code>List&lt;? extends Number&gt; list= new LinkedList&lt;Double&gt;</code><br>所以这就导致了<code>List&lt;? extends Number&gt;</code>是不可写的(不能使用add)，因为如果写了一个Integer，但实际存储的是<code>new LinkedList&lt;Double&gt;</code>，就会出现错误</li>
+</ol>
+<p>但是<code>List&lt;? extends Number&gt;</code>是可读的(可以使用get)，因为我们知道读出来的一定是Number或者Number的子类</p>
+<h3 id="Lower-Bounded-Wildcards"><a href="#Lower-Bounded-Wildcards" class="headerlink" title="Lower Bounded Wildcards"></a>Lower Bounded Wildcards</h3><ol>
+<li><code>List&lt;? super Integer&gt;</code>的意思是List可以包含<strong>任何</strong>Integer或者Integer的父类，所以以下几种表达都是合理的<br><code>List&lt;? super Integer&gt; list= new LinkedList&lt;Integer&gt;</code><br><code>List&lt;? super Integer&gt; list= new LinkedList&lt;Number&gt;</code><br><code>List&lt;? super Integer&gt; list= new LinkedList&lt;Object&gt;</code></li>
+</ol>
+<p>所以这就导致了<code>List&lt;? super Integer&gt;</code>只能读出Object类型<br><code>List&lt;? super Integer&gt;</code>是可写的，但是只可以写Integer或者Integer的子类</p>
+<p><strong>所以总结来说，判断能否写是根据所有的可能性取一个交集，如果交集不存在就不能写；判断能否读是根据所有的可能性取一个并集，最差也能是Object，以为Object是所有类的父类</strong></p>
+<h3 id="Unbounded-Wildcards"><a href="#Unbounded-Wildcards" class="headerlink" title="Unbounded Wildcards"></a>Unbounded Wildcards</h3><ol>
+<li>根据上面的总结，<code>List&lt;?&gt;</code>不可写，只能读出Object</li>
+<li>There are two scenarios where an unbounded wildcard is a useful approach:<br>If you are writing a method that can be implemented using functionality provided in the Object class. 对应第一条<br>When the code is using methods in the generic class that don’t depend on the type parameter. For example, List.size or List.clear. In fact, Class&lt;?&gt; is so often used because most of the methods in Class<t> do not depend on T. 因为第一条的限制，所以只能做与泛型读写无关的操作</t></li>
+</ol>
+<h3 id="Wildcards-and-Subtyping"><a href="#Wildcards-and-Subtyping" class="headerlink" title="Wildcards and Subtyping"></a>Wildcards and Subtyping</h3><p><a href="https://docs.oracle.com/javase/tutorial/java/generics/subtyping.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/tutorial/java/generics/subtyping.html</a><br><code>List&lt;Integer&gt;</code>-&gt;<code>List&lt;?&gt;</code><br><code>List&lt;String&gt;</code>-&gt;<code>List&lt;?&gt;</code>，但是<code>List&lt;Integer&gt;</code>和<code>List&lt;String&gt;</code>之间没有继承关系<br><code>List&lt;Integer&gt;</code>-&gt;<code>List&lt;? extends Integer&gt;</code>-&gt;<code>List&lt;? extends Number&gt;</code>-&gt;<code>List&lt;?&gt;</code><br><code>List&lt;Number&gt;</code>-&gt;<code>List&lt;? super Number&gt;</code>-&gt;<code>List&lt;? super Integer&gt;</code>-&gt;<code>List&lt;?&gt;</code></p>
+<h3 id="Java泛型通配符-与-T-的区别"><a href="#Java泛型通配符-与-T-的区别" class="headerlink" title="Java泛型通配符 ? 与 T 的区别"></a>Java泛型通配符 ? 与 T 的区别</h3><p><a href="https://segmentfault.com/a/1190000020497160" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020497160</a><br>这里解释的最好的一句就是?是一个实参，而T只是一个形参(占位符)，也就是说T只能存在于泛型的编写过程中，最终在使用的时候都会被一个实参替换掉，这个实参甚至有可能是？<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; <span class="hljs-function">T <span class="hljs-title">test</span><span class="hljs-params">(List&lt;T&gt; input)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> input.get(<span class="hljs-number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>&#123;</span><br><span class="line">        List&lt;String&gt; list1 = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        list1.add(<span class="hljs-string">"test"</span>);</span><br><span class="line">        List&lt;?&gt; list2 = list1;<span class="hljs-comment">//list2不能写只能读，所以这里先用list1写入一个数据</span></span><br><span class="line">        Object a = test(list2);<span class="hljs-comment">//由于实参是？，我们返回的引用只能是Object</span></span><br><span class="line">        System.out.println(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>也可以使用<code>? extends String</code>作为实参<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; <span class="hljs-function">T <span class="hljs-title">test</span><span class="hljs-params">(List&lt;T&gt; input)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> input.get(<span class="hljs-number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>&#123;</span><br><span class="line">        List&lt;String&gt; list1 = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        list1.add(<span class="hljs-string">"test"</span>);</span><br><span class="line">        List&lt;? extends String&gt; list2 = list1;<span class="hljs-comment">//list2不能写只能读，所以这里先用list1写入一个数据</span></span><br><span class="line">        String a = test(list2);<span class="hljs-comment">//由于实参是? extends String，我们知道其必是String或者String的子类，根据多态我们返回的引用就可以是String了</span></span><br><span class="line">        System.out.println(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
         </div>
         
@@ -701,59 +899,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-26T19:57:15.000Z">2019-11-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Distributed-System/">Distributed System</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    23 minutes read (About 3505 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/26/Paxos-based Key-Value Service/">Paxos-based Key/Value Service</a>
-            
-        </h1>
-        <div class="content">
-            <p>分布式的第三次作业，作业的内容是实现基于Paxos的Key/Value pair数据库</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/26/Paxos-based Key-Value Service/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -820,7 +965,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        43
+                        44
                     </p>
                 </div>
             </div>
@@ -840,7 +985,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        9
+                        10
                     </p>
                 </div>
             </div>
@@ -910,7 +1055,7 @@
                 <span class="level-item">Basics</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Distributed-System/">
@@ -956,7 +1101,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Encode/" style="font-size: 10px;">Encode</a> <a href="/tags/Host-file/" style="font-size: 10px;">Host file</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a>
+        <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Computer-Network/" style="font-size: 10px;">Computer Network</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Encode/" style="font-size: 10px;">Encode</a> <a href="/tags/Host-file/" style="font-size: 10px;">Host file</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a>
     </div>
 </div>
 
@@ -967,6 +1112,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/05/30/Basics/Computer Networking阅读笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Computer Networking阅读笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-05-31T04:31:11.000Z">2021-05-30</time></div>
+                    <a href="/2021/05/30/Basics/Computer Networking阅读笔记/" class="has-link-black-ter is-size-6">Computer Networking阅读笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1044,25 +1208,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/28/Backend/Servlets and JSPs/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Servlets and JSPs">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-29T04:45:15.000Z">2020-03-28</time></div>
-                    <a href="/2020/03/28/Backend/Servlets and JSPs/" class="has-link-black-ter is-size-6">Servlets and JSPs</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Backend/">Backend</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1081,7 +1226,7 @@
                     <span class="level-item">May 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1197,6 +1342,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/CSS/">
                         <span class="tag">CSS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Computer-Network/">
+                        <span class="tag">Computer Network</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
