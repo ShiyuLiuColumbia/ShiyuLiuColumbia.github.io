@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>Java 8 新特性 - Shiyu - Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <strong>Shiyu - Blog</strong>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+                <a class="navbar-item" href="/projects">Project</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-06-25T17:40:19.000Z">2021-06-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    22 minutes read (About 3344 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Java 8 新特性
+            
+        </h1>
+        <div class="content">
+            <h1 id="Lambda-expressions"><a href="#Lambda-expressions" class="headerlink" title="Lambda expressions"></a>Lambda expressions</h1><h2 id="Default-Methods-for-Interfaces"><a href="#Default-Methods-for-Interfaces" class="headerlink" title="Default Methods for Interfaces"></a>Default Methods for Interfaces</h2><ol>
+<li><p>Java 8允许我们在接口中定义non-abstract method，这在Java 8之前是不被允许的。定义的方法是使用default关键词：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Formula</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">calculate</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">double</span> <span class="hljs-title">sqrt</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> Math.sqrt(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们可以使用deault关键词定义的方法：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Formula formula = <span class="hljs-keyword">new</span> Formula() &#123;</span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">calculate</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> sqrt(a * <span class="hljs-number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">formula.calculate(<span class="hljs-number">100</span>);     <span class="hljs-comment">// 100.0</span></span><br><span class="line">formula.sqrt(<span class="hljs-number">16</span>);           <span class="hljs-comment">// 4.0</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这里我们使用了匿名内部类。匿名内部类的一个很大的好处就是：接口是不能实例化的，如果要实例化，我们需要先定义实现这个接口的类。但很多时候，我们其实是不关心实现接口的类是怎样的，而只关心接口的方法是如何重写(override)的。匿名内部类就可以帮助我们达到目的。</p>
+<h2 id="Lambda-expressions-1"><a href="#Lambda-expressions-1" class="headerlink" title="Lambda expressions"></a>Lambda expressions</h2><ol>
+<li>匿名内部类已经简化了我们对于接口的使用，但是大家还是觉得麻烦，我们其实只是想使用一下接口里的某个方法，为什么要定义这么多东西，于是Lambda表达式诞生了。对于一个复杂的匿名内部类：<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; names = Arrays.asList(<span class="hljs-string">"peter"</span>, <span class="hljs-string">"anna"</span>, <span class="hljs-string">"mike"</span>, <span class="hljs-string">"xenia"</span>);</span><br><span class="line"></span><br><span class="line">Collections.sort(names, <span class="hljs-keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(String a, String b)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> b.compareTo(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>我们使用Lambda表达式可以简化成如下，即我们省略了类名以及重写对的方法名。<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(names, (String a, String b) -&gt; &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> b.compareTo(a);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>如果Lambda表达式重写的方法只有一行，我们可以省略<code>{}</code>和<code>return</code>；同时函数参数的类型也可以由编译器自行判断。所以最终简化为：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(names, (a, b) -&gt; b.compareTo(a));</span><br></pre></td></tr></table></figure></p>
+<h2 id="Functional-Interfaces"><a href="#Functional-Interfaces" class="headerlink" title="Functional Interfaces"></a>Functional Interfaces</h2><ol>
+<li>从上面的例子我们可以看出lambda表达式的巨大作用，但这个时候我们有一个疑问：接口中可能有多个方法，Java编译器是怎么知道我们重写的是哪个方法呢？ 答案是Java编译器并没有那么聪明，我们只能在函数式接口上使用Lambda表达式。</li>
+<li>函数式接口：接口的定义中有且只有一个抽象方法，我们把这样的接口叫做函数式接口。这里我们就可以理解为什么Java 8中要为接口引入default方法，原因就是default方法不算抽象方法，函数式接口中可以有多个default方法。这个时候我们可能还有疑问：Comparator接口有两个抽象方法：<code>int compare(T o1, T o2);</code>和<code>boolean equals(Object obj);</code>，为什么还是函数式接口呢？原因是<code>boolean equals(Object obj);</code>是Object自带的方法，并不算抽象方法(FunctionalInterface的定义中提到：If an interface declares an abstract method overriding one of the public methods of java.lang.Object, that also does not count toward the interface’s abstract method count since any implementation of the interface will have an implementation from java.lang.Object or elsewhere)。<a href="https://stackoverflow.com/questions/23721759/functionalinterface-comparator-has-2-abstract-methods" target="_blank" rel="noopener">https://stackoverflow.com/questions/23721759/functionalinterface-comparator-has-2-abstract-methods</a>. </li>
+<li>所有的函数式接口可以使用Lambda表达式，因为它只有一个抽象方法，所以编译器可以知道要重写的就是这个方法。</li>
+<li>Java提供一个<code>@FunctionalInterface</code>的注解，当我们想要定义一个函数式接口的时候，我们可以加上这个注解，那么编译器会帮助我们判断哦我们写的接口符不符合只有一个抽象方法的标准，不符合的话会报错。所以<code>@FunctionalInterface</code>注解和<code>Override</code>注解有着类似的作用。<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@FunctionalInterface</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Converter</span>&lt;<span class="hljs-title">F</span>, <span class="hljs-title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="hljs-function">T <span class="hljs-title">convert</span><span class="hljs-params">(F from)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Converter&lt;String, Integer&gt; converter = (from) -&gt; Integer.valueOf(from);</span><br><span class="line">Integer converted = converter.convert(<span class="hljs-string">"123"</span>);</span><br><span class="line">System.out.println(converted);    <span class="hljs-comment">// 123</span></span><br></pre></td></tr></table></figure>
+<h2 id="Method-and-Constructor-References"><a href="#Method-and-Constructor-References" class="headerlink" title="Method and Constructor References"></a>Method and Constructor References</h2><ol>
+<li><p>Java 8还新引入了方法引用，使用方法引用，我们可以进一步简化Lambda表达式。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Converter&lt;String, Integer&gt; converter = Integer::valueOf;</span><br><span class="line">Integer converted = converter.convert(<span class="hljs-string">"123"</span>);</span><br><span class="line">System.out.println(converted);   <span class="hljs-comment">// 123</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>四种方法引用<br>Kind                                                    Syntax                                            Examples<br>Reference to a static method                            ContainingClass::staticMethodName                Person::compareByAge; MethodReferencesExamples::appendStrings<br>Reference to an instance method of a particular object    containingObject::instanceMethodName            myComparisonProvider::compareByName;myApp::appendStrings2<br>Reference to an instance method of an arbitrary object of a particular type    ContainingType::methodName    String::compareToIgnoreCase;<br>String::concat<br>Reference to a constructor                                                    ClassName::new                HashSet::new</p>
+</li>
+<li>构造器的方法引用例子：<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;</span><br><span class="line">    String firstName;</span><br><span class="line">    String lastName;</span><br><span class="line"></span><br><span class="line">    Person() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    Person(String firstName, String lastName) &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.firstName = firstName;</span><br><span class="line">        <span class="hljs-keyword">this</span>.lastName = lastName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">PersonFactory</span>&lt;<span class="hljs-title">P</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span>&gt; </span>&#123;</span><br><span class="line">    <span class="hljs-function">P <span class="hljs-title">create</span><span class="hljs-params">(String firstName, String lastName)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">PersonFactory&lt;Person&gt; personFactory = Person::<span class="hljs-keyword">new</span>;</span><br></pre></td></tr></table></figure>
+<p>Java编译器自动根据<code>PersonFactory.create</code>的参数类型选择合适的构造器</p>
+<h2 id="Lambda-Scopes"><a href="#Lambda-Scopes" class="headerlink" title="Lambda Scopes"></a>Lambda Scopes</h2><p><a href="https://github.com/winterbe/java8-tutorial#lambda-scopes" target="_blank" rel="noopener">https://github.com/winterbe/java8-tutorial#lambda-scopes</a></p>
+<h2 id="Built-in-Functional-Interfaces"><a href="#Built-in-Functional-Interfaces" class="headerlink" title="Built-in Functional Interfaces"></a>Built-in Functional Interfaces</h2><p>Java 8有很多定义好的函数式接口，在后面的Stream介绍中，他们会被广泛的使用。</p>
+<h3 id="Predicates"><a href="#Predicates" class="headerlink" title="Predicates"></a>Predicates</h3><p>Predicates are boolean-valued functions of one argument. The interface contains various default methods for composing predicates to complex logical terms (and, or, negate)<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Predicate&lt;String&gt; predicate = (s) -&gt; s.length() &gt; <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line">predicate.test(<span class="hljs-string">"foo"</span>);              <span class="hljs-comment">// true</span></span><br><span class="line">predicate.negate().test(<span class="hljs-string">"foo"</span>);     <span class="hljs-comment">// false</span></span><br><span class="line"></span><br><span class="line">Predicate&lt;Boolean&gt; nonNull = Objects::nonNull;</span><br><span class="line">Predicate&lt;Boolean&gt; isNull = Objects::isNull;</span><br><span class="line"></span><br><span class="line">Predicate&lt;String&gt; isEmpty = String::isEmpty;</span><br><span class="line">Predicate&lt;String&gt; isNotEmpty = isEmpty.negate();</span><br></pre></td></tr></table></figure></p>
+<h3 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h3><p>Functions accept one argument and produce a result. Default methods can be used to chain multiple functions together (compose, andThen).<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Function&lt;String, Integer&gt; toInteger = Integer::valueOf;</span><br><span class="line">Function&lt;String, String&gt; backToString = toInteger.andThen(String::valueOf);</span><br><span class="line"></span><br><span class="line">backToString.apply(<span class="hljs-string">"123"</span>);     <span class="hljs-comment">// "123"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Suppliers"><a href="#Suppliers" class="headerlink" title="Suppliers"></a>Suppliers</h3><p>Suppliers produce a result of a given generic type. Unlike Functions, Suppliers don’t accept arguments.<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Supplier&lt;Person&gt; personSupplier = Person::<span class="hljs-keyword">new</span>;</span><br><span class="line">personSupplier.get();   <span class="hljs-comment">// new Person</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Consumers"><a href="#Consumers" class="headerlink" title="Consumers"></a>Consumers</h3><p>Consumers represent operations to be performed on a single input argument.<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;Person&gt; greeter = (p) -&gt; System.out.println(<span class="hljs-string">"Hello, "</span> + p.firstName);</span><br><span class="line">greeter.accept(<span class="hljs-keyword">new</span> Person(<span class="hljs-string">"Luke"</span>, <span class="hljs-string">"Skywalker"</span>));</span><br></pre></td></tr></table></figure></p>
+<h3 id="Comparators"><a href="#Comparators" class="headerlink" title="Comparators"></a>Comparators</h3><p>Comparators are well known from older versions of Java. Java 8 adds various default methods to the interface.<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Comparator&lt;Person&gt; comparator = (p1, p2) -&gt; p1.firstName.compareTo(p2.firstName);</span><br><span class="line"></span><br><span class="line">Person p1 = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"John"</span>, <span class="hljs-string">"Doe"</span>);</span><br><span class="line">Person p2 = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"Alice"</span>, <span class="hljs-string">"Wonderland"</span>);</span><br><span class="line"></span><br><span class="line">comparator.compare(p1, p2);             <span class="hljs-comment">// &gt; 0</span></span><br><span class="line">comparator.reversed().compare(p1, p2);  <span class="hljs-comment">// &lt; 0</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h1><h2 id="stream解析"><a href="#stream解析" class="headerlink" title="stream解析"></a>stream解析</h2><p>举map为例：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Stream</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseStream</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">Stream</span>&lt;<span class="hljs-title">T</span>&gt;&gt; </span>&#123;</span><br><span class="line">    &lt;R&gt; <span class="hljs-function">Stream&lt;R&gt; <span class="hljs-title">map</span><span class="hljs-params">(Function&lt;? <span class="hljs-keyword">super</span> T, ? extends R&gt; mapper)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到map的参数是一个函数式接口<code>Function</code>，有意思的是这个函数式接口的泛型分别是<code>? super T</code>和<code>? extends R</code>，那么它们代表了什么呢？<br>首先我们需要明白的一点是：这个例子中的<code>T</code>与<code>R</code>是泛型的形参；<code>?</code>是泛型的实参。<code>T</code>和<code>R</code>在使用stream的时候会被实例化，比如我们<code>T</code>被<code>String</code>实例化, <code>R</code>被<code>Integer</code>实例化，这个时候我们就能清晰的理解了：map的输入是一个<code>Function</code>，<code>Function</code>的第一个泛型参数是String或String的父类(到底是什么在定义的时候还不知道，所以用?代替)，Function的第二个泛型参数是Integer或Integer的子类(到底是什么在定义的时候还不知道，所以用?代替)。<strong>我们要搞清楚，这里我么是在使用Function而不是定义Function，所以使用的是实参<code>?</code>，不能因为看到T和R就混淆，这里的T和R是Stream类的形参。</strong><br>再根据PECS原则：Producer Extends Consumer Super，进一步深入理解：<code>Function</code>的<code>V apply(P p)</code>方法会使用第一个泛型参数，并返回第二个泛型参数，所以第一个参数确实应该定义成producer，第二个确实应该定义成consumer。</p>
+<h2 id="stream-functions"><a href="#stream-functions" class="headerlink" title="stream functions"></a>stream functions</h2><p>stream的函数定义查看Java官方文档</p>
+<h2 id="How-streams-work"><a href="#How-streams-work" class="headerlink" title="How streams work"></a>How streams work</h2><ol>
+<li>A stream represents a sequence of elements and supports different kind of operations to perform computations upon those elements:<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; myList =</span><br><span class="line">    Arrays.asList(<span class="hljs-string">"a1"</span>, <span class="hljs-string">"a2"</span>, <span class="hljs-string">"b1"</span>, <span class="hljs-string">"c2"</span>, <span class="hljs-string">"c1"</span>);</span><br><span class="line">myList</span><br><span class="line">    .stream()</span><br><span class="line">    .filter(s -&gt; s.startsWith(<span class="hljs-string">"c"</span>))</span><br><span class="line">    .map(String::toUpperCase)</span><br><span class="line">    .sorted()</span><br><span class="line">    .forEach(System.out::println);</span><br><span class="line"><span class="hljs-comment">// C1</span></span><br><span class="line"><span class="hljs-comment">// C2</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Stream operations are either intermediate or terminal. Intermediate operations return a stream so we can chain multiple intermediate operations without using semicolons. Terminal operations are either void or return a non-stream result. In the above example filter, map and sorted are intermediate operations whereas forEach is a terminal operation.</p>
+<ol start="2">
+<li>Most stream operations accept some kind of lambda expression parameter, a functional interface specifying the exact behavior of the operation. Most of those operations must be both non-interfering and stateless. What does that mean?</li>
+</ol>
+<p>A function is non-interfering when it does not modify the underlying data source of the stream, e.g. in the above example no lambda expression does modify myList by adding or removing elements from the collection.</p>
+<p>A function is stateless when the execution of the operation is deterministic, e.g. in the above example no lambda expression depends on any mutable variables or states from the outer scope which might change during execution.</p>
+<h2 id="Different-kind-of-streams"><a href="#Different-kind-of-streams" class="headerlink" title="Different kind of streams"></a>Different kind of streams</h2><ol>
+<li><p>Streams can be created from various data sources, especially collections. Lists and Sets support new methods <code>stream()</code> and <code>parallelStream()</code> to either create a sequential or a parallel stream. Parallel streams are capable of operating on multiple threads and will be covered in a later section of this tutorial. We focus on sequential streams for now:</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Arrays.asList(<span class="hljs-string">"a1"</span>, <span class="hljs-string">"a2"</span>, <span class="hljs-string">"a3"</span>)</span><br><span class="line">    .stream()</span><br><span class="line">    .findFirst()</span><br><span class="line">    .ifPresent(System.out::println);  <span class="hljs-comment">// a1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Calling the method stream() on a list of objects returns a regular object stream. But we don’t have to create collections in order to work with streams as we see in the next code sample:</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="hljs-string">"a1"</span>, <span class="hljs-string">"a2"</span>, <span class="hljs-string">"a3"</span>)</span><br><span class="line">    .findFirst()</span><br><span class="line">    .ifPresent(System.out::println);  <span class="hljs-comment">// a1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Just use Stream.of() to create a stream from a bunch of object references.</p>
+<ol start="3">
+<li>Besides regular object streams Java 8 ships with special kinds of streams for working with the primitive data types int, long and double. As you might have guessed it’s IntStream, LongStream and DoubleStream.<br>IntStreams can replace the regular for-loop utilizing IntStream.range():<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">IntStream.range(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>)</span><br><span class="line">    .forEach(System.out::println);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 1</span></span><br><span class="line"><span class="hljs-comment">// 2</span></span><br><span class="line"><span class="hljs-comment">// 3</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>All those primitive streams work just like regular object streams with the following differences: Primitive streams use specialized lambda expressions, e.g. IntFunction instead of Function or IntPredicate instead of Predicate. And primitive streams support the additional terminal aggregate operations sum() and average():<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Arrays.stream(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;)</span><br><span class="line">    .map(n -&gt; <span class="hljs-number">2</span> * n + <span class="hljs-number">1</span>)</span><br><span class="line">    .average()</span><br><span class="line">    .ifPresent(System.out::println);  <span class="hljs-comment">// 5.0</span></span><br></pre></td></tr></table></figure></p>
+<ol start="4">
+<li><strong>Sometimes it’s useful to transform a regular object stream to a primitive stream or vice versa.</strong> For that purpose object streams support the special mapping operations mapToInt(), mapToLong() and mapToDouble:<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="hljs-string">"a1"</span>, <span class="hljs-string">"a2"</span>, <span class="hljs-string">"a3"</span>)</span><br><span class="line">    .map(s -&gt; s.substring(<span class="hljs-number">1</span>))</span><br><span class="line">    .mapToInt(Integer::parseInt)</span><br><span class="line">    .max()</span><br><span class="line">    .ifPresent(System.out::println);  <span class="hljs-comment">// 3</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Primitive streams can be transformed to object streams via mapToObj():<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">IntStream.range(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>)</span><br><span class="line">    .mapToObj(i -&gt; <span class="hljs-string">"a"</span> + i)</span><br><span class="line">    .forEach(System.out::println);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// a1</span></span><br><span class="line"><span class="hljs-comment">// a2</span></span><br><span class="line"><span class="hljs-comment">// a3</span></span><br></pre></td></tr></table></figure></p>
+<p>Here’s a combined example: the stream of doubles is first mapped to an int stream and than mapped to an object stream of strings:<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="hljs-number">1.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">3.0</span>)</span><br><span class="line">    .mapToInt(Double::intValue)</span><br><span class="line">    .mapToObj(i -&gt; <span class="hljs-string">"a"</span> + i)</span><br><span class="line">    .forEach(System.out::println);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// a1</span></span><br><span class="line"><span class="hljs-comment">// a2</span></span><br><span class="line"><span class="hljs-comment">// a3</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Processing-Order"><a href="#Processing-Order" class="headerlink" title="Processing Order"></a>Processing Order</h2><ol>
+<li>Now that we’ve learned how to create and work with different kinds of streams, let’s dive deeper into how stream operations are processed under the hood.<br><strong>An important characteristic of intermediate operations is laziness</strong>. Look at this sample where a terminal operation is missing:<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="hljs-string">"d2"</span>, <span class="hljs-string">"a2"</span>, <span class="hljs-string">"b1"</span>, <span class="hljs-string">"b3"</span>, <span class="hljs-string">"c"</span>)</span><br><span class="line">    .filter(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"filter: "</span> + s);</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>When executing this code snippet, nothing is printed to the console. <strong>That is because intermediate operations will only be executed when a terminal operation is present.</strong></p>
+<p>Let’s extend the above example by the terminal operation forEach:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(&quot;d2&quot;, &quot;a2&quot;, &quot;b1&quot;, &quot;b3&quot;, &quot;c&quot;)</span><br><span class="line">    .filter(s -&gt; &#123;</span><br><span class="line">        System.out.println(&quot;filter: &quot; + s);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;)</span><br><span class="line">    .forEach(s -&gt; System.out.println(&quot;forEach: &quot; + s));</span><br></pre></td></tr></table></figure></p>
+<p>Executing this code snippet results in the desired output on the console:<br>filter:  d2<br>forEach: d2<br>filter:  a2<br>forEach: a2<br>filter:  b1<br>forEach: b1<br>filter:  b3<br>forEach: b3<br>filter:  c<br>forEach: c</p>
+<p>The order of the result might be surprising. A naive approach would be to execute the operations horizontally one after another on all elements of the stream. But instead each element moves along the chain vertically. The first string “d2” passes filter then forEach, only then the second string “a2” is processed.</p>
+<p>This behavior can reduce the actual number of operations performed on each element, as we see in the next example:<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="hljs-string">"d2"</span>, <span class="hljs-string">"a2"</span>, <span class="hljs-string">"b1"</span>, <span class="hljs-string">"b3"</span>, <span class="hljs-string">"c"</span>)</span><br><span class="line">    .map(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"map: "</span> + s);</span><br><span class="line">        <span class="hljs-keyword">return</span> s.toUpperCase();</span><br><span class="line">    &#125;)</span><br><span class="line">    .anyMatch(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"anyMatch: "</span> + s);</span><br><span class="line">        <span class="hljs-keyword">return</span> s.startsWith(<span class="hljs-string">"A"</span>);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>// map:      d2<br>// anyMatch: D2<br>// map:      a2<br>// anyMatch: A2</p>
+<p>The operation anyMatch returns true as soon as the predicate applies to the given input element. This is true for the second element passed “A2”. Due to the vertical execution of the stream chain, map has only to be executed twice in this case. So instead of mapping all elements of the stream, map will be called as few as possible.</p>
+<h3 id="Why-order-matters"><a href="#Why-order-matters" class="headerlink" title="Why order matters"></a>Why order matters</h3><p>The next example consists of two intermediate operations map and filter and the terminal operation forEach. Let’s once again inspect how those operations are being executed:<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="hljs-string">"d2"</span>, <span class="hljs-string">"a2"</span>, <span class="hljs-string">"b1"</span>, <span class="hljs-string">"b3"</span>, <span class="hljs-string">"c"</span>)</span><br><span class="line">    .map(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"map: "</span> + s);</span><br><span class="line">        <span class="hljs-keyword">return</span> s.toUpperCase();</span><br><span class="line">    &#125;)</span><br><span class="line">    .filter(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"filter: "</span> + s);</span><br><span class="line">        <span class="hljs-keyword">return</span> s.startsWith(<span class="hljs-string">"A"</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .forEach(s -&gt; System.out.println(<span class="hljs-string">"forEach: "</span> + s));</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// map:     d2</span></span><br><span class="line"><span class="hljs-comment">// filter:  D2</span></span><br><span class="line"><span class="hljs-comment">// map:     a2</span></span><br><span class="line"><span class="hljs-comment">// filter:  A2</span></span><br><span class="line"><span class="hljs-comment">// forEach: A2</span></span><br><span class="line"><span class="hljs-comment">// map:     b1</span></span><br><span class="line"><span class="hljs-comment">// filter:  B1</span></span><br><span class="line"><span class="hljs-comment">// map:     b3</span></span><br><span class="line"><span class="hljs-comment">// filter:  B3</span></span><br><span class="line"><span class="hljs-comment">// map:     c</span></span><br><span class="line"><span class="hljs-comment">// filter:  C</span></span><br></pre></td></tr></table></figure></p>
+<p>As you might have guessed both map and filter are called five times for every string in the underlying collection whereas forEach is only called once.</p>
+<p>We can greatly reduce the actual number of executions if we change the order of the operations, moving filter to the beginning of the chain:<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="hljs-string">"d2"</span>, <span class="hljs-string">"a2"</span>, <span class="hljs-string">"b1"</span>, <span class="hljs-string">"b3"</span>, <span class="hljs-string">"c"</span>)</span><br><span class="line">    .filter(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"filter: "</span> + s);</span><br><span class="line">        <span class="hljs-keyword">return</span> s.startsWith(<span class="hljs-string">"a"</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .map(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"map: "</span> + s);</span><br><span class="line">        <span class="hljs-keyword">return</span> s.toUpperCase();</span><br><span class="line">    &#125;)</span><br><span class="line">    .forEach(s -&gt; System.out.println(<span class="hljs-string">"forEach: "</span> + s));</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// filter:  d2</span></span><br><span class="line"><span class="hljs-comment">// filter:  a2</span></span><br><span class="line"><span class="hljs-comment">// map:     a2</span></span><br><span class="line"><span class="hljs-comment">// forEach: A2</span></span><br><span class="line"><span class="hljs-comment">// filter:  b1</span></span><br><span class="line"><span class="hljs-comment">// filter:  b3</span></span><br><span class="line"><span class="hljs-comment">// filter:  c</span></span><br></pre></td></tr></table></figure></p>
+<p>Now, map is only called once so the operation pipeline performs much faster for larger numbers of input elements. Keep that in mind when composing complex method chains.</p>
+<p>Let’s extend the above example by an additional operation, sorted:<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="hljs-string">"d2"</span>, <span class="hljs-string">"a2"</span>, <span class="hljs-string">"b1"</span>, <span class="hljs-string">"b3"</span>, <span class="hljs-string">"c"</span>)</span><br><span class="line">    .sorted((s1, s2) -&gt; &#123;</span><br><span class="line">        System.out.printf(<span class="hljs-string">"sort: %s; %s\n"</span>, s1, s2);</span><br><span class="line">        <span class="hljs-keyword">return</span> s1.compareTo(s2);</span><br><span class="line">    &#125;)</span><br><span class="line">    .filter(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"filter: "</span> + s);</span><br><span class="line">        <span class="hljs-keyword">return</span> s.startsWith(<span class="hljs-string">"a"</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .map(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"map: "</span> + s);</span><br><span class="line">        <span class="hljs-keyword">return</span> s.toUpperCase();</span><br><span class="line">    &#125;)</span><br><span class="line">    .forEach(s -&gt; System.out.println(<span class="hljs-string">"forEach: "</span> + s));</span><br></pre></td></tr></table></figure></p>
+<p>Sorting is a special kind of intermediate operation. It’s a so called stateful operation since in order to sort a collection of elements you have to maintain state during ordering.</p>
+<p>Executing this example results in the following console output:<br>sort:    a2; d2<br>sort:    b1; a2<br>sort:    b1; d2<br>sort:    b1; a2<br>sort:    b3; b1<br>sort:    b3; d2<br>sort:    c; b3<br>sort:    c; d2<br>filter:  a2<br>map:     a2<br>forEach: A2<br>filter:  b1<br>filter:  b3<br>filter:  c<br>filter:  d2<br>First, the sort operation is executed on the entire input collection. In other words sorted is executed horizontally. So in this case sorted is called eight times for multiple combinations on every element in the input collection.</p>
+<p>Once again we can optimize the performance by reordering the chain:<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="hljs-string">"d2"</span>, <span class="hljs-string">"a2"</span>, <span class="hljs-string">"b1"</span>, <span class="hljs-string">"b3"</span>, <span class="hljs-string">"c"</span>)</span><br><span class="line">    .filter(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"filter: "</span> + s);</span><br><span class="line">        <span class="hljs-keyword">return</span> s.startsWith(<span class="hljs-string">"a"</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .sorted((s1, s2) -&gt; &#123;</span><br><span class="line">        System.out.printf(<span class="hljs-string">"sort: %s; %s\n"</span>, s1, s2);</span><br><span class="line">        <span class="hljs-keyword">return</span> s1.compareTo(s2);</span><br><span class="line">    &#125;)</span><br><span class="line">    .map(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"map: "</span> + s);</span><br><span class="line">        <span class="hljs-keyword">return</span> s.toUpperCase();</span><br><span class="line">    &#125;)</span><br><span class="line">    .forEach(s -&gt; System.out.println(<span class="hljs-string">"forEach: "</span> + s));</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// filter:  d2</span></span><br><span class="line"><span class="hljs-comment">// filter:  a2</span></span><br><span class="line"><span class="hljs-comment">// filter:  b1</span></span><br><span class="line"><span class="hljs-comment">// filter:  b3</span></span><br><span class="line"><span class="hljs-comment">// filter:  c</span></span><br><span class="line"><span class="hljs-comment">// map:     a2</span></span><br><span class="line"><span class="hljs-comment">// forEach: A2</span></span><br></pre></td></tr></table></figure></p>
+<p>In this example sorted is never been called because filter reduces the input collection to just one element. So the performance is greatly increased for larger input collections.</p>
+<h2 id="Reusing-Streams"><a href="#Reusing-Streams" class="headerlink" title="Reusing Streams"></a>Reusing Streams</h2><p>Java 8 streams cannot be reused. As soon as you call any terminal operation the stream is closed:<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream =</span><br><span class="line">    Stream.of(<span class="hljs-string">"d2"</span>, <span class="hljs-string">"a2"</span>, <span class="hljs-string">"b1"</span>, <span class="hljs-string">"b3"</span>, <span class="hljs-string">"c"</span>)</span><br><span class="line">        .filter(s -&gt; s.startsWith(<span class="hljs-string">"a"</span>));</span><br><span class="line"></span><br><span class="line">stream.anyMatch(s -&gt; <span class="hljs-keyword">true</span>);    <span class="hljs-comment">// ok</span></span><br><span class="line">stream.noneMatch(s -&gt; <span class="hljs-keyword">true</span>);   <span class="hljs-comment">// exception</span></span><br></pre></td></tr></table></figure></p>
+<p>Calling noneMatch after anyMatch on the same stream results in the following exception:</p>
+<p>java.lang.IllegalStateException: stream has already been operated upon or closed<br>    at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:229)<br>    at java.util.stream.ReferencePipeline.noneMatch(ReferencePipeline.java:459)<br>    at com.winterbe.java8.Streams5.test7(Streams5.java:38)<br>    at com.winterbe.java8.Streams5.main(Streams5.java:28)<br>To overcome this limitation we have to to create a new stream chain for every terminal operation we want to execute, e.g. we could create a stream supplier to construct a new stream with all intermediate operations already set up:<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Supplier&lt;Stream&lt;String&gt;&gt; streamSupplier =</span><br><span class="line">    () -&gt; Stream.of(<span class="hljs-string">"d2"</span>, <span class="hljs-string">"a2"</span>, <span class="hljs-string">"b1"</span>, <span class="hljs-string">"b3"</span>, <span class="hljs-string">"c"</span>)</span><br><span class="line">            .filter(s -&gt; s.startsWith(<span class="hljs-string">"a"</span>));</span><br><span class="line"></span><br><span class="line">streamSupplier.get().anyMatch(s -&gt; <span class="hljs-keyword">true</span>);   <span class="hljs-comment">// ok</span></span><br><span class="line">streamSupplier.get().noneMatch(s -&gt; <span class="hljs-keyword">true</span>);  <span class="hljs-comment">// ok</span></span><br></pre></td></tr></table></figure></p>
+<p>Each call to get() constructs a new stream on which we are save to call the desired terminal operation.</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://github.com/winterbe/java8-tutorial" target="_blank" rel="noopener">https://github.com/winterbe/java8-tutorial</a><br><a href="https://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/" target="_blank" rel="noopener">https://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/05/30/Basics/Computer Networking阅读笔记/">
+                <span class="level-item">Computer Networking阅读笔记</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/Shiyu.jpg" alt="Shiyu Liu">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Shiyu Liu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Software Engineer, Student
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Columbia University, NY</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        45
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        10
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ShiyuLiuColumbia" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/ShiyuLiuColumbia">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/shiyu-liu-6623a3158/">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Email" href="mailto:sl4401@columbia.edu">
+                
+                <i class="fas fa-envelope-open"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/BQ/">
+            <span class="level-start">
+                <span class="level-item">BQ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Backend/">
+            <span class="level-start">
+                <span class="level-item">Backend</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Basics/">
+            <span class="level-start">
+                <span class="level-item">Basics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">12</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Distributed-System/">
+            <span class="level-start">
+                <span class="level-item">Distributed System</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Frontend/">
+            <span class="level-start">
+                <span class="level-item">Frontend</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Leetcode/">
+            <span class="level-start">
+                <span class="level-item">Leetcode</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">22</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/System-Design/">
+            <span class="level-start">
+                <span class="level-item">System Design</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Computer-Network/" style="font-size: 10px;">Computer Network</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Encode/" style="font-size: 10px;">Encode</a> <a href="/tags/Host-file/" style="font-size: 10px;">Host file</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/06/25/Basics/Java 8 新特性/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Java 8 新特性">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-06-25T17:40:19.000Z">2021-06-25</time></div>
+                    <a href="/2021/06/25/Basics/Java 8 新特性/" class="has-link-black-ter is-size-6">Java 8 新特性</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/05/30/Basics/Computer Networking阅读笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Computer Networking阅读笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-05-31T04:31:11.000Z">2021-05-30</time></div>
+                    <a href="/2021/05/30/Basics/Computer Networking阅读笔记/" class="has-link-black-ter is-size-6">Computer Networking阅读笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/05/28/Basics/Git Cherry Pick/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Git Cherry Pick">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-05-29T02:23:52.000Z">2021-05-28</time></div>
+                    <a href="/2021/05/28/Basics/Git Cherry Pick/" class="has-link-black-ter is-size-6">Git Cherry Pick</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/03/01/待学习list/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="待学习list">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-03-02T04:35:37.000Z">2021-03-01</time></div>
+                    <a href="/2021/03/01/待学习list/" class="has-link-black-ter is-size-6">待学习list</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/01/31/Basics/Thinking in Java阅读笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Thinking in Java阅读笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-02-01T05:37:48.000Z">2021-01-31</time></div>
+                    <a href="/2021/01/31/Basics/Thinking in Java阅读笔记/" class="has-link-black-ter is-size-6">Thinking in Java阅读笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Basics/">Basics</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Angular/">
+                        <span class="tag">Angular</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Computer-Network/">
+                        <span class="tag">Computer Network</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Database/">
+                        <span class="tag">Database</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Encode/">
+                        <span class="tag">Encode</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Host-file/">
+                        <span class="tag">Host file</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Javascript/">
+                        <span class="tag">Javascript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Unicode/">
+                        <span class="tag">Unicode</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+        
+        </div>
+    
+</div>
+
+                <!-- 
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+    
+    
+</div>
+ -->
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+
+                    Shiyu - Blog
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2021 Shiyu Liu&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
